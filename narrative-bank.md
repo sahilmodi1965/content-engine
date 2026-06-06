@@ -107,7 +107,7 @@
 
 ### A6 — He let an AI read 9 months of his inbox and it reconstructed his business
 - **One-liner:** Sahil pointed Sales OS at his Gmail; it mined 9 months into ~50 candidate relationships across 6 clusters — and found his first-ever paying customer and a work email/role he'd half-forgotten.
-- **Proof:** PHASE2-MANIFEST.md 6-cluster scan; found Ekta Kohli (invoice #SYPPDXFB-0001, first Stepahead customer) and sahil@maf.ad (Director of Partnerships). Human-in-the-loop: nothing written until row-by-row approval; every contact carries source thread IDs + confidence.
+- **Proof:** PHASE2-MANIFEST.md 6-cluster scan; found his first Stepahead customer plus a half-forgotten Director-of-Partnerships contact. Human-in-the-loop: nothing written until row-by-row approval; every contact carries source thread IDs + confidence.
 - **Screens:** scrolling the manifest clusters · the moment it flags the discovered work email · the approve/skip/defer workflow.
 - **Leverage:** HIGH
 

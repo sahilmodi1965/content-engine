@@ -41,7 +41,7 @@
 
 - Show the terminal and the live result in the SAME clip. Input → output.
 - Put the number on screen as text (1,171 installs, 81 contacts, 159 runs, 142 slides).
-- Name the real human in the story (Shahriar, Kimaya, Sonal, the agency, Ekta the first customer).
+- Name the real human in the story (Shahriar, Kimaya, Sonal, the agency, his first customer).
 - Frame the guardrail as a flex ("it can see my ad money but structurally can't spend it").
 - Make the viewer feel behind — kindly. "You're still doing this by hand."
 

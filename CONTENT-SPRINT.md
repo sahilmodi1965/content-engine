@@ -12,7 +12,7 @@
 - A 9-agent swarm builds games, reads ROAS, optimizes ads and ships PRs from the word 'go' — 159 logged runs — and it drove two real games to live on iOS + Android + web (1,171 installs in 30 days, CPI ~$0.02, F1 outcome held).
 - A read-only data layer auto-pulls AdMob revenue, Google Ads spend and GA4→BigQuery into one ROAS report without the API token ever entering Claude's context window — it can see the money but structurally cannot spend or leak it.
 - One founder replaced Salesforce with a folder: 81 contacts, 32 orgs, 16 relationship types, 4 live missions — run in plain English from the terminal; and a single prospecting run hit a $5 cap, spent 13 credits, and surfaced exactly 2 validated decision-makers, deduped against the whole brain first.
-- Sahil pointed an AI at 9 months of his Gmail and it reconstructed his business — surfacing ~50 relationships and finding his first-ever paying customer (invoice #SYPPDXFB-0001) plus a work email/role he'd half-forgotten — writing nothing until row-by-row human approval.
+- Sahil pointed an AI at 9 months of his Gmail and it reconstructed his business — surfacing ~50 relationships and finding his first-ever paying customer (his first paid invoice) plus a work email/role he'd half-forgotten — writing nothing until row-by-row human approval.
 - Students ship real, clickable products: Kimaya's native Apple Watch swim app on a milestone path to the App Store (PRs #6/#7 merged), Advika's hand-painted Godot game live on the web with 53 animation frames auto-deploying on every merge.
 
 
