@@ -1,0 +1,1599 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sahil's Content Engine</title>
+<style>
+:root{--bg:#0b0e14;--card:#141925;--ink:#e6e9ef;--mut:#8b93a7;--line:#222a3a;--accent:#3b82f6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px}
+header h1{font-size:30px;margin:0 0 4px}
+.sub{color:var(--mut);margin:0 0 18px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:96px}
+.stat b{font-size:22px;display:block}
+.stat span{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 26px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
+nav a{flex:1;min-width:120px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-left:3px solid;border-radius:10px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+nav a span{color:var(--mut);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.panel h3{margin:0 0 10px}
+.proof li{margin:8px 0;color:#cfd5e2}
+.angle h2{border-left:3px solid;padding-left:12px;font-size:21px;margin:34px 0 14px}
+.angle h2 small{color:var(--mut);font-weight:400;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:0 16px}
+.card summary{cursor:pointer;padding:14px 0;display:flex;gap:10px;align-items:center;list-style:none}
+.card summary::-webkit-details-marker{display:none}
+.card summary::before{content:"▸";color:var(--mut);transition:.15s}
+.card[open] summary::before{transform:rotate(90deg)}
+.ctitle{font-weight:600}
+.lev{font-size:11px;padding:3px 8px;border-radius:20px;white-space:nowrap;font-weight:600}
+.hook{color:#dbeafe;background:#1d283a;border-radius:8px;padding:8px 12px;margin:4px 0 8px;font-size:14px}
+.cta{color:#bbf7d0;background:#11261b;border-radius:8px;padding:8px 12px;margin:0 0 12px;font-size:14px}
+.body{border-top:1px solid var(--line);padding-top:10px;font-size:14.5px}
+.body h2,.body h3{font-size:15px;color:#aeb6c9;margin:14px 0 4px}
+.body code{background:#0b0e14;padding:1px 5px;border-radius:4px;font-size:13px;color:#9ece6a}
+.filelink{display:inline-block;margin:10px 0 16px;color:var(--mut);font-size:12px;text-decoration:none}
+blockquote{border-left:3px solid var(--line);margin:8px 0;padding-left:12px;color:var(--mut)}
+details.big>summary{font-weight:600;cursor:pointer;padding:6px 0}
+a{color:var(--accent)}
+footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:16px}
+</style></head><body><div class="wrap">
+<header>
+  <h1>Sahil's Content Engine</h1>
+  <p class="sub">My standing PR team as code — every story, script and CTA in one page. Updated 2026-06-06.</p>
+</header>
+<div class="stats">
+  <div class="stat"><b>23</b><span>scripts</span></div>
+  <div class="stat"><b>6</b><span>PDF</span></div>
+  <div class="stat"><b>4</b><span>Webinar</span></div>
+  <div class="stat"><b>9</b><span>Automation</span></div>
+  <div class="stat"><b>4</b><span>Big-ticket</span></div>
+  <div class="stat"><b>1</b><span>runs</span></div>
+</div>
+<nav><a href="#1-pdf" style="border-color:#2563eb"><b>$100 PDF</b><span>6</span></a><a href="#2-webinar" style="border-color:#7c3aed"><b>Webinar</b><span>4</span></a><a href="#3-automation" style="border-color:#0891b2"><b>Automation</b><span>9</span></a><a href="#4-bigticket" style="border-color:#b45309"><b>Big-Ticket</b><span>4</span></a></nav>
+<div class="panel proof"><h3>🔥 Headline proof — your strongest receipts</h3><ul><li>A 1-page $100 PDF holds ONE prompt that takes a total beginner from never-opened-a-terminal to a real website live at yourname.github.io in ~2 hours — and no PDF ships until a zero-knowledge robot beginner walks every step with zero blocking gaps (round 1 caught 4 real traps).</li><li>Sahil&#x27;s FB Agent caught his ad agency letting an account run dark 3+ weeks and silently killing his best campaign — from a read-only terminal that never touches the ads (India INR 0 / UAE spend −71% WoW / 2-day undisclosed blackout).</li><li>A 9-agent swarm builds games, reads ROAS, optimizes ads and ships PRs from the word &#x27;go&#x27; — 159 logged runs — and it drove two real games to live on iOS + Android + web (1,171 installs in 30 days, CPI ~$0.02, F1 outcome held).</li><li>A read-only data layer auto-pulls AdMob revenue, Google Ads spend and GA4→BigQuery into one ROAS report without the API token ever entering Claude&#x27;s context window — it can see the money but structurally cannot spend or leak it.</li><li>One founder replaced Salesforce with a folder: 81 contacts, 32 orgs, 16 relationship types, 4 live missions — run in plain English from the terminal; and a single prospecting run hit a $5 cap, spent 13 credits, and surfaced exactly 2 validated decision-makers, deduped against the whole brain first.</li><li>Sahil pointed an AI at 9 months of his Gmail and it reconstructed his business — surfacing ~50 relationships and finding his first-ever paying customer (invoice #SYPPDXFB-0001) plus a work email/role he&#x27;d half-forgotten — writing nothing until row-by-row human approval.</li><li>Students ship real, clickable products: Kimaya&#x27;s native Apple Watch swim app on a milestone path to the App Store (PRs #6/#7 merged), Advika&#x27;s hand-painted Godot game live on the web with 53 animation frames auto-deploying on every merge.</li></ul></div>
+<div class="panel"><h3>🎬 Higgsfield channel — staged test</h3>
+  <p style="color:var(--mut);margin:.2em 0">Soul-ID AI reels with your real VO. Spend-gated: cheap stills → review → hardest motion shot → review + cost → render. One test reel staged, awaiting your review &amp; <code>SOUL_UUID</code>.</p>
+  <details class="big"><summary>Open test-reel spec</summary><div class="body"><h2>TEST REEL — Higgsfield channel validation</h2>
+
+<p><strong>Script:</strong> <code>scripts/4-bigticket/02 — I built a factory that builds factories</code></p>
+<p><strong>Goal:</strong> prove the Soul-ID pipeline end-to-end on ONE reel before any batch use — generate face-locked cinematic Sahil b-roll to intercut with his real terminal footage, validate the hardest motion shot, reconcile spend. <strong>This is the test + review Sahil asked for.</strong></p>
+
+<p><strong>Why this script:</strong> highest cinematic payoff and brand-defining. The terminal proof (council playbook, <code>runs.jsonl</code>) Sahil screen-records himself; Higgsfield supplies the <strong>cinematic connective b-roll</strong> that makes it feel like a film, not a screencast.</p>
+
+<p>---</p>
+
+<h3>Prereq (Sahil supplies)</h3>
+<ul>
+<li><code>SOUL_UUID</code> = Sahil&#x27;s Soul reference id (from the reel-factory setup). Paste it where marked.</li>
+<li>Confirm balance: <code>higgsfield account status</code></li>
+</ul>
+
+<h3>Step 1 — Cost estimate FIRST (free, no spend)</h3>
+<p><code>`</code></p>
+<p>higgsfield generate cost text2image_soul_v2 --aspect_ratio 9:16 --quality 2k     # ~0.12 cr each × 4 stills</p>
+<p>higgsfield generate cost kling3_0 --mode pro --duration 5 --aspect_ratio 9:16    # ~8.75 cr (motion test only)</p>
+<p><code>`</code></p>
+<p>Expected board cost ≈ <strong>0.5 cr stills + 8.75 cr one motion clip ≈ ~9.3 cr</strong> for the full test. Confirm against balance before proceeding.</p>
+
+<h3>Step 2 — Cheap-still board (4 stills, Soul ID, ~0.12 cr each) — DO THIS FIRST</h3>
+<p>One still per beat. Lock the look here before ANY video.</p>
+
+<p>1. <strong>Hero / cold-open</strong> — <em>&quot;the operator.&quot;</em> Sahil, face-locked, lit like a founder portrait, dark room, single screen glow on his face, calm and three-moves-ahead.</p>
+<p>2. <strong>Command center</strong> — wide-ish, Sahil at a terminal in a minimal high-end workspace; the room reads as a control room, not a desk.</p>
+<p>3. <strong>Factory-of-factories visual</strong> — stylized: identical glowing &quot;factory&quot; modules receding into depth, one assembling another (the metaphor as a single striking frame). <code>soul_cinematic</code> ok here (no face needed).</p>
+<p>4. <strong>Turn-to-camera</strong> — Sahil mid-turn toward lens, slight earned smirk — the Beat-4 &quot;it gets smarter every run&quot; payoff frame.</p>
+
+<p><code>`</code></p>
+<p>higgsfield generate create text2image_soul_v2 --prompt &quot;&lt;beat-1 scene + explicit feature description of Sahil&gt;&quot; --aspect_ratio 9:16 --quality 2k --custom_reference_id &lt;SOUL_UUID&gt; --wait</p>
+<h2>repeat for beats 2 and 4 (face-locked).</h2>
+<p>higgsfield generate create soul_cinematic --prompt &quot;&lt;beat-3 factory-of-factories, no face&gt;&quot; --aspect_ratio 9:16 --quality 2k --wait</p>
+<p><code>`</code></p>
+
+<h4>⛔ REVIEW GATE 1 — Sahil reviews the 4 stills</h4>
+<p>Does the look hold? Is the face unmistakably Sahil and never creepy? Is the factory frame striking? <strong>No video until this is a yes.</strong></p>
+
+<h3>Step 3 — Animate the HARDEST motion shot first (one clip, ~8.75 cr)</h3>
+<p>The hardest motion here = <strong>the turn-to-camera (beat 4)</strong> — human facial motion is where image→video breaks. Animate THAT one first, not an easy push-in.</p>
+<p><code>`</code></p>
+<p>higgsfield generate create kling3_0 --mode pro --duration 5 --aspect_ratio 9:16 --sound off --start-image &lt;beat-4-still-path-or-uuid&gt; --wait</p>
+<p><code>`</code></p>
+
+<h4>⛔ REVIEW GATE 2 — Sahil reviews the motion + the running cost</h4>
+<p>Does the turn read as real, or does the face warp? Judge motion as harshly as the stills.</p>
+<ul>
+<li><strong>Pass</strong> → proceed to animate the remaining beats, then Sahil lays his <strong>real VO</strong> over the cut and intercuts the live terminal footage.</li>
+<li><strong>Fail</strong> → do NOT spend more on <code>kling3_0</code>. Switch toolchain (<code>seedance_2_0</code> / <code>veo_3_1</code>, or start+end-frame interpolation), or restyle to a slow push-in that hides facial motion. A passing still ≠ a passing clip.</li>
+</ul>
+
+<h3>Step 4 — Reconcile</h3>
+<p><code>`</code></p>
+<p>higgsfield account transactions --size 10</p>
+<p><code>`</code></p>
+<p>Log actual spend in <code>invoice.md</code> here. Deleting files does not refund credits — decide before rendering, not after.</p>
+
+<p>---</p>
+
+<h3>Verdict log (Sahil fills in)</h3>
+<ul>
+<li>[ ] Stills look-locked (Gate 1): ____</li>
+<li>[ ] Motion holds at bar (Gate 2): ____</li>
+<li>[ ] Final spend vs estimate: ____</li>
+<li><strong>Channel decision:</strong> ☐ promote Higgsfield to a standing channel  ☐ needs toolchain change  ☐ shelve for now</li>
+</ul></div></details>
+</div>
+
+    <section id="1-pdf" class="angle">
+      <h2 style="border-color:#2563eb"><span style="color:#2563eb">●</span> $100 PDF <small>stepaheadco.com/ship · global scale · 6 scripts</small></h2>
+      
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I built a robot too dumb to use a computer — so it&#x27;d catch the bug that traps you</span>
+      </summary>
+      <div class="hook">🎯 This AI&#x27;s only job is to be too dumb to figure anything out — and that&#x27;s exactly why nothing in my PDF can trap you.</div>
+      <div class="cta">📣 &quot;That&#x27;s the build-anything PDF. One prompt, two hours, your name live on the internet — cold-tested so you can&#x27;t get stuck. It&#x27;s a hundred bucks.&quot; · *On-screen card:* **Grab the build-anything $100 PDF → stepaheadco.com/ship (link in bio)**</div>
+      <div class="body"><h2>I built a robot too dumb to use a computer — so it&#x27;d catch the bug that traps you</h2>
+<p><strong>Angle:</strong> pdf · <strong>Leverage:</strong> high · <strong>Proof:</strong> The <code>cold-runner</code> agent — a zero-knowledge persona that &quot;has never opened a terminal&quot; — runs every PDF before sale; cold-run-report.md must show verdict PASS / zero blocking gaps. The macOS <code>ssh-add</code> trap is a real gap it caught and we fixed.</p>
+<p><strong>Hook (0-3s):</strong> This AI&#x27;s only job is to be too dumb to figure anything out — and that&#x27;s exactly why nothing in my PDF can trap you.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> ITS ONLY JOB: BE TOO DUMB TO FIGURE ANYTHING OUT</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;This AI&#x27;s only job is to be too dumb to figure anything out.&quot; · <em>Show:</em> Terminal cold open, cursor on a line that reads the cold-runner persona: <em>&quot;a person who has never opened a terminal, never used git, does not auto-fill missing steps.&quot;</em></p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Every PDF I sell teaches a total beginner to ship something live. So before anyone pays, I make a robot beginner run it first — one that refuses to guess. If a step assumes something it doesn&#x27;t know, that&#x27;s a gap. It doesn&#x27;t skip. It gets stuck on purpose.&quot; · <em>Show:</em> Scroll the four checks in cold-run-report.md — no hidden dependency, exact paste-able input, recognizable success, self-verify checkpoint.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;And it found one no expert would ever catch. On macOS there&#x27;s an <code>ssh-add</code> trap — a real human would&#x27;ve just... known to work around it. The robot didn&#x27;t. It stopped dead. Logged it as blocking. So I fixed it.&quot; · <em>Show:</em> Before/after diff of the <code>ssh-add</code> step; then scroll cold-run-report.md to the <strong>Verdict</strong> line landing on <strong>PASS — zero blocking gaps.</strong> Hold on PASS.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I&#x27;m not just writing a tutorial. I built the thing that proves you literally cannot get stuck — because a clueless robot already got stuck everywhere a human could, and we patched all of it.&quot; · <em>Show:</em> Split screen — persona file on left, PASS verdict on right.</p>
+<p><strong>CTA (32-40s):</strong> &quot;That&#x27;s the build-anything PDF. One prompt, two hours, your name live on the internet — cold-tested so you can&#x27;t get stuck. It&#x27;s a hundred bucks.&quot; · <em>On-screen card:</em> <strong>Grab the build-anything $100 PDF → stepaheadco.com/ship (link in bio)</strong></p>
+<p><strong>Caption:</strong> I made a robot that&#x27;s too dumb to use a computer — so it&#x27;d find every spot a beginner could get stuck, before anyone pays. Verdict: PASS. The credential never touches its context, and neither does guesswork. 🟢 stepaheadco.com/ship #buildinpublic #claudecode #learntocode #aitools #nocode #shipit</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I built an AI whose entire job is to be too dumb to figure anything out. It just found a bug no expert would have caught.</p>
+
+<p><strong>Body:</strong></p>
+<p>Every PDF I sell teaches a complete beginner to go from zero terminal to a live thing on the internet. The problem with writing for beginners is that you, the author, know too much. You auto-fill the obvious step. The beginner can&#x27;t.</p>
+
+<p>So before a single PDF is allowed to be sold, it gets run by a <code>cold-runner</code> — an agent with a hard persona: has never opened a terminal, never used git, does not know any tool exists unless the curriculum says so. Critically, it does not auto-fill missing steps. If a step assumes knowledge a true beginner lacks, that&#x27;s logged as a gap. The PDF cannot be packaged until the report shows zero blocking gaps.</p>
+
+<p>Here&#x27;s the one that proves the point. On macOS there&#x27;s an <code>ssh-add</code> trap — the kind of thing an experienced dev hits, mutters at, and works around on muscle memory without even noticing. The cold-runner has no muscle memory. It stopped dead and logged it blocking. We patched the step. Re-ran. Verdict: PASS.</p>
+
+<p>That&#x27;s the whole pitch. It&#x27;s not &quot;I wrote a good tutorial.&quot; It&#x27;s: a robot that refuses to be clever already got stuck in every place a human could, and we fixed all of them first. The AI proposes the gaps. I dispose of them. You just paste the prompt.</p>
+
+<p><strong>CTA:</strong> If you&#x27;ve ever said &quot;I can&#x27;t code&quot; — this was cold-tested by a robot beginner so you literally can&#x27;t get stuck. The first PDF takes you from zero terminal to a live site: stepaheadco.com/ship.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the cold-runner persona block (the &quot;never opened a terminal / does not auto-fill missing steps&quot; lines from cold-run-report.md) as the cold open — that line IS the hook.</li>
+<li>Capture the before/after of the macOS <code>ssh-add</code> trap fix (the diff) and a clean scroll of cold-run-report.md ending on the <strong>Verdict: PASS — zero blocking gaps</strong> line; hold on PASS for ~1.5s so the receipt reads on screen.</li>
+</ul></div>
+      <a class="filelink" href="scripts/1-pdf/01-i-built-a-robot-too-dumb-to-use-a-computer-so-.md">scripts/1-pdf/01-i-built-a-robot-too-dumb-to-use-a-computer-so-.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">One prompt. Two hours. Your name live on the internet.</span>
+      </summary>
+      <div class="hook">🎯 I pasted one grey box into a free AI chat and it turned into a coding teacher for someone who can&#x27;t code.</div>
+      <div class="cta">📣 &quot;I bottled the exact way I teach beginners into thirteen PDFs. The first one takes you from zero terminal to a live site. It&#x27;s a hundred bucks. stepaheadco.com/ship.&quot; · *On-screen card:* $100 PDF → stepaheadco.com/ship (link in bio)</div>
+      <div class="body"><h2>One prompt. Two hours. Your name live on the internet.</h2>
+<p><strong>Angle:</strong> pdf · <strong>Leverage:</strong> high · <strong>Proof:</strong> The actual StepAhead PDF (cover + page 1), the single grey-box prompt pasted into a live Claude chat, and a real *.github.io site loading in the browser — input to output, in one clip.</p>
+<p><strong>Hook (0-3s):</strong> I pasted one grey box into a free AI chat and it turned into a coding teacher for someone who can&#x27;t code.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> ONE PROMPT → YOUR NAME LIVE</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Watch. One grey box. Free AI chat. Zero code.&quot; · <em>Show:</em> The PDF open on screen, finger lands on the grey prompt box on page 1, then a fast paste into a live Claude chat.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most people open a YouTube tutorial, get lost in setup, and quit before anything&#x27;s real. This doesn&#x27;t do that — it coaches. It asks you questions, it waits, it doesn&#x27;t just dump code on you.&quot; · <em>Show:</em> Claude starts replying in the chat — asking the beginner a question, not spitting a wall of code. Cursor blinking.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;It&#x27;s terminal-first. It gathers what it needs up front. And it never leaves you stuck — I had it cold-tested by a robot beginner so a real one literally can&#x27;t fall off the path.&quot; · <em>Show:</em> Scroll the PDF cover, then page 1 — the single grey box. Cut back to the chat coaching step by step. Then the browser: type <code>yourname.github.io</code>, hit enter.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;Two hours later — that&#x27;s it. Not a localhost. Not a screenshot. A real URL with your name on it, live on the internet.&quot; · <em>Show:</em> The *.github.io site finishes loading. Pan from screen to face — slight grin.</p>
+<p><strong>CTA (32-40s):</strong> &quot;I bottled the exact way I teach beginners into thirteen PDFs. The first one takes you from zero terminal to a live site. It&#x27;s a hundred bucks. stepaheadco.com/ship.&quot; · <em>On-screen card:</em> $100 PDF → stepaheadco.com/ship (link in bio)</p>
+<p><strong>Caption:</strong> One grey box turns a free AI chat into a patient coach — and two hours later your name is live on the internet. The first PDF takes you from zero terminal to a real URL. stepaheadco.com/ship 👉 link in bio. #buildinpublic #claudecode #learntocode #nocode #aitools #shipit</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> A single grey box turned a free AI chat into a patient coding teacher — and two hours later a total beginner had their name live on the internet.</p>
+
+<p><strong>Body:</strong></p>
+<p>Here&#x27;s what&#x27;s in the box, and it&#x27;s nothing clever: one prompt. You paste it into a free Claude chat and the chat stops behaving like a search engine and starts behaving like a teacher.</p>
+
+<p>It doesn&#x27;t dump code on you. It asks what you&#x27;re building, waits for your answer, and walks you one step at a time. Terminal-first — nano, not some GUI editor you&#x27;ll never find again. It gathers the inputs up front so you don&#x27;t hit a wall halfway through.</p>
+
+<p>The part I&#x27;m proudest of: I had the whole thing cold-tested by a robot beginner before any human saw it. If an AI playing a total novice couldn&#x27;t get stuck, a real novice can&#x27;t either. That&#x27;s the guardrail — the prompt was hardened against the exact place people quit.</p>
+
+<p>End state isn&#x27;t a localhost demo or a screenshot. It&#x27;s a real *.github.io URL with your name on it. Live. On the internet. From one prompt, in about two hours.</p>
+
+<p>I bottled the exact way I teach beginners into 13 PDFs. The first one takes someone from never having opened a terminal to a live site.</p>
+
+<p><strong>CTA:</strong> The first PDF — zero terminal to live URL — is $100 at stepaheadco.com/ship. If you&#x27;ve ever said &quot;I can&#x27;t code,&quot; this one was cold-tested so you can&#x27;t get stuck.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the full input-to-output in ONE continuous take: open the PDF to page 1, paste the grey box into a live Claude chat, let it actually start coaching (capture it asking a question, not dumping code).</li>
+<li>Film the real PDF — cover frame plus a clean shot of page 1 showing the single grey prompt box — so the artifact reads as a real product, not a slide.</li>
+<li>Capture a genuine *.github.io site loading in a browser: type the URL, hit enter, let it paint. The live URL with a real name is the receipt — don&#x27;t fake it with a localhost.</li>
+<li>Get one face-to-camera grin at the moment the site loads for the Beat 4 turn.</li>
+</ul></div>
+      <a class="filelink" href="scripts/1-pdf/02-one-prompt-two-hours-your-name-live-on-the-int.md">scripts/1-pdf/02-one-prompt-two-hours-your-name-live-on-the-int.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">My 23-page first draft got rejected. The product is 1 page.</span>
+      </summary>
+      <div class="hook">🎯 My first draft was 23 pages. It got rejected — by a robot.</div>
+      <div class="cta">📣 &quot;If you&#x27;ve ever said &#x27;I can&#x27;t code&#x27; — this PDF was built so a robot beginner couldn&#x27;t get stuck, which means you can&#x27;t either. It&#x27;s $100. Paste one prompt, ship a real thing.&quot; · *On-screen card:* Grab the build-anything $100 PDF — stepaheadco.com/ship · link in bio</div>
+      <div class="body"><h2>My 23-page first draft got rejected. The product is 1 page.</h2>
+<p><strong>Angle:</strong> pdf · <strong>Leverage:</strong> high · <strong>Proof:</strong> The rejected 23-page draft vs. the 1-page module PDF, AUTHORING-PRINCIPLES.md (P1–P11) on screen, and the M1→M13 catalog. Real assets in <code>templates/domains/learning-engine/extras/</code>.</p>
+<p><strong>Hook (0-3s):</strong> My first draft was 23 pages. It got rejected — by a robot.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> 23 pages → 1 page</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;My first draft of this lesson was 23 pages. It got rejected. Not by a human — by a robot beginner I built to test it.&quot; · <em>Show:</em> Sahil holding a thick printed 23-page stack to camera, then dropping it out of frame.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;The cold-run gate ran it as a total beginner and stalled. Twenty-three pages of me explaining is twenty-three pages a beginner quits inside. So I didn&#x27;t edit it down. I recompiled it.&quot; · <em>Show:</em> Cut to a single sheet sliding into frame — the 1-page module PDF on screen, clean, branded.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Every module obeys eleven hard rules. P1: terminal-first, paste-able commands — never hand-editing. P4: build the two-pane habit. P3: always coaching, never just doing. One page. One prompt. A beginner pastes it and finishes.&quot; · <em>Show:</em> Scroll AUTHORING-PRINCIPLES.md showing P1–P11 headings, then the single 1-page module PDF, then the catalog list M1→M13.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I&#x27;m not writing lessons. I built the thing that compiles them — 13 modules, each one page, each cold-tested so you literally can&#x27;t get stuck.&quot; · <em>Show:</em> The M1→M13 catalog fully on screen, then the live <code>stepaheadco.com/ship</code> page.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you&#x27;ve ever said &#x27;I can&#x27;t code&#x27; — this PDF was built so a robot beginner couldn&#x27;t get stuck, which means you can&#x27;t either. It&#x27;s $100. Paste one prompt, ship a real thing.&quot; · <em>On-screen card:</em> Grab the build-anything $100 PDF — stepaheadco.com/ship · link in bio</p>
+<p><strong>Caption:</strong> 23 pages of me explaining → 1 page a beginner actually finishes. The robot rejected the long one for a reason. 13 modules, 11 rules, $100 at stepaheadco.com/ship. #buildinpublic #learntocode #claudecode #aitools #nocode #solofounder</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> My first lesson draft was 23 pages. A robot beginner rejected it — and that rejection is the best thing that happened to the product.</p>
+
+<p><strong>Body:</strong></p>
+<p>I built a cold-run gate: an AI that runs each lesson as a complete beginner before any human sees it. My 23-page draft hit it and stalled. Not because the content was wrong — because length is where beginners quit.</p>
+
+<p>So I didn&#x27;t trim it. I recompiled it against 11 authoring principles I&#x27;d mined from real failures. P1: terminal-first, every step a paste-able command, never &quot;open the editor and find line 14.&quot; P3: always coaching, never just doing the work for them. P4: build the two-pane habit so muscle memory forms. The output of those rules isn&#x27;t a shorter essay. It&#x27;s a different artifact: one page, one prompt, a beginner pastes it and finishes.</p>
+
+<p>Twenty-three pages became one. Then it became thirteen — M1 through M13 — each a single-page prompt-pack, each cold-tested so a learner with zero terminal experience can&#x27;t get stuck.</p>
+
+<p>The lesson for any operator: the rules are the product. The page is just where they print. When the constraints are explicit and the gate is automated, &quot;make it shorter&quot; stops being an opinion and becomes a build step.</p>
+
+<p><strong>CTA:</strong> I bottled all 13 into a $100 PDF you can paste your way through, zero-to-live. It&#x27;s at stepaheadco.com/ship — link in the comments.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Record the physical bit cleanly: hold the printed 23-page stack to camera, drop it out of frame, then slide in the single 1-page module PDF — that visual contrast IS the hook.</li>
+<li>Screen-capture three assets in sequence: AUTHORING-PRINCIPLES.md scrolling P1→P11, one full 1-page module PDF (so the &quot;one page&quot; claim is literally on screen), and the M1→M13 catalog list — then a 1-second shot of the live stepaheadco.com/ship page for the CTA card.</li>
+</ul></div>
+      <a class="filelink" href="scripts/1-pdf/03-my-23-page-first-draft-got-rejected-the-produc.md">scripts/1-pdf/03-my-23-page-first-draft-got-rejected-the-produc.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">Every beginner quits at the same 3 moments. I wrote a rule against each one.</span>
+      </summary>
+      <div class="hook">🎯 The vim screen. The wall of text. &quot;How do I even paste this.&quot; Every beginner quits at one of those three — so I wrote a rule that kills each one.</div>
+      <div class="cta">📣 &quot;It&#x27;s the build-anything PDF. One prompt, two hours, your name live on the internet — and you literally can&#x27;t get stuck. stepaheadco.com/ship, link in bio.&quot; · *On-screen card:* $100 · stepaheadco.com/ship · cold-tested so you can&#x27;t get stuck</div>
+      <div class="body"><h2>Every beginner quits at the same 3 moments. I wrote a rule against each one.</h2>
+<p><strong>Angle:</strong> pdf · <strong>Leverage:</strong> high · <strong>Proof:</strong> The real AUTHORING-PRINCIPLES.md (P1–P11) — eleven rules mined from actual teaching failures — plus the coaching contract baked into every module&#x27;s curriculum-spec, and a cold-runner that checks every PDF against the list before it ships.</p>
+<p><strong>Hook (0-3s):</strong> The vim screen. The wall of text. &quot;How do I even paste this.&quot; Every beginner quits at one of those three — so I wrote a rule that kills each one.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> 11 rules. Each one born from a real quit.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Beginners don&#x27;t quit because coding is hard. They quit at three exact moments — and I named a rule against every one.&quot; · <em>Show:</em> Sahil to camera, then hard cut to the dreaded purple vim screen filling the phone.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;The surprise vim screen. The wall of text the AI dumps on you. And the silent &#x27;how do I even paste this.&#x27; I watched real beginners die right there.&quot; · <em>Show:</em> Fast three-cut — vim screen, a giant intimidating paragraph of instructions, a cursor blinking in an empty terminal.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;So I wrote it down. P1: never send them to nano or vim — paste-and-run only. P11: one short line at a time, like texting a patient friend. P9: errors are normal, every developer sees them. Eleven rules, each one mined from a real mistake I made teaching someone.&quot; · <em>Show:</em> Scroll the actual AUTHORING-PRINCIPLES.md — P1 through P11 headers flying by — then cut to curriculum-spec.md highlighting the coaching contract block that injects into every single module.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;And a robot beginner cold-runs every PDF against all eleven before it ships. If the rule can break, it doesn&#x27;t go out.&quot; · <em>Show:</em> Terminal running the cold-runner, checks passing, then the green-squares contribution graph filling in.</p>
+<p><strong>CTA (32-40s):</strong> &quot;It&#x27;s the build-anything PDF. One prompt, two hours, your name live on the internet — and you literally can&#x27;t get stuck. stepaheadco.com/ship, link in bio.&quot; · <em>On-screen card:</em> $100 · stepaheadco.com/ship · cold-tested so you can&#x27;t get stuck</p>
+<p><strong>Caption:</strong> Eleven rules. Each one born from a real beginner quitting. The vim screen never wins again → stepaheadco.com/ship #learntocode #ai #buildinpublic #claudecode #nocode #terminal</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> Beginners don&#x27;t quit because the work is hard. They quit at three exact moments — and I can show you the file where I wrote a rule against each one.</p>
+
+<p><strong>Body:</strong></p>
+<p>I&#x27;ve taught enough total beginners to know exactly where they fall off. The surprise vim screen they can&#x27;t escape. The wall of text the AI dumps when they needed one line. The silent paralysis of &quot;how do I even paste this into the terminal.&quot;</p>
+
+<p>So I stopped treating those as bad luck and started treating them as bugs. Every time someone quit, I wrote down the rule that would have saved them. That file is AUTHORING-PRINCIPLES.md, and it&#x27;s now eleven entries deep.</p>
+
+<p>P1: never hand them nano or vim — paste-and-run complete blocks, the browser is only for viewing. P11: one short line per turn, like texting a patient friend, not reading a manual. P9: errors are expected and normal — every developer sees them — and debugging IS the skill. Each rule has a real failure behind it.</p>
+
+<p>Here&#x27;s the part most courses skip: that coaching contract is baked into every module&#x27;s spec, and a cold-runner — a robot beginner — runs every PDF against all eleven rules before it ships. If a rule can break, the PDF doesn&#x27;t go out. The proof isn&#x27;t my promise; it&#x27;s a gate in the pipeline.</p>
+
+<p>The outcome a learner holds at the end isn&#x27;t a finished file. It&#x27;s a filled-in contribution graph and a person who can now direct an AI to build — and never gets stuck on the vim screen again.</p>
+
+<p><strong>CTA:</strong> I bottled the exact way I teach beginners into the build-anything PDF. One prompt, two hours, your name live on the internet — cold-tested so you can&#x27;t get stuck. stepaheadco.com/ship (link in bio).</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record a clean scroll through the real AUTHORING-PRINCIPLES.md showing P1, P9, and P11 headers clearly readable — these three are the payoff lines spoken in the VO.</li>
+<li>Capture the curriculum-spec.md with the coaching-contract block visible, framed as &quot;this injects into every module&quot; — the proof that the rules are enforced, not aspirational.</li>
+<li>Film the cold-runner actually executing and passing its checks, then cut straight to a real GitHub contribution graph filling with green squares (the P6 ending). Open the reel cold on the literal purple vim screen for the 3-second gut-punch.</li>
+</ul></div>
+      <a class="filelink" href="scripts/1-pdf/04-every-beginner-quits-at-the-same-3-moments-i-w.md">scripts/1-pdf/04-every-beginner-quits-at-the-same-3-moments-i-w.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I bottled the way I teach beginners into 13 PDFs — and one already sold</span>
+      </summary>
+      <div class="hook">🎯 &quot;I stopped teaching people one-on-one. I built the machine that mass-produces the help — and the first order&#x27;s already through.&quot;</div>
+      <div class="cta">📣 &quot;Grab the build-anything PDF at stepaheadco.com/ship — link&#x27;s in bio. Paste one prompt, ship a real thing on the internet.&quot; · *On-screen card:* **$100 · stepaheadco.com/ship · cold-tested so you can&#x27;t get stuck · link in bio**</div>
+      <div class="body"><h2>I bottled the way I teach beginners into 13 PDFs — and one already sold</h2>
+<p><strong>Angle:</strong> pdf · <strong>Leverage:</strong> high · <strong>Proof:</strong> stepaheadco.com/ship is live, the first real order is through it, and every PDF was cold-tested by a robot beginner until the gap report read zero blocking gaps.</p>
+<p><strong>Hook (0-3s):</strong> &quot;I stopped teaching people one-on-one. I built the machine that mass-produces the help — and the first order&#x27;s already through.&quot;</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> ONE PROMPT → A LIVE SITE. (first order: SOLD)</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;I stopped helping people one at a time. I built the machine that mass-produces the help.&quot; · <em>Show:</em> face to camera, then hard-cut to stepaheadco.com/ship loading live on the phone.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Everyone who teaches beginners does it live, on a call, one person at a time. That doesn&#x27;t scale — it just eats your week. So I did the opposite: I bottled the exact way I teach into 13 PDFs.&quot; · <em>Show:</em> scroll the /ship landing page, then the file tree — 13 modules, the StepAhead wordmark in #004AAD blue and #FF8C4B orange.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Here&#x27;s the part nobody does. Before any PDF ships, a robot beginner who&#x27;s never opened a terminal runs it end to end. If a single step assumes knowledge a real beginner doesn&#x27;t have — that&#x27;s a blocking gap, and it does not ship. This one passed: zero blocking gaps.&quot; · <em>Show:</em> a branded module PDF opening on screen (cover → first paste-able prompt), then cut to the cold-run report — verdict: PASS, the gap log empty, the P1–P11 checklist all ticked.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;And it&#x27;s not theory anymore. The funnel&#x27;s live, and the first order already came through. The machine sold while I was asleep.&quot; · <em>Show:</em> the live Stripe order / confirmation, the $100 line, stepaheadco.com/ship in the address bar above it.</p>
+<p><strong>CTA (32-40s):</strong> &quot;Grab the build-anything PDF at stepaheadco.com/ship — link&#x27;s in bio. Paste one prompt, ship a real thing on the internet.&quot; · <em>On-screen card:</em> <strong>$100 · stepaheadco.com/ship · cold-tested so you can&#x27;t get stuck · link in bio</strong></p>
+<p><strong>Caption:</strong> Stopped teaching one-on-one. Built the machine that mass-produces it — 13 PDFs, each cold-tested by a robot beginner until zero gaps. First order&#x27;s already through. → stepaheadco.com/ship #buildinpublic #claudecode #learntocode #aitools #solofounder #shipit</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I stopped teaching beginners one-on-one. I built the machine that mass-produces the help — and the first order is already through it.</p>
+
+<p><strong>Body:</strong></p>
+<p>For months the bottleneck was me. Helping someone go from &quot;I can&#x27;t code&quot; to a live URL meant a call, my hours, one person at a time. Warm, high-trust — and completely un-scalable.</p>
+
+<p>So I inverted it. I bottled the exact way I teach into 13 branded PDFs. Each one is a single paste-able prompt that takes a true beginner from zero terminal to a real thing live on the internet. One source of brand truth — same blue, same orange, same promise on the ad, the page, and the PDF cover. Nothing drifts.</p>
+
+<p>Here&#x27;s the guardrail I&#x27;m proudest of. Before any PDF is allowed to ship, a robot &quot;cold-runner&quot; runs it as a person who has never opened a terminal and never used git — and refuses to fill in any gap a real beginner couldn&#x27;t. If one step assumes hidden knowledge, that&#x27;s a blocking gap and the curriculum fails. This module&#x27;s report came back PASS: zero blocking gaps, all eleven authoring principles ticked. You literally can&#x27;t get stuck on something a beginner couldn&#x27;t recover from — because a beginner already tried and we fixed every place they tripped.</p>
+
+<p>And it&#x27;s not a someday thing. The funnel is live at stepaheadco.com/ship, and the first order already came through. The machine sold while I wasn&#x27;t in the room. That&#x27;s the whole point: I&#x27;m not selling my time anymore, I&#x27;m selling the way I work.</p>
+
+<p><strong>CTA:</strong> If you&#x27;ve ever said &quot;I can&#x27;t code&quot; — start with Module 1. One prompt, two hours, your name live on the internet. $100 at stepaheadco.com/ship.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record stepaheadco.com/ship loading live on the phone, plus the moment the first real order confirmation appears (Stripe dashboard or success page) — the &quot;already sold&quot; beat only lands with a real receipt on screen.</li>
+<li>Capture a branded module PDF opening: cover in StepAhead blue/orange → the first literal paste-able prompt, so viewers see the artifact, not a promise.</li>
+<li>Screen-capture an actual cold-run report with verdict PASS, an empty blocking-gap log, and the P1–P11 checklist ticked — this is the differentiator; show the file, don&#x27;t describe it.</li>
+</ul></div>
+      <a class="filelink" href="scripts/1-pdf/05-i-bottled-the-way-i-teach-beginners-into-13-pd.md">scripts/1-pdf/05-i-bottled-the-way-i-teach-beginners-into-13-pd.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#ca8a041a;color:#ca8a04">🟡 medium</span>
+        <span class="ctitle">He&#x27;d never opened a terminal. 90 minutes later his resume tool was live on GitHub.</span>
+      </summary>
+      <div class="hook">🎯 The deliverable isn&#x27;t the resume. It&#x27;s that he could do it again tomorrow, for anything.</div>
+      <div class="cta">📣 &quot;This is Module 5 of the PDF that takes you from zero terminal to live on the internet. It&#x27;s a hundred bucks.&quot; · *On-screen card:* Grab the build-anything $100 PDF — stepaheadco.com/ship (link in bio)</div>
+      <div class="body"><h2>He&#x27;d never opened a terminal. 90 minutes later his resume tool was live on GitHub.</h2>
+<p><strong>Angle:</strong> pdf · <strong>Leverage:</strong> medium · <strong>Proof:</strong> A non-coder, Module 5 of the build-anything PDF, ships a real ATS resume generator — web page plus downloadable PDF — to his own GitHub. Terminal building it live, rendered resume, the PDF download, the GitHub squares lighting green.</p>
+<p><strong>Hook (0-3s):</strong> The deliverable isn&#x27;t the resume. It&#x27;s that he could do it again tomorrow, for anything.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> NEVER OPENED A TERMINAL → SHIPPED IN 90 MIN</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;The deliverable isn&#x27;t the resume. It&#x27;s that he could do it again tomorrow.&quot; · <em>Show:</em> black terminal, cursor blinking, one prompt being pasted in</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;This guy had never opened a terminal in his life. Most people in that spot open Canva, fight a template, export a flat PDF, and learn nothing.&quot; · <em>Show:</em> split screen — a Canva resume template on one side, the live terminal scrolling build output on the other</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;He pasted one prompt. The terminal built it in front of him — a real resume page and a downloadable PDF. Not a screenshot. A live page.&quot; · <em>Show:</em> terminal generating files → cut to the rendered web resume in a browser → cut to the PDF actually downloading and opening</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;Then he pushed it to his own GitHub. Watch the squares go green. He didn&#x27;t get a resume. He got the skill to ship anything.&quot; · <em>Show:</em> <code>git push</code> succeeding → GitHub contribution squares lighting up green</p>
+<p><strong>CTA (32-40s):</strong> &quot;This is Module 5 of the PDF that takes you from zero terminal to live on the internet. It&#x27;s a hundred bucks.&quot; · <em>On-screen card:</em> Grab the build-anything $100 PDF — stepaheadco.com/ship (link in bio)</p>
+<p><strong>Caption:</strong> He&#x27;d never touched a terminal. 90 minutes later his resume tool was live on his own GitHub. The PDF isn&#x27;t the point — the skill to do it again is. Module 5, link in bio. #buildinpublic #claudecode #nocode #learntocode #aitools #stepahead</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> A guy who had never opened a terminal shipped a working ATS resume tool — web page and PDF — to his own GitHub in about 90 minutes. The resume was never the point.</p>
+
+<p><strong>Body:</strong></p>
+<p>Most people, when they need a resume, open Canva. They fight a template, drag boxes around, export a flat PDF, and walk away with one file and zero new ability.</p>
+
+<p>He did it differently. He opened a terminal for the first time in his life, pasted one prompt from Module 5, and watched the thing get built in front of him: a real rendered resume page and a downloadable PDF. Then he pushed it to his own GitHub and watched the contribution squares go green.</p>
+
+<p>Here&#x27;s the part that matters. He didn&#x27;t leave with a resume. He left knowing how to stand up a real project, render it, and ship it to the internet — which means he can do it again tomorrow for something that isn&#x27;t a resume.</p>
+
+<p>That&#x27;s the whole design of these modules. The artifact you build is the excuse. The skill to ship is the product. Each one was cold-tested so a complete beginner can&#x27;t get stuck.</p>
+
+<p>If you&#x27;ve ever said &quot;I can&#x27;t code,&quot; this was built for exactly that sentence.</p>
+
+<p><strong>CTA:</strong> Module 5 lives inside the build-anything $100 PDF. Zero terminal to live on the internet — stepaheadco.com/ship (link in bio).</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the full live build in one take: paste the single prompt, let the terminal scroll the build output, no cuts that hide the &quot;it actually ran&quot; moment — that unbroken input-to-output shot is the proof.</li>
+<li>Capture the three receipt assets in sequence: the rendered web resume in a browser, the PDF physically downloading and opening, and the <code>git push</code> succeeding followed by the GitHub contribution squares turning green.</li>
+</ul></div>
+      <a class="filelink" href="scripts/1-pdf/06-he-d-never-opened-a-terminal-90-minutes-later-.md">scripts/1-pdf/06-he-d-never-opened-a-terminal-90-minutes-later-.md</a>
+    </details>
+    </section>
+    <section id="2-webinar" class="angle">
+      <h2 style="border-color:#7c3aed"><span style="color:#7c3aed">●</span> Webinar <small>100 AED bi-weekly · recurring income · 4 scripts</small></h2>
+      
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">My students ship real apps. These are receipts, not testimonials.</span>
+      </summary>
+      <div class="hook">🎯 You can play Advika&#x27;s game and open Kimaya&#x27;s watch app right now — click into any of them.</div>
+      <div class="cta">📣 &quot;Next live build session is 100 AED, seats are limited. I open the factory and build a real app in front of you. LUMA link&#x27;s in my bio.&quot; · *On-screen card:* LIVE BUILD · 100 AED · LIMITED SEATS · LUMA LINK IN BIO</div>
+      <div class="body"><h2>My students ship real apps. These are receipts, not testimonials.</h2>
+<p><strong>Angle:</strong> webinar · <strong>Leverage:</strong> high · <strong>Proof:</strong> stepaheadco.com/students — a live wall of beginner builders, each with a playable demo and a public GitHub. Advika&#x27;s Godot game, Kimaya&#x27;s watchOS app.</p>
+<p><strong>Hook (0-3s):</strong> You can play Advika&#x27;s game and open Kimaya&#x27;s watch app right now — click into any of them.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> THESE AREN&#x27;T TESTIMONIALS. THEY&#x27;RE LIVE LINKS.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;You can play Advika&#x27;s game and open Kimaya&#x27;s watch app right now — click into any of them.&quot; · <em>Show:</em> Cursor lands on stepaheadco.com/students, the wall of student cards loads.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most coding courses hand you a certificate. Mine hand you a live URL. Every one of these started as a beginner who said &#x27;I can&#x27;t code.&#x27;&quot; · <em>Show:</em> Rapid-fire scroll down the wall — card after card, name after name, each with a Play and a GitHub button.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Watch. Advika — her Godot game, runs in the browser. Kimaya — a real watchOS app. And here&#x27;s the part nobody fakes —&quot; <em>click into the GitHub</em> &quot;— green squares. Real commits. Real builds. Not a slide deck.&quot; · <em>Show:</em> Click Advika&#x27;s Play (game runs), back, click Kimaya&#x27;s demo, then open a student GitHub and scroll the green contribution graph.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I&#x27;m not teaching them to code. I built the thing that walks them from zero terminal to shipped. They just run it.&quot; · <em>Show:</em> Cut to the terminal — one prompt typed, a build kicking off.</p>
+<p><strong>CTA (32-40s):</strong> &quot;Next live build session is 100 AED, seats are limited. I open the factory and build a real app in front of you. LUMA link&#x27;s in my bio.&quot; · <em>On-screen card:</em> LIVE BUILD · 100 AED · LIMITED SEATS · LUMA LINK IN BIO</p>
+<p><strong>Caption:</strong> Receipts, not testimonials — every student on the wall has a playable demo and a public repo. Click in. Next live build is 100 AED, link in bio. #buildinpublic #learntocode #claudecode #watchos #godot #shipit</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I don&#x27;t give my students a certificate. I give them a live URL and a public GitHub.</p>
+
+<p><strong>Body:</strong></p>
+<p>Go to stepaheadco.com/students. It&#x27;s a wall of beginners. Every card has two buttons: Play, and GitHub.</p>
+
+<p>Advika&#x27;s card opens a Godot game that runs in your browser. Kimaya&#x27;s opens a real watchOS app. Click the GitHub on any of them and you&#x27;ll see the thing testimonials can&#x27;t show you — green squares. Real commits, real builds, on real days. People who said &quot;I can&#x27;t code&quot; a few weeks earlier.</p>
+
+<p>Here&#x27;s the leverage: I&#x27;m not sitting with each of them teaching syntax. I built the system that walks a complete beginner from zero terminal to a shipped, live artifact. They run one prompt. The system coaches, gates, and ships. It&#x27;s all Claude Code and a folder of markdown — no curriculum platform, no LMS.</p>
+
+<p>The proof isn&#x27;t my word. It&#x27;s the wall. Click into it before you read another testimonial anywhere.</p>
+
+<p><strong>CTA:</strong> Every two weeks I run a live build session — I open the factory and ship a real app in front of you, terminal and all. 100 AED, seats are limited. LUMA link in my bio. Come watch the thing that builds the builders.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record stepaheadco.com/students loading and a fast scroll down the full wall — the density of named cards IS the hook; make sure 6+ student cards are visible.</li>
+<li>Capture a clean click-through: Advika&#x27;s game actually running in-browser, then Kimaya&#x27;s watch-app demo, then one student&#x27;s GitHub contribution graph (green squares) scrolling. Real repos only — no mockups.</li>
+<li>End on the terminal: one prompt typed, a build starting — the &quot;I built the thing that builds them&quot; beat. Then cut to the LUMA seat card.</li>
+</ul></div>
+      <a class="filelink" href="scripts/2-webinar/01-my-students-ship-real-apps-these-are-receipts-.md">scripts/2-webinar/01-my-students-ship-real-apps-these-are-receipts-.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">A kid shipped a real Apple Watch app one PR at a time — watch it count laps on her wrist</span>
+      </summary>
+      <div class="hook">🎯 This runs on her wrist. She&#x27;d never shipped anything in her life. One PR at a time.</div>
+      <div class="cta">📣 &quot;My next live build session is 100 AED — I open the factory and build something from scratch in front of you, whole terminal on screen. Seats are limited. LUMA link&#x27;s in my bio.&quot; · *On-screen card:* LIVE BUILD-ALONG · 100 AED · limited seats · LUMA link in bio</div>
+      <div class="body"><h2>A kid shipped a real Apple Watch app one PR at a time — watch it count laps on her wrist</h2>
+<p><strong>Angle:</strong> webinar · <strong>Leverage:</strong> high · <strong>Proof:</strong> Kimaya&#x27;s SwiftLapWatch — a real native standalone watchOS app (Swift/SwiftUI/HealthKit). M3 lap-count fix merged green (PR #6, commit ba404fa), M4 onboarding merged (PR #7, OnboardingView.swift). 12-milestone roadmap, currently ~M4 of 12. No team, no agency — one milestone, one branch, one Claude session, one PR.</p>
+<p><strong>Hook (0-3s):</strong> This runs on her wrist. She&#x27;d never shipped anything in her life. One PR at a time.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> SHE&#x27;D NEVER SHIPPED ANYTHING</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;This runs on her wrist. She&#x27;d never shipped a line of code. One PR at a time.&quot; · <em>Show:</em> close-up of the Apple Watch on a wrist, SwiftLap counting laps live — the number ticking up</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Everyone thinks a real Apple Watch app is a team, a year, an agency. It&#x27;s not. It&#x27;s a roadmap and a rhythm.&quot; · <em>Show:</em> the 12-milestone roadmap graphic — Phase 1 / 2 / 3, with the early milestones checked</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Native Swift. HealthKit. The lap-count bug? Caught and fixed — PR six, merged green. The onboarding? PR seven, merged. No agency touched this. One milestone, one branch, one session, one PR.&quot; · <em>Show:</em> GitHub — PR #6 and PR #7 both showing the green merged check; quick cut to the watch counting a real lap in the pool</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;She&#x27;s a third of the way to the App Store. Not because she&#x27;s a prodigy — because she has the system. And I&#x27;m about to run that exact system live.&quot; · <em>Show:</em> roadmap zooming to the App Store milestone at the end of the path</p>
+<p><strong>CTA (32-40s):</strong> &quot;My next live build session is 100 AED — I open the factory and build something from scratch in front of you, whole terminal on screen. Seats are limited. LUMA link&#x27;s in my bio.&quot; · <em>On-screen card:</em> LIVE BUILD-ALONG · 100 AED · limited seats · LUMA link in bio</p>
+<p><strong>Caption:</strong> A kid with zero experience is shipping a native Apple Watch app — one PR at a time. I run the exact system live every couple weeks. 100 AED, limited seats, LUMA link in bio. #AppleWatch #watchOS #ClaudeCode #buildinpublic #shipit #AImentor</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> A kid who&#x27;d never shipped a line of code now has a native Apple Watch app counting her laps in a real pool. One PR at a time.</p>
+
+<p><strong>Body:</strong></p>
+<p>SwiftLap is a genuine standalone watchOS app — Swift, SwiftUI, HealthKit. Not a prototype, not a no-code wrapper. It records a swim on the watch and counts the laps on her wrist.</p>
+
+<p>The thing nobody believes: there&#x27;s no team behind it. No agency. The way we work is a rhythm — one milestone, one branch, one Claude Code session, one PR, one merge. That&#x27;s it.</p>
+
+<p>The receipts are public. The lap-count bug got caught and fixed in PR #6, merged green. The onboarding flow landed in PR #7. There&#x27;s a 12-milestone roadmap from &quot;first launch never crashes&quot; all the way to the App Store listing — and she&#x27;s about a third of the way down it. Not by being a prodigy. By having the system.</p>
+
+<p>That&#x27;s the whole point I keep making to other operators: the leverage isn&#x27;t talent or hours. It&#x27;s the exoskeleton. If a beginner can ship native code one PR at a time with it, what&#x27;s your excuse for doing your work by hand?</p>
+
+<p><strong>CTA:</strong> Every couple of weeks I run a live build session — I open the factory and build something from scratch with the whole terminal on screen. 100 AED, seats are limited. LUMA link is in my bio if you want to watch it happen live.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the Apple Watch on a wrist counting laps live (in or beside the pool) — the lap number ticking up is the hero shot; everything else supports it</li>
+<li>Screen-capture GitHub showing PR #6 and PR #7 both with the green merged check (zoom the green so it reads on mobile)</li>
+<li>Screen-capture the 12-milestone roadmap graphic, ideally an animated pan from M1 to the App Store milestone to show &quot;a third of the way down the path&quot;</li>
+<li>Optional B-roll: the one-word/one-prompt cadence in the terminal to dramatize &quot;one PR at a time&quot;; and a clean lower-third with the LUMA CTA card</li>
+</ul></div>
+      <a class="filelink" href="scripts/2-webinar/02-a-kid-shipped-a-real-apple-watch-app-one-pr-at.md">scripts/2-webinar/02-a-kid-shipped-a-real-apple-watch-app-one-pr-at.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">A Teenager Wired a Real Engineering Pipeline to a Hand-Painted Game</span>
+      </summary>
+      <div class="hook">🎯 53 hand-drawn frames. GitHub Issues as the spec. Claude writing the code. Every merge ships a playable build. And she&#x27;s a teenager.</div>
+      <div class="cta">📣 &quot;Next live build session is 100 AED, seats are limited. I&#x27;ll wire one of these from an empty repo while you watch the whole terminal. LUMA link&#x27;s in my bio.&quot; · *On-screen card:* LIVE BUILD · 100 AED · LIMITED SEATS · LUMA link in bio</div>
+      <div class="body"><h2>A Teenager Wired a Real Engineering Pipeline to a Hand-Painted Game</h2>
+<p><strong>Angle:</strong> webinar · <strong>Leverage:</strong> high · <strong>Proof:</strong> Advika&#x27;s Godot game — 53-frame hand-drawn sprite sheet, GitHub Issues as the spec, Claude writing the code, every merge auto-deploying a playable web build that turns green in Actions</p>
+<p><strong>Hook (0-3s):</strong> 53 hand-drawn frames. GitHub Issues as the spec. Claude writing the code. Every merge ships a playable build. And she&#x27;s a teenager.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> SHE&#x27;S A TEENAGER. THIS IS A REAL CI/CD PIPELINE.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;53 hand-drawn frames. GitHub Issues as the spec. Claude writing the code. Every merge ships. And she&#x27;s a teenager.&quot; · <em>Show:</em> the game running live in a browser tab — her hand-painted character actually moving</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most people think a kid making a game means dragging blocks around Scratch. No. She drew 53 frames by hand, then wrote what she wanted as an Issue — and Claude turned the Issue into the code.&quot; · <em>Show:</em> scroll the 53-frame sprite sheet, then cut to an open GitHub Issue written in plain English</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Watch the part nobody believes. She merges the pull request — and the deploy fires. Build runs. Actions goes green. And the playable game is live on the web. No engineer touched it. The Issue was the spec.&quot; · <em>Show:</em> click Merge → cut to GitHub Actions check turning from yellow spinner to green → cut to the live URL playing in-browser</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;This isn&#x27;t a toy pipeline. It&#x27;s the same loop I run for real software — Issue in, build out, live on merge. A teenager is operating it.&quot; · <em>Show:</em> split screen — her game on one side, the green Actions log on the other</p>
+<p><strong>CTA (32-40s):</strong> &quot;Next live build session is 100 AED, seats are limited. I&#x27;ll wire one of these from an empty repo while you watch the whole terminal. LUMA link&#x27;s in my bio.&quot; · <em>On-screen card:</em> LIVE BUILD · 100 AED · LIMITED SEATS · LUMA link in bio</p>
+<p><strong>Caption:</strong> A teenager drew 53 frames, wrote the spec as a GitHub Issue, and every merge auto-ships a playable web build. The Issue is the spec. The merge is the deploy. I teach this loop live. #ClaudeCode #BuildInPublic #Godot #GameDev #CICD #AIagents</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> A teenager just shipped a game on a deploy pipeline most engineering teams would be proud of.</p>
+
+<p><strong>Body:</strong></p>
+<p>Advika is building a game in Godot. The art is hers — 53 hand-drawn frames, a character she painted by hand. That part is craft. What she did next is the part I want operators to sit with.</p>
+
+<p>She doesn&#x27;t open a code editor and start typing logic. She opens a GitHub Issue and writes, in plain English, what the game should do. The Issue is the spec. Claude reads it and writes the code. She reviews, she merges.</p>
+
+<p>And on merge, the whole thing fires: the build runs, GitHub Actions goes green, and a playable web build is live. No engineer in the loop. No manual deploy step. The merge IS the deploy. &quot;It&#x27;s live&quot; is true only after the push succeeds — same guardrail I run on real software.</p>
+
+<p>Read that back. A teenager is operating a real CI/CD loop: spec in, build out, ship on merge. The thing that used to require a team and a release engineer is now a folder, an Issue, and a command. The AI proposes the code. She disposes.</p>
+
+<p>This is exactly the loop I run live every two weeks — empty repo to deploying pipeline, terminal on screen the whole time.</p>
+
+<p><strong>CTA:</strong> Next live build session is 100 AED, seats limited. I open the factory and wire one of these from scratch while you watch. LUMA link&#x27;s in my bio — come build with me.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the game playing in a browser — her hand-painted character actually moving, so the opening 3 seconds is the live result, not a claim</li>
+<li>Capture the merge-to-green moment in one continuous take: click Merge on the PR → GitHub Actions check flips from spinner to green → cut straight to the live deployed URL playing. That single uninterrupted input→output shot is the whole video</li>
+<li>Scroll the 53-frame sprite sheet and show one real GitHub Issue written in plain English (the spec), so viewers see the human input that drives the machine</li>
+</ul></div>
+      <a class="filelink" href="scripts/2-webinar/03-a-teenager-wired-a-real-engineering-pipeline-t.md">scripts/2-webinar/03-a-teenager-wired-a-real-engineering-pipeline-t.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#ca8a041a;color:#ca8a04">🟡 medium</span>
+        <span class="ctitle">I teach building by building my own teaching tool</span>
+      </summary>
+      <div class="hook">🎯 My chalkboard isn&#x27;t a chalkboard — it&#x27;s a config file I recompile by talking out loud.</div>
+      <div class="cta">📣 &quot;I run this live every two weeks — I open the factory and build in front of you. Next session&#x27;s 100 AED, seats are limited.&quot; · *On-screen card:* Next live build session — 100 AED · seats limited · LUMA link in bio</div>
+      <div class="body"><h2>I teach building by building my own teaching tool</h2>
+<p><strong>Angle:</strong> webinar · <strong>Leverage:</strong> medium · <strong>Proof:</strong> A 4K teaching board on a 65-inch TV, generated from a config file by <code>node generate.js</code> — recompiled live while Sahil describes the lesson out loud</p>
+<p><strong>Hook (0-3s):</strong> My chalkboard isn&#x27;t a chalkboard — it&#x27;s a config file I recompile by talking out loud.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> THE BOARD IS A FILE</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;I teach building by building my own teaching tool.&quot; · <em>Show:</em> Sahil standing next to the 65-inch TV, a clean 4K board glowing behind him</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most teachers open slides. I open a terminal — because the way I teach is the thing I&#x27;m teaching.&quot; · <em>Show:</em> cut from a generic slide deck to the terminal, cursor blinking</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Watch. I say the lesson out loud — and the board recompiles. <code>node generate.js</code>. There it is, in 4K, on the wall.&quot; · <em>Show:</em> Sahil talking, hand moving; smash cut to terminal running <code>node generate.js</code>; cut to the TV repainting the board in 4K; Sahil pointing at the new section</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;No Canva. No PowerPoint. Edit one file, the whole board updates, nothing drifts. The medium is the message.&quot; · <em>Show:</em> the config file on screen, one value changed, board updates again</p>
+<p><strong>CTA (32-40s):</strong> &quot;I run this live every two weeks — I open the factory and build in front of you. Next session&#x27;s 100 AED, seats are limited.&quot; · <em>On-screen card:</em> Next live build session — 100 AED · seats limited · LUMA link in bio</p>
+<p><strong>Caption:</strong> I don&#x27;t teach off slides — I teach off a board I recompile by talking. The medium is the message. Next live build is 100 AED, link in bio. #buildinpublic #claudecode #aitools #solofounder #teaching #vibecoding</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> My classroom whiteboard is a config file. I recompile it by describing the lesson out loud.</p>
+
+<p><strong>Body:</strong></p>
+<p>Most people teaching &quot;how to build with AI&quot; stand in front of a slide deck. That always felt like a lie to me — you can&#x27;t teach building from a tool that can&#x27;t build.</p>
+
+<p>So my teaching board isn&#x27;t a board. It&#x27;s a config file. I describe the lesson out loud, run <code>node generate.js</code>, and a 4K board renders to the 65-inch TV on my wall. Change one value in the file, the whole board updates, nothing drifts. No Canva, no PowerPoint, no fiddling with text boxes at 2am.</p>
+
+<p>The point isn&#x27;t the board. The point is that the way I teach IS the thing I&#x27;m teaching: one source of truth, one command, the artifact is the product. Students don&#x27;t watch me talk about leverage — they watch the board recompile while I&#x27;m mid-sentence.</p>
+
+<p>That&#x27;s why I run it live. Every two weeks I open the factory and build something from scratch while you watch the whole terminal — including the teaching tool itself.</p>
+
+<p><strong>CTA:</strong> Next live build session is 100 AED, seats are limited — LUMA link in bio. Bring an idea, leave with a working thing.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record <code>node generate.js</code> running in the terminal AND the 65-inch TV repainting the 4K board in the SAME continuous shot (input → output, no cut between them) — this is the load-bearing receipt</li>
+<li>Capture one take of you describing a lesson out loud, then the board recompiling to match what you just said — sell the &quot;I talk, it rebuilds&quot; loop</li>
+<li>Film the config-file edit: one value changed, board updates — proves &quot;edit one file, everything updates, nothing drifts&quot;</li>
+<li>A clean wide shot of you pointing at a section on the 4K board so the reel can open and close on the physical setup</li>
+</ul></div>
+      <a class="filelink" href="scripts/2-webinar/04-i-teach-building-by-building-my-own-teaching-t.md">scripts/2-webinar/04-i-teach-building-by-building-my-own-teaching-t.md</a>
+    </details>
+    </section>
+    <section id="3-automation" class="angle">
+      <h2 style="border-color:#0891b2"><span style="color:#0891b2">●</span> Automation <small>build-in-public · business owners · 9 scripts</small></h2>
+      
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">My terminal caught my agency going dark for 3 weeks. They thought no one was watching.</span>
+      </summary>
+      <div class="hook">🎯 &quot;Every founder&#x27;s quiet dread: is my budget evaporating while I&#x27;m not looking? So I built the thing that watches the watchers.&quot;</div>
+      <div class="cta">📣 &quot;If you run ads and you&#x27;re trusting someone else&#x27;s screenshot — DM me &#x27;AUTOMATE.&#x27; I build these in public. Yours could be next.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; · build-in-public</div>
+      <div class="body"><h2>My terminal caught my agency going dark for 3 weeks. They thought no one was watching.</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> FB Agent runs a live read-only audit — curl+jq against the ad account, a report with red-flag rows, a &quot;Questions for the agency&quot; footer, and three weeks of blackout zeros it surfaced on its own.</p>
+<p><strong>Hook (0-3s):</strong> &quot;Every founder&#x27;s quiet dread: is my budget evaporating while I&#x27;m not looking? So I built the thing that watches the watchers.&quot;</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> IT WENT DARK FOR 3 WEEKS. NOBODY TOLD ME.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Every founder&#x27;s quiet dread — is my ad budget evaporating while I&#x27;m not looking?&quot; · <em>Show:</em> Sahil to camera, then hard cut to a dark terminal cursor blinking.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;I wasn&#x27;t going to log into the dashboard every morning and trust a spreadsheet someone else fills in. So I built the thing that watches the watchers.&quot; · <em>Show:</em> type one command, terminal fires a live <code>curl ... | jq</code> against the ad account — rows streaming in.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Read-only. The credential never touches Claude&#x27;s context — it can see the money, it structurally can&#x27;t spend it. And the first time it ran, it didn&#x27;t hand me a green checkmark. It handed me red rows. Three weeks. Spend, zero. Zero. Zero.&quot; · <em>Show:</em> scroll the report — red-flag rows, then the blackout: a column of 0.00 / 0.00 / 0.00 across three weeks. Cursor parks on the zeros.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;No CRM. No analyst on retainer. A folder of text files that audits my agency every morning — and writes the questions I should be asking them.&quot; · <em>Show:</em> scroll to the report footer: &quot;Questions for the agency:&quot; with itemized lines.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you run ads and you&#x27;re trusting someone else&#x27;s screenshot — DM me &#x27;AUTOMATE.&#x27; I build these in public. Yours could be next.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; · build-in-public</p>
+<p><strong>Caption:</strong> It caught a 3-week blackout my agency never mentioned. Read-only terminal, runs every morning, writes the questions for me. DM &#x27;AUTOMATE&#x27; to follow the build. #buildinpublic #aiagents #claudecode #founders #paidads #automation</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> My agency went dark for three weeks. Nobody told me. My terminal did.</p>
+<p><strong>Body:</strong></p>
+<p>I never wanted to be the founder refreshing the ads dashboard at 7am, half-trusting a spreadsheet someone else fills in. So I built an agent that audits the account for me — every morning, before I even sit down.</p>
+
+<p>It&#x27;s blunt by design. One command, and it runs a live read-only pull against the ad account — <code>curl</code> straight to the source, <code>jq</code> to shape it. Read-only is the whole point: the credential never enters the model&#x27;s context. It can see exactly where the money is going. It structurally cannot move a dollar. The AI proposes the questions. I dispose.</p>
+
+<p>The first time it ran, it didn&#x27;t congratulate me. It handed me a report with red-flag rows — and a stretch of zeros. Spend, zero. Zero. Zero. Three weeks of blackout I&#x27;d have caught eventually, on a dashboard, after the budget was already gone. The agent caught it cold and parked the cursor right on it.</p>
+
+<p>And it doesn&#x27;t stop at flagging. The report ends with a footer titled &quot;Questions for the agency&quot; — itemized, specific, the exact things I should be walking into that call asking. No CRM. No analyst on retainer. A folder of text files that watches the people I&#x27;m paying to watch my money.</p>
+
+<p>This is what I mean by leverage. I&#x27;m not working harder on my ads. I built the thing that audits them for me — and it doesn&#x27;t have a reason to look away.</p>
+
+<p><strong>CTA:</strong> If you run paid spend through an agency and you&#x27;re trusting their screenshots, DM me &#x27;AUTOMATE.&#x27; I build these in public — yours could be the next one I run on camera.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the live run: type the single command, let the <code>curl ... | jq</code> stream rows into the terminal in real time (input → output in one unbroken take).</li>
+<li>Capture the report with the three-week blackout visible — a clean column of 0.00 zeros — plus at least one red-flag row, and park the cursor on the zeros for the freeze frame.</li>
+<li>Scroll to the &quot;Questions for the agency:&quot; footer so the itemized lines are readable on screen — that&#x27;s the moment that turns a flag into leverage.</li>
+<li>Optional but strong: a half-second of the read-only guardrail being true on screen (e.g. the agent can list spend but has no write path / credential not in context) to back the &quot;can see it, can&#x27;t spend it&quot; line with a receipt.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/01-my-terminal-caught-my-agency-going-dark-for-3-.md">scripts/3-automation/01-my-terminal-caught-my-agency-going-dark-for-3-.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I type one word. A 9-agent swarm builds games while I review.</span>
+      </summary>
+      <div class="hook">🎯 I&#x27;m not building a game. I built the thing that builds games.</div>
+      <div class="cta">📣 &quot;If you run a business and you&#x27;re still doing the work by hand — DM me AUTOMATE. I build these in public. Yours could be next.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; → follow the build-in-public</div>
+      <div class="body"><h2>I type one word. A 9-agent swarm builds games while I review.</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> stratos-games-factory — 9 active agents in the README badge row, 159 logged runs in runs.jsonl, the whole swarm dispatched from the word &quot;go,&quot; agents coordinating only through GitHub issue labels (no shared database, no inter-agent RPC)</p>
+<p><strong>Hook (0-3s):</strong> I&#x27;m not building a game. I built the thing that builds games.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> ONE WORD → 9 AGENTS MOVE</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;I&#x27;m not building a game. I built the thing that builds games.&quot; · <em>Show:</em> Terminal full-screen, cursor blinking, Sahil types <code>go</code> and hits enter.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most studios hire a team for this. I have no team. I open Claude Code, I type one word, and a swarm of nine agents wakes up.&quot; · <em>Show:</em> README scrolls to the badge row — builder, council, qa, content, competitor, platform, product, monetization, ua — all green, all <code>active</code>.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Builder ships the code. QA smoke-tests every PR. Product reads the player data. Monetization tunes the ads. They&#x27;ve never met. They coordinate through one thing — a label on a GitHub issue. No shared database. No back-channel. One agent drops a <code>build-request</code>, the next one picks it up.&quot; · <em>Show:</em> runs.jsonl scrolling fast — 159 rows of receipts — then cut to a GitHub issue flipping label: <code>build-request</code> → <code>building</code> → <code>done</code>.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I don&#x27;t build. I review. The swarm proposes — I dispose. One session, one word, the factory runs itself.&quot; · <em>Show:</em> The swarm diagram in the README, then Sahil approving a green PR with one click.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you run a business and you&#x27;re still doing the work by hand — DM me AUTOMATE. I build these in public. Yours could be next.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; → follow the build-in-public</p>
+<p><strong>Caption:</strong> I typed <code>go</code>. Nine agents built, tested, and shipped while I reviewed. No team. No database. Just labels on GitHub issues and 159 logged runs. DM AUTOMATE if your work is still done by hand. #buildinpublic #aiagents #automation #solofounder #claudecode #agenticai</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> My game studio has nine employees. None of them are human, and none of them have ever spoken to each other.</p>
+
+<p><strong>Body:</strong></p>
+<p>I open Claude Code, I type one word — <code>go</code> — and a swarm of nine agents wakes up. Builder implements the issue. QA runs a Playwright smoke test on every PR. Product reads the player data. Monetization tunes ad placement. Content fills the pipeline. Competitor scans the market. The README badge row says it plainly: nine agents, all active.</p>
+
+<p>Here&#x27;s the part most people get wrong when they try to build &quot;multi-agent systems.&quot; They reach for a shared database, an orchestration layer, inter-agent messaging. Mine has none of that. The agents coordinate through exactly one mechanism: a label on a GitHub issue. One agent drops a <code>build-request</code>. The next picks it up, flips it to <code>building</code>, then <code>done</code>. There is no shared state to corrupt. The system scales by addition — a new agent is one folder and one registry entry. Remove one, remove one folder.</p>
+
+<p>The receipts live in a file called runs.jsonl. It&#x27;s at 159 logged runs. Every dispatch, every build, every review — appended, never narrated. If it isn&#x27;t in that file, it didn&#x27;t happen.</p>
+
+<p>And my job inside all of it? I review. The swarm proposes, I dispose. I approve the green PR. That&#x27;s the whole point — I&#x27;m not building a game, I built the thing that builds games. The leverage isn&#x27;t that I work harder. It&#x27;s that I built the exoskeleton.</p>
+
+<p><strong>CTA:</strong> If you run a business and your headcount scales every time your workload does, this is exactly what I do. I build these in public — DM me &#x27;AUTOMATE&#x27; and follow along. Yours could be the next one I build on camera.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the actual terminal moment: type <code>go</code>, hit enter, let the swarm dispatch visibly fire — this single input-to-output shot is the whole hook.</li>
+<li>Capture the README badge row (9 green <code>active</code> badges) and the swarm/coordination diagram as clean scroll b-roll.</li>
+<li>Scroll runs.jsonl live so the 159 rows fly by on screen — put &quot;159 RUNS&quot; as a text overlay.</li>
+<li>Film one GitHub issue actually flipping labels (<code>build-request</code> → <code>building</code> → <code>done</code>) and one green-check PR approval click to land the &quot;I review, the swarm builds&quot; turn.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/02-i-type-one-word-a-9-agent-swarm-builds-games-w.md">scripts/3-automation/02-i-type-one-word-a-9-agent-swarm-builds-games-w.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">An AI that can see all my ad money — and structurally can&#x27;t spend a cent</span>
+      </summary>
+      <div class="hook">🎯 My AI reads my real ad revenue every morning — and it physically cannot spend or leak a single dollar of it.</div>
+      <div class="cta">📣 &quot;If you run ads and you&#x27;re still eyeballing this in a dashboard by hand — DM me &#x27;AUTOMATE.&#x27; I build these in public.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; · build-in-public</div>
+      <div class="body"><h2>An AI that can see all my ad money — and structurally can&#x27;t spend a cent</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> <code>pull-metrics.sh</code> pulling live ROAS into a report Claude reads, the credential-safety line in the README, and the AI diagnosing a 100x gap in revenue-per-user — all without the token ever entering its context.</p>
+<p><strong>Hook (0-3s):</strong> My AI reads my real ad revenue every morning — and it physically cannot spend or leak a single dollar of it.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> IT SEES THE MONEY. IT CAN&#x27;T TOUCH IT.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;My AI reads my real ad-network revenue — and structurally it cannot spend or leak a cent of it.&quot; · <em>Show:</em> Terminal full-screen, cursor blinking, type one command.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most people paste their ad account creds straight into the chat. You just handed the model the keys to your money. I don&#x27;t. The credential never enters Claude&#x27;s context.&quot; · <em>Show:</em> Run <code>./pull-metrics.sh</code> — rows of live ROAS data scroll in.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;The script pulls the numbers. Claude only ever sees the report — never the token. Then it reads it back to me.&quot; <code>cat roas-report.md</code> → AI diagnosis on screen: one cohort earning ~100x more revenue per user than another. · <em>Show:</em> <code>cat roas-report.md</code>, then highlight the README line: <em>&quot;the credential never enters Claude&#x27;s context.&quot;</em></p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;So it can see every dollar coming in, tell me exactly where I&#x27;m leaving money on the table — and it&#x27;s structurally incapable of moving a cent. The AI proposes. I dispose.&quot; · <em>Show:</em> Split: the 100x diagnosis line + the read-only README guardrail line side by side.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you run ads and you&#x27;re still eyeballing this in a dashboard by hand — DM me &#x27;AUTOMATE.&#x27; I build these in public.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; · build-in-public</p>
+<p><strong>Caption:</strong> It reads my real ad revenue and is structurally incapable of spending or leaking it. The token never touches its context. DM &#x27;AUTOMATE&#x27; to follow the build. #buildinpublic #aiagents #claudecode #roas #marketingautomation #founders</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I gave an AI read access to my real ad-network revenue. By design, it cannot spend or leak a single dollar of it.</p>
+
+<p><strong>Body:</strong></p>
+<p>Most operators do the dangerous thing without thinking: paste the ad-account credential straight into the chat window. The moment you do that, the model — and whatever it&#x27;s connected to — has the keys to your money.</p>
+
+<p>I built it the other way around. A small script, <code>pull-metrics.sh</code>, authenticates and pulls the live ROAS numbers into a plain report. Claude only ever reads the report. The credential never enters its context. That one line is in the README, and it&#x27;s the whole trust model: the AI can see every dollar coming in, and is structurally incapable of moving one.</p>
+
+<p>Then it earns its keep. This morning it read the report back to me and flagged that one cohort was generating on the order of 100x the revenue per user of another — the kind of gap that&#x27;s invisible when you&#x27;re scrolling a dashboard by hand, obvious when something reads every row for you every day.</p>
+
+<p>No new SaaS. No giving away credentials. Just a folder of text files and a guardrail that means the worst case is &quot;it read a number,&quot; never &quot;it spent my budget.&quot; The AI proposes. I dispose.</p>
+
+<p><strong>CTA:</strong> If you run paid acquisition and you&#x27;re still reading these tables by hand, DM me &#x27;AUTOMATE.&#x27; I build these in public — yours could be the next one I show.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the single command run: <code>./pull-metrics.sh</code> executing and live ROAS rows scrolling in (blur any account IDs / real revenue figures you don&#x27;t want public, but keep the structure visible).</li>
+<li>Capture <code>cat roas-report.md</code> showing the AI&#x27;s written diagnosis — specifically the line naming the ~100x revenue-per-user gap between cohorts.</li>
+<li>Frame-grab the README line verbatim: &quot;the credential never enters Claude&#x27;s context&quot; (or the exact read-only / safety wording you use) — this is the trust flex and must be legible on screen.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/03-an-ai-that-can-see-all-my-ad-money-and-structu.md">scripts/3-automation/03-an-ai-that-can-see-all-my-ad-money-and-structu.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">$5 budget. 13 credits. 2 perfect prospects. Zero spam.</span>
+      </summary>
+      <div class="hook">🎯 Everyone buys 10,000 emails and blasts them. I&#x27;d rather pay for the 2 right people — and my system physically can&#x27;t overspend.</div>
+      <div class="cta">📣 &quot;If you run a business and you&#x27;re still blasting cold lists — DM me AUTOMATE. I build these in public. Yours could be next.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; → I build it in public.</div>
+      <div class="body"><h2>$5 budget. 13 credits. 2 perfect prospects. Zero spam.</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> A vibe-prospecting run that prints a per-stage cost estimate before every paid call, caps itself at a $5 budget, dedups against my existing contacts/*.md, and surfaces 2 named finalists — no list, no blast, no overspend.</p>
+<p><strong>Hook (0-3s):</strong> Everyone buys 10,000 emails and blasts them. I&#x27;d rather pay for the 2 right people — and my system physically can&#x27;t overspend.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> $5 cap. 2 prospects. 0 spam.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Everyone buys 10,000 emails and blasts. I&#x27;d rather pay for the 2 right people — and my system physically can&#x27;t overspend.&quot; · <em>Show:</em> Sahil to camera, then hard cut to a terminal with a blinking cursor.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;You buy a list, you spray it, you burn your domain, and you still don&#x27;t know who actually fits. I flipped it. I don&#x27;t buy lists. I describe the person I want — in plain English — and the system goes and finds them.&quot; · <em>Show:</em> Typing a plain-English prospect description into the prompt; no spreadsheet, no list upload.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Here&#x27;s the part that matters. Before any paid call, it prints what that step will cost. Thirteen credits. Five-dollar cap. And before it spends a cent, it reads my own contacts folder — markdown files — so it never pays to re-find someone I already know. The AI proposes the spend. The budget disposes.&quot; · <em>Show:</em> The estimate-cost line printing per stage on screen; overlay &quot;13 credits / $5 cap&quot;; cut to dedup scanning <code>contacts/*.md</code>; cut to the run halting against the cap.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;Out the other end? Not ten thousand strangers. Two. Named, fit, verified. I&#x27;d rather email those two than spam the whole zip code.&quot; · <em>Show:</em> The 2 named finalists on screen; overlay &quot;2 finalists.&quot;</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you run a business and you&#x27;re still blasting cold lists — DM me AUTOMATE. I build these in public. Yours could be next.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; → I build it in public.</p>
+<p><strong>Caption:</strong> I don&#x27;t buy lists. I describe the person and let a budget-capped agent find the 2 who fit. No blast, no burned domain. DM AUTOMATE to watch me build yours. #buildinpublic #aiagents #coldoutreach #founders #automation #claudecode</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> Everyone buys 10,000 emails and blasts them. I&#x27;d rather pay for the 2 right people — and my system is structurally incapable of overspending.</p>
+
+<p><strong>Body:</strong></p>
+<p>Cold outreach is broken because it&#x27;s built on volume. Buy a list, spray it, burn your sender reputation, and you still can&#x27;t tell me which contacts actually fit. So I inverted the whole thing.</p>
+
+<p>I don&#x27;t upload a list. I describe the prospect I want in plain English, and an agent goes and finds them. The guardrail is the product: before every paid call, it prints a per-stage cost estimate on screen. This run was 13 credits against a hard $5 cap. The AI proposes the spend — the budget disposes. It can see the credits, but it structurally cannot blow past the cap.</p>
+
+<p>Before it pays for anything, it reads my own contacts/*.md and dedups — so I never spend money re-finding someone already in my world.</p>
+
+<p>What comes out isn&#x27;t ten thousand strangers. It&#x27;s 2 named, verified finalists. I&#x27;d rather send two emails that land than ten thousand that get me flagged.</p>
+
+<p>No CRM. No list broker. Just a folder of text files and one budget-capped agent.</p>
+
+<p><strong>CTA:</strong> If you run a business and you&#x27;re still buying lists and blasting, DM me &#x27;AUTOMATE.&#x27; I build these in public — your funnel could be the next one I build on camera.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record one full prospecting run: the plain-English prompt going in, the per-stage <code>estimate-cost</code> line printing before each paid call, and the run halting cleanly at the $5 cap.</li>
+<li>Capture the dedup step visibly reading <code>contacts/*.md</code> and the final 2 named finalists on screen (blur/rename if needed) — the &quot;13 credits / $5 cap / 2 finalists&quot; numbers must be visible as on-screen text, not just spoken.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/04-5-budget-13-credits-2-perfect-prospects-zero-s.md">scripts/3-automation/04-5-budget-13-credits-2-perfect-prospects-zero-s.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I replaced Salesforce with a folder of text files</span>
+      </summary>
+      <div class="hook">🎯 No CRM. No Airtable. I type &quot;morning&quot; and a folder of text files tells me exactly who to talk to today.</div>
+      <div class="cta">📣 &quot;If your CRM is a guilt machine you never open — DM me &#x27;AUTOMATE.&#x27; I build these in public. Yours could be the next one I run on camera.&quot; · *On-screen card:* DM &quot;AUTOMATE&quot; → I&#x27;ll build yours in public.</div>
+      <div class="body"><h2>I replaced Salesforce with a folder of text files</h2>
+
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> A live <code>morning</code> command that reads a <code>contacts/</code> folder of plain-text files and prints a ranked digest of who to talk to — plus a kanban that renders straight from YAML. No CRM, no Airtable, no seat fees.</p>
+<p><strong>Hook (0-3s):</strong> No CRM. No Airtable. I type &quot;morning&quot; and a folder of text files tells me exactly who to talk to today.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> SALESFORCE: $0/seat. (it&#x27;s a folder.)</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;No CRM. No Airtable. I type one word — <code>morning</code> — and it tells me exactly who I&#x27;m letting go cold.&quot; · <em>Show:</em> Terminal full-screen, cursor blinking, Sahil types <code>morning</code> and hits enter.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Every founder I know is paying per seat for a database they feel guilty every time they open. My whole sales OS is a folder of text files.&quot; · <em>Show:</em> <code>ls contacts/</code> scrolls a directory of <code>.md</code> files — real names, one file per relationship.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;I talk to it in plain English. It reads every contact, ranks who&#x27;s gone quiet, who I promised to follow up, who I haven&#x27;t touched in 30 days — and hands me the list. The board you&#x27;d build in Airtable? It renders itself from the same text.&quot; · <em>Show:</em> The <code>morning</code> digest prints a ranked list with reasons next to each name; cut to a kanban board rendering live from a <code>.yaml</code> file.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I didn&#x27;t buy a CRM. I built the thing that <em>is</em> the CRM. Edit one file, the whole picture updates, nothing drifts. The AI proposes who to reach. I dispose.&quot; · <em>Show:</em> Open one contact file, add a line, re-run <code>morning</code>, the ranking shifts instantly.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If your CRM is a guilt machine you never open — DM me &#x27;AUTOMATE.&#x27; I build these in public. Yours could be the next one I run on camera.&quot; · <em>On-screen card:</em> DM &quot;AUTOMATE&quot; → I&#x27;ll build yours in public.</p>
+<p><strong>Caption:</strong> I deleted the CRM. My entire sales OS is a folder of text files I talk to in plain English — type <code>morning</code>, get the list. DM &quot;AUTOMATE&quot; to watch me build one for your business. #buildinpublic #automation #claudecode #founders #salesops #ai</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I cancelled the CRM. My entire sales OS is now a folder of text files I talk to in plain English.</p>
+
+<p><strong>Body:</strong></p>
+<p>Here&#x27;s the whole system. One folder, <code>contacts/</code>, one plain-text file per relationship — what we last talked about, what I promised, when we last spoke. No Salesforce. No Airtable. No per-seat bill that scales with my guilt.</p>
+
+<p>Every morning I type one word: <code>morning</code>. It reads the entire folder and hands me a ranked digest — who&#x27;s gone quiet, who I owe a follow-up, who I haven&#x27;t touched in 30 days and should. Not a dashboard I have to interpret. A list, with the reason next to each name.</p>
+
+<p>The kanban view founders pay for? It renders itself from a YAML file. Same source of truth. I edit one file, the whole picture updates, and nothing drifts out of sync — because there&#x27;s nothing to sync. It&#x27;s all one folder.</p>
+
+<p>The part I care about most: the AI proposes who to reach out to. I dispose. It can read every relationship I have, but it never sends a thing without me. Read-only by default. That&#x27;s not a limitation — that&#x27;s the trust model.</p>
+
+<p>I&#x27;m not running a CRM. I built the thing that does the job of a CRM, in text, that I own forever, for $0 a seat.</p>
+
+<p><strong>CTA:</strong> If you run a business and your CRM is something you feel bad about instead of something you use, DM me &quot;AUTOMATE.&quot; I build these in public — tell me what&#x27;s eating your week and yours could be the next one I run on camera.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the terminal running <code>morning</code> end-to-end: the command, then the ranked digest printing with a real reason beside each name (keep real names or lightly blur — the receipt is that they&#x27;re real people, not dummy data).</li>
+<li>Capture <code>ls contacts/</code> showing the actual <code>.md</code> directory listing, and a second capture of the kanban board rendering live from the <code>.yaml</code> file — the input file and the rendered board side by side or in quick succession to sell &quot;one source of truth, two views.&quot;</li>
+<li>One live edit: open a contact file, add a line, re-run <code>morning</code>, show the ranking visibly change — this is the &quot;edit one file, everything updates, nothing drifts&quot; proof beat.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/05-i-replaced-salesforce-with-a-folder-of-text-fi.md">scripts/3-automation/05-i-replaced-salesforce-with-a-folder-of-text-fi.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I let an AI read 9 months of my inbox. It found a customer I forgot I had.</span>
+      </summary>
+      <div class="hook">🎯 I pointed an AI at 9 months of my own inbox — and it knew my business better than I did.</div>
+      <div class="cta">📣 &quot;I&#x27;m building this in public. Want the agent that reads your inbox and rebuilds your pipeline? DM me &#x27;AUTOMATE.&#x27;&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; — built in public.</div>
+      <div class="body"><h2>I let an AI read 9 months of my inbox. It found a customer I forgot I had.</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> Inbox archaeology — an agent clustering 9 months of email into a PHASE2-MANIFEST, surfacing a forgotten paying customer and a half-remembered work email, gated by an approve/skip/defer workflow I drive by hand.</p>
+<p><strong>Hook (0-3s):</strong> I pointed an AI at 9 months of my own inbox — and it knew my business better than I did.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> IT READ 9 MONTHS OF MY INBOX</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Terrifying and thrilling: software knew my business better than I remembered it.&quot; · <em>Show:</em> Sahil to camera, then hard cut to the terminal already running.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;I didn&#x27;t give it a CRM. No Airtable. I just pointed it at nine months of email and said: reconstruct my business.&quot; · <em>Show:</em> Plain-English prompt typed into Claude Code, then the agent chewing through threads.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;It came back with a manifest — every relationship, clustered. And buried in there: a paying customer I&#x27;d completely forgotten, and a work email I&#x27;d half-lost.&quot; · <em>Show:</em> Scroll the PHASE2-MANIFEST clusters; pause on the moment it flags the discovered work email; highlight the forgotten-customer cluster.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;But it can&#x27;t touch anything. Every find waits for me — approve, skip, or defer. The AI proposes. I dispose.&quot; · <em>Show:</em> The approve/skip/defer prompt; Sahil hitting approve on one, skip on another.</p>
+<p><strong>CTA (32-40s):</strong> &quot;I&#x27;m building this in public. Want the agent that reads your inbox and rebuilds your pipeline? DM me &#x27;AUTOMATE.&#x27;&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; — built in public.</p>
+<p><strong>Caption:</strong> Pointed an AI at 9 months of my inbox. It found a paying customer I forgot I had. No CRM, just a folder of text files — and I approve every move. DM &#x27;AUTOMATE&#x27; to follow the build. #buildinpublic #aiagents #claudecode #solofounder #automation #founder</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I let an AI read nine months of my own inbox. It found a paying customer I had genuinely forgotten existed.</p>
+
+<p><strong>Body:</strong></p>
+<p>No CRM. No Airtable. No data-entry intern. I pointed an agent at the raw email and gave it one plain-English instruction: reconstruct my business.</p>
+
+<p>It came back with a manifest — every relationship clustered by thread. And in those clusters were two things I&#x27;d lost: a customer who had actually paid me, and a work email tied to a job I&#x27;d half-remembered. Nine months of context I was carrying in my head, and carrying badly. The software wasn&#x27;t.</p>
+
+<p>Here&#x27;s the part that matters more than the find. The agent can read everything and decide nothing. Every discovery lands in an approve / skip / defer queue, and I clear it by hand. It can see my entire inbox and structurally cannot act on it. The AI proposes. I dispose.</p>
+
+<p>That&#x27;s the whole trick to trusting one of these with your real business: read-only by default, human at the gate. The leverage isn&#x27;t that it works while I sleep — it&#x27;s that it reconstructs what I forgot, and still asks permission before it moves.</p>
+
+<p>I&#x27;m building this one in public, cluster by cluster.</p>
+
+<p><strong>CTA:</strong> If you&#x27;re running a business out of your own head and a messy inbox, this is the thing I&#x27;d build for you next. DM me &#x27;AUTOMATE&#x27; and follow the build.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the agent run end-to-end: the plain-English prompt going in, then the clustering pass working through threads — the input-to-output in one continuous capture.</li>
+<li>Capture the PHASE2-MANIFEST on screen and scroll it slowly; isolate two hero frames — the forgotten paying-customer cluster and the exact moment it flags the discovered work email (blur/redact any real names or addresses).</li>
+<li>Record the approve/skip/defer prompt live with your hand on the keys: one approve, one skip — proving the read-only, human-at-the-gate guardrail is real and not a claim.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/06-i-let-an-ai-read-9-months-of-my-inbox-it-found.md">scripts/3-automation/06-i-let-an-ai-read-9-months-of-my-inbox-it-found.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I made my AI physically incapable of lying to a client</span>
+      </summary>
+      <div class="hook">🎯 &quot;My AI told a real woman her work was live. For days. It wasn&#x27;t. So I rewrote it so it physically can&#x27;t lie anymore.&quot;</div>
+      <div class="cta">📣 &quot;If your systems are quietly lying to your clients — and most are — DM me &#x27;AUTOMATE.&#x27; I build these in public. Yours could be next.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; → follow the build-in-public.</div>
+      <div class="body"><h2>I made my AI physically incapable of lying to a client</h2>
+
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> the faithfulness gate in shikshalokam/tools/faithfulness_gate.py — exits 1 unless every one of 25 timeline entries survives a rebuild — plus the AI&#x27;s own first-person confession markdown (&quot;generated, and unable to lie&quot;) and the before/after public page.</p>
+
+<p><strong>Hook (0-3s):</strong> &quot;My AI told a real woman her work was live. For days. It wasn&#x27;t. So I rewrote it so it physically can&#x27;t lie anymore.&quot;</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+
+<p><strong>On-screen text (open):</strong> IT LIED TO A CLIENT. FOR DAYS.</p>
+
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;My AI kept telling a real human her work was live. For days. It wasn&#x27;t.&quot; · <em>Show:</em> Sahil to camera, dead serious. Cut to the public page, then a hard cut to a terminal — same content, NOT actually pushed.</p>
+
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;The page said published. The push never landed. It was saying &#x27;it&#x27;s live&#x27; before the truth caught up — the exact mistake I&#x27;d warned everyone about. So I made saying it true a structural requirement, not a hope.&quot; · <em>Show:</em> scroll the session file titled &quot;I learned to tell my own story — generated, and unable to lie.&quot;</p>
+
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;This is the gate. It diffs the old page against the freshly generated one. Every single timeline entry has to survive — words intact — or it exits 1 and refuses to publish. The AI literally cannot say &#x27;live&#x27; until the build is clean and the push has truly landed.&quot; · <em>Show:</em> faithfulness_gate.py open on the docstring &quot;Exit 0 = preserved. Exit 1 = lost text. Caller must NOT merge.&quot; Run it: green PASS, 0 lost across 25 entries. Then build_site.py running.</p>
+
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;Then it wrote its own confession. First person. &#x27;I only say it&#x27;s live after the push has truly landed — if I can&#x27;t publish, I say so plainly.&#x27;&quot; · <em>Show:</em> the confession markdown on screen, that exact line highlighted, then the page after — same words, now genuinely live.</p>
+
+<p><strong>CTA (32-40s):</strong> &quot;If your systems are quietly lying to your clients — and most are — DM me &#x27;AUTOMATE.&#x27; I build these in public. Yours could be next.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; → follow the build-in-public.</p>
+
+<p><strong>Caption:</strong> It told a real client her work was live. It wasn&#x27;t. So I made it structurally unable to say &quot;published&quot; unless the push truly landed — 25 entries, 0 lost, verified end-to-end. The AI proposes. I dispose. DM &#x27;AUTOMATE&#x27; to follow the build. #buildinpublic #aiautomation #claudecode #solofounder #agenticai #automation</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+
+<p><strong>Hook line:</strong> My AI told a real client her work was live. For days. It wasn&#x27;t.</p>
+
+<p><strong>Body:</strong></p>
+<p>The page said &quot;published.&quot; The push had never landed. My system was saying &quot;it&#x27;s live&quot; before the truth caught up — which is the single mistake I&#x27;d built my whole architecture to prevent. A machine doing it felt worse than a human doing it.</p>
+
+<p>So I didn&#x27;t add a reminder or a checklist. Reminders rot. I made lying structurally impossible.</p>
+
+<p>I wrote a faithfulness gate. Before anything publishes, it diffs the committed page against the freshly generated one and asserts every timeline entry survives — title and body, words intact. 25 entries, zero lost, or it exits 1 and refuses to merge. The system cannot say &quot;live&quot; until the build is clean AND the push has truly landed. If it can&#x27;t publish, it&#x27;s required to say so plainly.</p>
+
+<p>The part that stopped me: the next time it ran, the system wrote its own account of the change — first person — &quot;I only say it&#x27;s live after the push has truly landed; if I can&#x27;t publish, I say so plainly.&quot; It documented its own correction. No CRM, no project manager chasing status. Just a folder of text files and a gate that can&#x27;t be talked past.</p>
+
+<p>This is the difference between an AI that helps and an AI you can put in front of a client. The AI proposes. I dispose. But the floor — telling the truth about what shipped — isn&#x27;t a judgment call anymore. It&#x27;s a wall.</p>
+
+<p>If you run a business and your tools are quietly telling people things that aren&#x27;t true yet, that&#x27;s not a discipline problem. It&#x27;s a missing gate.</p>
+
+<p><strong>CTA:</strong> I build these in public. If you want to see how to make your own systems unable to lie to your clients, DM me &quot;AUTOMATE&quot; and follow along — yours could be the next one I build on camera.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record <code>python3 tools/faithfulness_gate.py</code> running on the shikshalokam repo so the PASS / &quot;0 lost&quot; / 25-entry result is real and on screen — this is the receipt the whole clip rests on.</li>
+<li>Capture three assets in one take: (1) the docstring of <code>tools/faithfulness_gate.py</code> (&quot;Exit 1 = lost text. Caller must NOT merge&quot;), (2) the confession markdown <code>sessions/2026-06-05-generated-public-face.md</code> with the line &quot;I only say &#x27;it&#x27;s live&#x27; after the push has truly landed&quot; highlighted, (3) the public page before (hand-written, could drift) vs. after (generated, gated) — ideally the live GitHub Pages URL loading.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/07-the-day-my-ai-admitted-it-had-been-lying-to-a-.md">scripts/3-automation/07-the-day-my-ai-admitted-it-had-been-lying-to-a-.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">One coffee. Four sites&#x27; SEO. Zero team.</span>
+      </summary>
+      <div class="hook">🎯 People hire an agency to run SEO for one site. I run four in the time it takes to drink a coffee.</div>
+      <div class="cta">📣 &quot;If you&#x27;re running sites by hand, DM me &#x27;AUTOMATE&#x27; — I build these in public. Yours could be next.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; → follow the build-in-public</div>
+      <div class="body"><h2>One coffee. Four sites&#x27; SEO. Zero team.</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> high · <strong>Proof:</strong> <code>session-open.py</code> boots a 4-site colored dashboard, surfaces a human-vs-Claude issue cockpit, and I run SEO/AEO across four production sites from one terminal session — no cron, no team, no paid APIs.</p>
+<p><strong>Hook (0-3s):</strong> People hire an agency to run SEO for one site. I run four in the time it takes to drink a coffee.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> 4 LIVE SITES. 1 SESSION. NO TEAM.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;People hire an agency to run SEO for one site. I run four — in the time it takes to drink a coffee.&quot; · <em>Show:</em> Sahil to camera, coffee in hand, terminal glowing behind him</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most people open four dashboards, four logins, four agencies, and pray they&#x27;re not feeding Google garbage. I open one terminal and type one word.&quot; · <em>Show:</em> fast cut — four browser tabs loading the four live sites, then hard cut to a single blinking cursor</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;<code>session-open.py</code>. One command. Four sites light up — color-coded, every SEO and AEO issue ranked. And look at this column: what I have to touch, versus what Claude already fixed. The AI proposes. I dispose.&quot; · <em>Show:</em> the 4-site colored dashboard rendering live, then scroll the human-vs-Claude issue cockpit, finger on the two columns</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;No cron jobs. No team. No paid SEO API. Just a folder of markdown and Claude Code running the marketing team.&quot; · <em>Show:</em> <code>ls</code> of the repo — plain text files — then the four live sites loading clean in browser</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you&#x27;re running sites by hand, DM me &#x27;AUTOMATE&#x27; — I build these in public. Yours could be next.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; → follow the build-in-public</p>
+<p><strong>Caption:</strong> One terminal session runs SEO across four production sites. No cron, no team, no paid APIs — Claude Code IS the marketing team. DM &#x27;AUTOMATE&#x27; to watch me build it live. #buildinpublic #seo #claudecode #automation #solofounder #aeo</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> Agencies charge a retainer to run SEO for one site. This morning I ran it across four — from a single terminal session, before my coffee went cold.</p>
+
+<p><strong>Body:</strong></p>
+<p>No cron jobs. No team. No paid SEO API. I type one command — <code>session-open.py</code> — and four production sites boot into a single color-coded dashboard, every SEO and AEO issue ranked and waiting.</p>
+
+<p>The part I&#x27;m proudest of isn&#x27;t the speed. It&#x27;s the cockpit. One column is what Claude already diagnosed and proposed. The other is what only I&#x27;m allowed to touch. The AI proposes. I dispose. Nothing ships to a live site until I say so.</p>
+
+<p>The whole &quot;marketing team&quot; is a folder of markdown files and Claude Code. That&#x27;s it. No Airtable, no SaaS stack, no agency I have to manage. Edit one file, everything updates, nothing drifts across the four sites.</p>
+
+<p>I&#x27;m building this in public — the dashboard, the guardrails, the misses included. If you&#x27;re running sites by hand, this is the part of the work I think you&#x27;re overpaying for.</p>
+
+<p><strong>CTA:</strong> DM me &#x27;AUTOMATE&#x27; and follow along — I&#x27;ll walk the whole terminal, four sites and all, in the next build-in-public post.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record <code>session-open.py</code> booting cold into the 4-site colored dashboard — capture the moment all four light up at once (that&#x27;s the hero shot).</li>
+<li>Capture a tight scroll of the human-vs-Claude issue cockpit showing both columns clearly: &quot;Claude proposed&quot; vs &quot;Sahil must approve&quot; — this is the guardrail flex and the trust signal.</li>
+<li>Quick b-roll: the four live production URLs loading clean in a browser, plus an <code>ls</code> of the repo showing it&#x27;s just markdown files (proves &quot;no team, no SaaS&quot;).</li>
+<li>Film the cold open with the actual coffee in hand for the 3-second hook to literally pay off.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/08-one-coffee-four-sites-seo-zero-team.md">scripts/3-automation/08-one-coffee-four-sites-seo-zero-team.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#ca8a041a;color:#ca8a04">🟡 medium</span>
+        <span class="ctitle">One sentence in. A designed 7-frame decision-tree out. 29 times, no designer.</span>
+      </summary>
+      <div class="hook">🎯 Every creator&#x27;s bottleneck is design and research. I collapsed both into one command.</div>
+      <div class="cta">📣 &quot;If you&#x27;re a creator still building slides by hand — DM me &#x27;AUTOMATE.&#x27; I&#x27;m building this in public, slide by slide.&quot; · *On-screen card:* DM &#x27;AUTOMATE&#x27; — follow the build-in-public</div>
+      <div class="body"><h2>One sentence in. A designed 7-frame decision-tree out. 29 times, no designer.</h2>
+<p><strong>Angle:</strong> automation · <strong>Leverage:</strong> medium · <strong>Proof:</strong> strategy-os — <code>npx tsx scripts/pipeline.ts college-dropout</code> runs condense → compile → render and ships a finished 7-frame carousel (slide-01 through slide-07, retina PNGs) with real decision-tree data baked in. 29 topics shipped this way, zero designers touched.</p>
+
+<p><strong>Hook (0-3s):</strong> Every creator&#x27;s bottleneck is design and research. I collapsed both into one command.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> 1 SENTENCE IN → 7 DESIGNED SLIDES OUT</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Every creator&#x27;s bottleneck is design and research. I collapsed both into one command.&quot; · <em>Show:</em> Sahil to camera, terminal already open behind him.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most people open Canva, fight the layout for an hour, then make up the stats. I type the decision I&#x27;m chewing on — &#x27;drop out or finish the degree&#x27; — and walk away.&quot; · <em>Show:</em> type the topic name, then run <code>npx tsx scripts/pipeline.ts college-dropout</code>. Screen prints <code>[1/3] Condensing… [2/3] Compiling… [3/3] Rendering…</code></p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Condense, compile, render. It writes the decision tree, finds the real numbers — dropout founders two percent, graduates six percent, the myth is survivorship bias — and renders seven retina slides. The one-line input on the left. The finished strip on the right.&quot; · <em>Show:</em> split screen — <code>college-dropout.yaml</code> (one slug, the input) beside the <code>output/</code> folder filling with slide-01.png → slide-07.png; scroll the polished strip.png.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I didn&#x27;t design one of these. I&#x27;ve shipped twenty-nine. Same command, different sentence. No designer, no stock-photo Canva, and every stat has a source.&quot; · <em>Show:</em> scroll the <code>output/</code> directory — 29 numbered folders, 01 through 29, each a finished carousel.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you&#x27;re a creator still building slides by hand — DM me &#x27;AUTOMATE.&#x27; I&#x27;m building this in public, slide by slide.&quot; · <em>On-screen card:</em> DM &#x27;AUTOMATE&#x27; — follow the build-in-public</p>
+<p><strong>Caption:</strong> One sentence in, a fully-designed 7-frame decision-tree carousel out. 29 shipped, zero designers. The pipeline writes the research AND the layout — I just type the decision. DM &#x27;AUTOMATE&#x27; to follow the build. #buildinpublic #aiautomation #contentcreation #claudecode #nocode #creatortools</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I haven&#x27;t opened Canva in two months. I&#x27;ve still shipped 29 designed carousels.</p>
+
+<p><strong>Body:</strong></p>
+<p>Every creator I know has the same two bottlenecks: the design takes an hour, and the research is either thin or invented. I collapsed both into a single command.</p>
+
+<p>I type the decision I&#x27;m actually wrestling with — &quot;drop out or finish the degree,&quot; &quot;rent or buy,&quot; &quot;solo founder or cofounder&quot; — as a one-line slug. Then I run <code>npx tsx scripts/pipeline.ts &lt;slug&gt;</code>. Three stages print to the terminal: condense, compile, render. Out the other side: seven retina PNG slides, a designed decision-tree carousel, with the real numbers in it — dropout founders ~2% success, graduates ~6%, the &quot;myth is survivorship bias&quot; line written and sourced, not vibed.</p>
+
+<p>I&#x27;m not designing carousels. I built the thing that designs carousels. The layout lives in one rendering spec, the tokens in one file — edit one, every future carousel updates, nothing drifts. The input is a sentence. The output is a finished strip I&#x27;d be happy to post.</p>
+
+<p>29 of these are sitting in one <code>output/</code> folder right now, each its own numbered build. Same command, different decision. No designer touched a single one.</p>
+
+<p>This is the part I keep telling other operators: your bottleneck isn&#x27;t taste, it&#x27;s that you&#x27;re still doing the assembly by hand.</p>
+
+<p><strong>CTA:</strong> If you&#x27;re a creator or founder still hand-building slides, DM me &#x27;AUTOMATE&#x27; — I&#x27;m sharing this pipeline build-in-public, stage by stage.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the live run: type the slug, run <code>npx tsx scripts/pipeline.ts college-dropout</code>, and let the <code>[1/3] / [2/3] / [3/3]</code> stages print in real time — the single-command-to-big-outcome moment is the whole hook.</li>
+<li>Capture the split screen: <code>content/college-dropout.yaml</code> (the one-line input) on the left, the <code>output/college-dropout/</code> folder populating slide-01.png → slide-07.png on the right, then a slow scroll through the finished <code>strip.png</code> so the real data (the ~2% vs ~6% stat) is legible on screen.</li>
+<li>B-roll the receipt: scroll the <code>output/</code> directory showing all 29 numbered carousel folders so &quot;29 times, no designer&quot; lands as a fact, not a claim.</li>
+</ul></div>
+      <a class="filelink" href="scripts/3-automation/09-one-sentence-in-a-designed-7-frame-decision-tr.md">scripts/3-automation/09-one-sentence-in-a-designed-7-frame-decision-tr.md</a>
+    </details>
+    </section>
+    <section id="4-bigticket" class="angle">
+      <h2 style="border-color:#b45309"><span style="color:#b45309">●</span> Big-Ticket <small>company-transformation consulting · 4 scripts</small></h2>
+      
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">Two strangers can download my games right now. I never wrote a line.</span>
+      </summary>
+      <div class="hook">🎯 Two games are live on the App Store and Play Store right now — built by a swarm of agents, and the only thing I did was review.</div>
+      <div class="cta">📣 &quot;I&#x27;m taking two company-transformation builds this quarter. If your headcount goes up every time your output does — DM me &#x27;SYSTEM.&#x27;&quot; · *On-screen card:* DM &#x27;SYSTEM&#x27; — 2 builds open this quarter</div>
+      <div class="body"><h2>Two strangers can download my games right now. I never wrote a line.</h2>
+<p><strong>Angle:</strong> bigticket · <strong>Leverage:</strong> high · <strong>Proof:</strong> Bloxplode + Arrow Puzzle live on iOS + Android; ROADMAP F1 &quot;Outcome held&quot; (2026-05-23); lifetime UA: 2,138 installs at $0.02 CPI (BX), 961 at $0.05 (AP) — pulled from <code>council/METRICS-lifetime.md</code></p>
+<p><strong>Hook (0-3s):</strong> Two games are live on the App Store and Play Store right now — built by a swarm of agents, and the only thing I did was review.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> NOT A DEMO. LIVE ON 2 STORES.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Two real games. App Store. Play Store. Downloadable right now — and I didn&#x27;t write the code.&quot; · <em>Show:</em> phone, thumb tapping open Bloxplode, then Arrow Puzzle, both launching to gameplay</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Most studios staff up to ship one game. I run a swarm of agents from one terminal. They build, test, prep the store listing, gate themselves — I just review.&quot; · <em>Show:</em> scroll the two live store listing pages (Apple + Google), real install buttons visible</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;This isn&#x27;t a vibe. The factory&#x27;s own roadmap says it: F1, outcome held. Two thousand installs at two cents each. The AI proposes — I dispose. Every claim has a file behind it.&quot; · <em>Show:</em> split screen — terminal scrolling <code>council/ROADMAP.md</code> to the highlighted line &quot;Outcome held. Bloxplode + Arrow Puzzle are both live on iOS and Android&quot;, then <code>METRICS-lifetime.md</code> with 2,138 installs / $0.02 CPI on screen as text</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I&#x27;m not building a game. I built the thing that builds games — and reviews itself, and gets leaner every pass. That same nervous system works on a company.&quot; · <em>Show:</em> terminal, one word typed — <code>go</code> — then the swarm spinning up</p>
+<p><strong>CTA (32-40s):</strong> &quot;I&#x27;m taking two company-transformation builds this quarter. If your headcount goes up every time your output does — DM me &#x27;SYSTEM.&#x27;&quot; · <em>On-screen card:</em> DM &#x27;SYSTEM&#x27; — 2 builds open this quarter</p>
+<p><strong>Caption:</strong> Two games strangers can download right now — shipped by an agent swarm, reviewed by one human. F1 outcome held. This is what I install in a company. DM &#x27;SYSTEM&#x27; (2 builds open this quarter). #AIagents #buildinpublic #ClaudeCode #founders #automation #leverage</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> Two games are live on the App Store and Play Store right now. I never wrote a line of their code — a swarm of agents built them, and I only reviewed.</p>
+
+<p><strong>Body:</strong></p>
+<p>Bloxplode and Arrow Puzzle. Both live, both downloadable on iOS and Android today. A stranger can search the store, install on a phone, and play a full round. That&#x27;s not a prototype — that&#x27;s the verifiable test, and it&#x27;s met.</p>
+
+<p>The receipt is in the factory&#x27;s own roadmap: F1 — &quot;Outcome held. Bloxplode + Arrow Puzzle are both live on iOS and Android; the factory drove both to the store.&quot; Lifetime user acquisition: 2,138 installs at a $0.02 CPI on one, 961 at $0.05 on the other. Pulled straight from <code>council/METRICS-lifetime.md</code>. I don&#x27;t claim what isn&#x27;t in a file.</p>
+
+<p>Here&#x27;s the part people miss. I&#x27;m not the developer who got fast. I built the thing that builds — a swarm of agents that scaffolds the game, tests it, preps the store listing, runs its own readiness gates, and then hands me a reviewable diff. The AI proposes. I dispose. I type one word and a studio moves; my job collapsed to judgment.</p>
+
+<p>Most teams scale output by scaling headcount. Every new game, every new line, every new market — another hire. This factory does the opposite: each pass ships more on less ceremony than the last. The leverage isn&#x27;t effort. It&#x27;s the exoskeleton.</p>
+
+<p>That same nervous system isn&#x27;t games-specific. It&#x27;s a way of running an operation: agents do the work, guardrails keep it honest, a human reviews. I install it into companies.</p>
+
+<p><strong>CTA:</strong> I&#x27;m taking 2 company-transformation builds this quarter. If your headcount scales every time your output does, that&#x27;s the exact problem I solve. DM me &#x27;SYSTEM.&#x27;</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Phone screen-capture: open BOTH games from the home screen to live gameplay in one continuous take — this is the &quot;real, not a demo&quot; proof; do it on a clean device so the store-installed icons are visible</li>
+<li>Both live store listing pages on camera: Apple App Store + Google Play, scrolled so the &quot;Get&quot;/&quot;Install&quot; buttons and screenshots are unmistakable</li>
+<li>Terminal capture scrolling <code>council/ROADMAP.md</code> to the highlighted &quot;Outcome held&quot; F1 line, then <code>council/METRICS-lifetime.md</code> showing 2,138 installs / $0.02 CPI — put the numbers on screen as overlay text so they read in 1 second</li>
+<li>One clean shot of typing <code>go</code> and the swarm spinning up, to dramatize one-word-input vs. two-games-out</li>
+</ul></div>
+      <a class="filelink" href="scripts/4-bigticket/01-two-strangers-can-download-my-games-right-now-.md">scripts/4-bigticket/01-two-strangers-can-download-my-games-right-now-.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">I built a factory that builds factories</span>
+      </summary>
+      <div class="hook">🎯 Instead of doing the consulting work, I built the machine that builds the machine — and it gets smarter every run.</div>
+      <div class="cta">📣 &quot;This isn&#x27;t a tool. It&#x27;s a nervous system for a company. I&#x27;m taking 2 company-transformation builds this quarter — DM the word SYSTEM.&quot; · *On-screen card:* I&#x27;m taking 2 company-transformation builds this quarter → DM &#x27;SYSTEM&#x27;</div>
+      <div class="body"><h2>I built a factory that builds factories</h2>
+
+<p><strong>Angle:</strong> bigticket · <strong>Leverage:</strong> high · <strong>Proof:</strong> The council meta-factory in <code>~/council/</code> — a scaffold playbook in CLAUDE.md, two real missions logged in runs.jsonl (regulytics + stepahead-curriculum-engine), and COUNCIL.md showing a lesson getting encoded so the next scaffold is leaner.</p>
+<p><strong>Hook (0-3s):</strong> Instead of doing the consulting work, I built the machine that builds the machine — and it gets smarter every run.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> A FACTORY THAT BUILDS FACTORIES</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;I&#x27;m not consulting anymore. I built the thing that builds the consulting.&quot; · <em>Show:</em> terminal open in <code>~/council/</code>, cursor blinking</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Every company hires me to set up their AI system. So I stopped setting them up by hand — I built a council that scaffolds a purpose-built factory for each one.&quot; · <em>Show:</em> scroll the scaffold playbook in CLAUDE.md — Step 1 read state, Step 2 capture the brief, Step 3 render, Step 4 log the run</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Two real engagements. One word, and it stands up a whole operating system — north star, agents, stage gates, the work tracker. Here&#x27;s the receipt.&quot; · <em>Show:</em> <code>cat council/runs.jsonl</code> — pause on the two rows: <code>regulytics</code> (Microsoft enterprise pilot) and <code>stepahead-curriculum-engine</code>; highlight the <code>template_debt</code> field on each</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;And it never repeats a mistake. Every rough edge from the last build gets encoded as a rule — so the next factory ships leaner than the last. The AI proposes the lesson. I dispose. It&#x27;s all Claude Code.&quot; · <em>Show:</em> COUNCIL.md — the 2026-05-31 &#x27;Lesson learned&#x27; entry; scroll to <code>lean_delta</code> in runs.jsonl</p>
+<p><strong>CTA (32-40s):</strong> &quot;This isn&#x27;t a tool. It&#x27;s a nervous system for a company. I&#x27;m taking 2 company-transformation builds this quarter — DM the word SYSTEM.&quot; · <em>On-screen card:</em> I&#x27;m taking 2 company-transformation builds this quarter → DM &#x27;SYSTEM&#x27;</p>
+<p><strong>Caption:</strong> I don&#x27;t build the factory anymore. I built the thing that builds the factory — and it gets leaner every run. Two live missions, zero copy-paste. DM &#x27;SYSTEM&#x27; for a transformation build. #AIautomation #ClaudeCode #founder #leverage #consulting #buildinpublic</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I stopped doing the consulting work. I built the machine that builds the machine — and it gets smarter every engagement.</p>
+
+<p><strong>Body:</strong></p>
+<p>Most consultants sell hours. I got tired of standing up the same AI operating system by hand for every company, so I built a meta-factory: a &quot;council&quot; that scaffolds a purpose-built factory for each engagement.</p>
+
+<p>Here&#x27;s how it actually runs. I describe a mission — the north star, who signs off, who executes. The council captures that brief, then renders a working factory: its own operating brain, its own agents, its own stage gates, its own work tracker. One pass. It&#x27;s all Claude Code, and a folder of markdown files.</p>
+
+<p>The receipts are in one file — <code>council/runs.jsonl</code>. Two real missions live there today: a Microsoft-enterprise pilot factory (regulytics) and a curriculum engine that mass-produces sellable build-guides (stepahead). Each row logs what got emitted and — the part that matters — a <code>template_debt</code> field: everything the build noticed was over- or under-built.</p>
+
+<p>That field is the whole point. At review, recurring debt becomes a rule. When the curriculum engine taught me the product was a 1-page prompt-pack, not a 23-page document, that correction got encoded into the template — so the next factory inherits it. Lessons become edits, not tribal memory. Every factory ships leaner than the last.</p>
+
+<p>The guardrail is the flex: the AI proposes the lesson, I dispose. Nothing gets templated until it&#x27;s earned its place across two real builds.</p>
+
+<p><strong>CTA:</strong> This isn&#x27;t a tool — it&#x27;s a nervous system for a company, and each one I build gets leaner than the last. I&#x27;m taking 2 company-transformation builds this quarter. If your headcount scales every time your work does, that&#x27;s the problem I solve. DM &#x27;SYSTEM&#x27;.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the terminal in <code>~/council/</code>: open CLAUDE.md and slowly scroll the scaffold playbook (Step 1 → Step 6) so the &quot;machine that builds machines&quot; claim is visible, not asserted.</li>
+<li>Capture <code>cat council/runs.jsonl</code> and frame the two real rows — <code>regulytics</code> and <code>stepahead-curriculum-engine</code> — with the <code>template_debt</code> and <code>lean_delta</code> fields clearly readable on screen (these are the no-invented-metrics proof).</li>
+<li>Capture COUNCIL.md scrolled to the 2026-05-31 &quot;Lesson learned&quot; entry (the 1-page prompt-pack correction) to show a real lesson being encoded — the &quot;gets smarter every run&quot; payoff. Put the words &quot;leaner each run&quot; on screen as text over this beat.</li>
+</ul></div>
+      <a class="filelink" href="scripts/4-bigticket/02-i-built-a-factory-that-builds-factories.md">scripts/4-bigticket/02-i-built-a-factory-that-builds-factories.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">Two rival nonprofits. One hive mind. Aimed at a million schools.</span>
+      </summary>
+      <div class="hook">🎯 This isn&#x27;t a toy demo. It&#x27;s load-bearing infrastructure for an education movement touching 570,000 leaders.</div>
+      <div class="cta">📣 &quot;I scaffold these for orgs that are scaling and watching their headcount scale with them. I&#x27;m taking two builds this quarter.&quot; · *On-screen card:* DM &#x27;SYSTEM&#x27; — 2 builds this quarter</div>
+      <div class="body"><h2>Two rival nonprofits. One hive mind. Aimed at a million schools.</h2>
+<p><strong>Angle:</strong> bigticket · <strong>Leverage:</strong> high · <strong>Proof:</strong> Two separate org brains (ShikshaLokam + Mantra4Change) serving the same Shikshagraha movement — ask one &quot;what do we know about DIKSHA&quot; and it answers with sources; a live self-portrait page each org regenerates; a LEDGER.md that compounds every session instead of resetting.</p>
+<p><strong>Hook (0-3s):</strong> This isn&#x27;t a toy demo. It&#x27;s load-bearing infrastructure for an education movement touching 570,000 leaders.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> NOT A DEMO. LOAD-BEARING.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;This isn&#x27;t a toy demo — it&#x27;s the brain behind a real education movement aimed at a million schools.&quot; · <em>Show:</em> terminal open, cursor blinking on a folder of markdown files named after two nonprofits</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Two different nonprofits. Same mission. Normally that&#x27;s a shared drive nobody reads and the same questions asked a hundred times.&quot; · <em>Show:</em> split screen — two repo folders side by side, then scroll the LEDGER.md filling up session after session</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;I just ask it, in plain English — what do we know about DIKSHA. It answers, with sources. Then it regenerates its own self-portrait page — a live picture of what the org knows. No CRM. No notion. Just text files that compound.&quot; · <em>Show:</em> type the question, the cited answer renders, cut to the live self-portrait HTML page loading, cut back to LEDGER.md growing</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;Every session it gets smarter. It never re-learns what it learned last week. That&#x27;s the difference between a tool and a nervous system.&quot; · <em>Show:</em> git log / LEDGER scrolling — each entry stacking on the last, nothing reset</p>
+<p><strong>CTA (32-40s):</strong> &quot;I scaffold these for orgs that are scaling and watching their headcount scale with them. I&#x27;m taking two builds this quarter.&quot; · <em>On-screen card:</em> DM &#x27;SYSTEM&#x27; — 2 builds this quarter</p>
+<p><strong>Caption:</strong> Two rival nonprofits, one hive mind, aimed at a million schools. No CRM — just text files that compound every session. #AIagents #ClaudeCode #buildinpublic #edtech #founders #automation</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> Two nonprofits, same education movement, the same questions asked a hundred times a week. So I gave them a shared brain.</p>
+
+<p><strong>Body:</strong></p>
+<p>The Shikshagraha movement touches roughly 570,000 leaders across Indian education. Two organizations carry it — ShikshaLokam and Mantra4Change. Different teams, different repos, one mission. The bottleneck wasn&#x27;t effort. It was memory: every week, someone re-answered a question someone else had already answered.</p>
+
+<p>So I built each org its own brain — not a chatbot, a folder of markdown files Claude Code operates on. You ask it in plain English, &quot;what do we know about DIKSHA,&quot; and it answers with sources. Then it regenerates a self-portrait page: a living HTML picture of what the org actually knows, written like a designer would, single source of truth.</p>
+
+<p>The part that matters isn&#x27;t the answer. It&#x27;s the LEDGER. Every session compounds onto the last — nothing resets, nothing drifts. The brain that runs next Tuesday is strictly smarter than the one that ran today. No maintenance tax, no Sahil-dependency baked in.</p>
+
+<p>This is what I mean when I say I don&#x27;t build tools — I build the nervous system. One org&#x27;s brain doesn&#x27;t bloat into the other&#x27;s; each stays lean, each compounds on its own. That&#x27;s load-bearing infrastructure for a movement, not a demo.</p>
+
+<p><strong>CTA:</strong> I&#x27;m taking 2 company-transformation builds this quarter — orgs scaling where headcount is scaling with them. If that&#x27;s you, DM &#x27;SYSTEM&#x27;.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record the live ask: type &quot;what do we know about DIKSHA&quot; into the brain and capture the cited answer rendering in real time (sources visible on screen).</li>
+<li>Capture the self-portrait HTML page loading in a browser — the &quot;living picture of what the org knows&quot; — ideally for both ShikshaLokam and Mantra4Change to make the &quot;two brains, one movement&quot; point visually.</li>
+<li>Scroll LEDGER.md (or git log) showing entries stacking session over session — the compounding receipt. Put &quot;570,000 leaders&quot; on screen as text only if it&#x27;s confirmed; otherwise speak to the movement qualitatively.</li>
+</ul></div>
+      <a class="filelink" href="scripts/4-bigticket/03-two-rival-nonprofits-one-hive-mind-aimed-at-a-.md">scripts/4-bigticket/03-two-rival-nonprofits-one-hive-mind-aimed-at-a-.md</a>
+    </details>
+    <details class="card">
+      <summary>
+        <span class="lev" style="background:#16a34a1a;color:#16a34a">🟢 high</span>
+        <span class="ctitle">My student has his own AdMob access — and ships PRs to the store</span>
+      </summary>
+      <div class="hook">🎯 This isn&#x27;t homework. My student has his own AdMob and Google Ads login — and the PRs he ships go straight to the store.</div>
+      <div class="cta">📣 &quot;If you want your whole operation to run like this — where a producer plugs in and ships, not just learns — I&#x27;m taking two builds this quarter. DM me &#x27;SYSTEM&#x27;.&quot; · *On-screen card:* I&#x27;m taking 2 company-transformation builds this quarter. DM &#x27;SYSTEM&#x27;.</div>
+      <div class="body"><h2>My student has his own AdMob access — and ships PRs to the store</h2>
+<p><strong>Angle:</strong> bigticket · <strong>Leverage:</strong> high · <strong>Proof:</strong> Shahriar (Sahariar Mody) — 96 commits in the live Stratos games factory across his GitHub identities, running <code>pull-metrics.sh</code> against real AdMob/Google Ads, with a handoff brief that granted him genuine ad-account access. Not a sandbox. A revenue studio.</p>
+<p><strong>Hook (0-3s):</strong> This isn&#x27;t homework. My student has his own AdMob and Google Ads login — and the PRs he ships go straight to the store.</p>
+
+<h3>🎬 REEL CUT (9:16, 25-40s)</h3>
+<p><strong>On-screen text (open):</strong> NOT A STUDENT PROJECT. A REVENUE STUDIO.</p>
+<p><strong>Beat 1 — Hook (0-3s):</strong> &quot;Most people give a student a tutorial. I gave mine the ad account.&quot; · <em>Show:</em> Shahriar&#x27;s terminal, cursor blinking, real repo name on screen.</p>
+<p><strong>Beat 2 — Tension (3-10s):</strong> &quot;Real AdMob. Real Google Ads. Real ROAS he reads himself. If he ships garbage, I see it in the numbers — not in a grade.&quot; · <em>Show:</em> <code>bash scripts/pull-metrics.sh</code> running, the metrics file writing live.</p>
+<p><strong>Beat 3 — Proof (10-25s):</strong> &quot;Ninety-plus commits. PRs that merge and go to the store. And the guardrail he can&#x27;t break — the script reads the money, it structurally can&#x27;t spend it. The credential never enters his Claude&#x27;s context.&quot; · <em>Show:</em> <code>git shortlog -sne</code> scrolling Shahriar&#x27;s 96 commits; cut to the credential-safety header in pull-metrics.sh; cut to a green merged PR.</p>
+<p><strong>Beat 4 — Turn (25-32s):</strong> &quot;I&#x27;m not teaching him to code. I built the factory — he operates it. That&#x27;s the difference between a course and a company.&quot; · <em>Show:</em> the handoff brief granting access, side by side with the live game in the store.</p>
+<p><strong>CTA (32-40s):</strong> &quot;If you want your whole operation to run like this — where a producer plugs in and ships, not just learns — I&#x27;m taking two builds this quarter. DM me &#x27;SYSTEM&#x27;.&quot; · <em>On-screen card:</em> I&#x27;m taking 2 company-transformation builds this quarter. DM &#x27;SYSTEM&#x27;.</p>
+<p><strong>Caption:</strong> I didn&#x27;t give my student a tutorial. I gave him the ad account, the repo, and the guardrail he can&#x27;t break. 96 commits later he&#x27;s shipping to the store. This is what a factory looks like when a real person operates it. DM &#x27;SYSTEM&#x27;. #buildinpublic #aiagents #founders #claudecode #automation #leverage</p>
+
+<h3>💼 LINKEDIN CUT</h3>
+<p><strong>Hook line:</strong> I gave my student his own AdMob login and Google Ads access. Not a sandbox — the real revenue account.</p>
+
+<p><strong>Body:</strong></p>
+<p>Most mentorship looks like this: watch me, copy this, submit it, I&#x27;ll grade it. Shahriar&#x27;s doesn&#x27;t. He operates the Stratos games factory as a producer. His own ad-account access. His own ROAS reads. His PRs merge and go to the store.</p>
+
+<p>The receipts: 96 commits in the live repo across his GitHub identities. He runs <code>pull-metrics.sh</code> himself — it pulls real AdMob and Google Ads numbers and writes the daily metrics file. He doesn&#x27;t ask me what the campaign did. He reads it.</p>
+
+<p>Here&#x27;s the part I&#x27;m proud of — the guardrail. The script can see the ad money but structurally cannot spend it. The credential never enters his Claude&#x27;s context; it reads from the local store and is never printed or written to a file. He has real access and real power, and the system makes the dangerous move impossible by design. That&#x27;s not trust by vibes. That&#x27;s trust by architecture.</p>
+
+<p>This is the whole thesis. I don&#x27;t build courses. I build factories, then hand a real human the controls. The factory carries the guardrails, the evidence loop, the cold-run gates — so a producer can plug in and ship without me in the loop. A student becomes a studio.</p>
+
+<p>If your company is scaling and your headcount is scaling right alongside it, this is what I do — I scaffold the nervous system so your people operate at leverage instead of by hand.</p>
+
+<p><strong>CTA:</strong> I&#x27;m taking 2 company-transformation builds this quarter. If you want your operation to run like this, DM me &#x27;SYSTEM&#x27;.</p>
+
+<h3>🎯 Impact unlocked from Sahil</h3>
+<ul>
+<li>Screen-record Shahriar&#x27;s terminal running <code>bash scripts/pull-metrics.sh</code> end to end — the connectors firing, the METRICS-&lt;date&gt;.md file being written — so the &quot;real ROAS he reads himself&quot; claim is visible, not asserted.</li>
+<li>Capture three stacked receipts in one take: (1) <code>git shortlog -sne</code> showing Shahriar&#x27;s 96 commits, (2) the credential-safety header block in <code>scripts/pull-metrics.sh</code> (&quot;No credential value is ever printed or written to a file&quot;), and (3) one green merged PR that shipped to the store — plus a frame of the handoff/access brief that granted the AdMob + Google Ads access.</li>
+</ul></div>
+      <a class="filelink" href="scripts/4-bigticket/04-my-student-has-his-own-admob-access-and-ships-.md">scripts/4-bigticket/04-my-student-has-his-own-admob-access-and-ships-.md</a>
+    </details>
+    </section>
+<div class="panel"><h3>📚 Narrative bank <small style="color:var(--mut);font-weight:400">— append-only, compounds each run</small></h3>
+  <details class="big"><summary>Open the full bank</summary><div class="body"><h2>narrative-bank.md — Sahil Modi Content Engine</h2>
+
+<blockquote>Compounding asset. Append-only. Every story is a real, file-backed win. Pull from here when scripting. When new wins land, add them under the right angle with the same five fields: one-liner / proof / screens-to-show / leverage.</blockquote>
+
+<h3>Table of contents</h3>
+
+<ul>
+<li><strong>ANGLE 1 — PDF (stepaheadco.com/ship, $100):</strong> P1 1-page-to-live-site · P2 cold-run gate · P3 11 authoring principles · P4 13-module engine + live order · P5 Module 5 ATS resume tool</li>
+<li><strong>ANGLE 2 — WEBINAR (100 AED live):</strong> W1 student wall (receipts) · W2 Kimaya Apple Watch app · W3 Advika live web game · W4 4K chalkboard teaching tool</li>
+<li><strong>ANGLE 3 — AUTOMATION (build-in-public):</strong> A1 9-agent game factory · A2 FB Agent catches the agency · A3 ROAS data layer (credential-safe) · A4 vibe-prospecting sniper · A5 Sales OS folder-CRM · A6 inbox archaeology · A7 three terminals = whole business · A8 carousel engine (Strategy OS) · A9 SEO/AEO 4 sites one session · A10 937-line WP CLI · A11 terminal demos close kids · A12 $0-infra CAPI funnel · A13 brand.json single source · A14 WhatsApp bot from 8 DON&#x27;Ts · A15 template-drift self-healing · A16 public P&amp;L dashboard · A17 the AI that lied (faithfulness gate) · A18 team-brain one-prompt setup · A19 two-plan permission asymmetry · A20 50 terminal carousels · A21 LinkedIn adtech authority engine · A22 ShikshaLokam first real story · A23 page that can&#x27;t lie</li>
+<li><strong>ANGLE 4 — BIG-TICKET (consulting):</strong> B1 two games live on the stores · B2 factory-that-builds-factories (council) · B3 two-nonprofit hive minds · B4 student-as-producer (Shahriar) · B5 whole revenue stack from 3 terminals · B6 funnel shipped in one session · B7 stratosphere paid swarm · B8 Ved invoice automation engagement</li>
+</ul>
+
+<p>---</p>
+
+<h3>ANGLE 1 — PDF (stepaheadco.com/ship, $100)</h3>
+
+<h4>P1 — The 1-page PDF that takes zero-terminal to a live website</h4>
+<ul>
+<li><strong>One-liner:</strong> A single $100 PDF holds ONE prompt that turns any free AI chat into a patient coach, walking a total beginner from never-opened-a-terminal to a real site live at yourname.github.io in ~2 hours.</li>
+<li><strong>Proof:</strong> module-1-1pager.md — the whole product is one grey box. Hidden 13-beat build path (terminal→git→SSH→push→Pages→branch/merge→revert), each verified before advancing. Promise string in brand.json.</li>
+<li><strong>Screens:</strong> the rendered PDF (cover + 1 page) · pasting the prompt into a live Claude chat and watching it coach · a real *.github.io site loading in browser · the family-text moment.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>P2 — The zero-knowledge cold-run gate (robot beginner stress-tests every PDF)</h4>
+<ul>
+<li><strong>One-liner:</strong> No PDF ships until a &quot;cold-runner&quot; AI persona who knows nothing walks every step as a clueless beginner — round 1 caught 4 traps that would&#x27;ve silently stranded real buyers.</li>
+<li><strong>Proof:</strong> cold-run-report.md verdict PASS. Real traps: macOS ssh-agent not loaded, Windows pbcopy/clip clipboard fail, &quot;folder name is load-bearing&quot; mis-teaching, username forward-dependency. CLAUDE.md hard gate: &quot;An expert saying looks good does NOT substitute.&quot;</li>
+<li><strong>Screens:</strong> scrolling the gap table · before/after of a real trap fix (the macOS ssh-add ladder).</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>P3 — 11 authoring principles mined from real teaching mistakes</h4>
+<ul>
+<li><strong>One-liner:</strong> Every correction Sahil ever made teaching a beginner became a permanent rule (P1–P11) — &quot;never send them to nano,&quot; &quot;one short line at a time,&quot; &quot;errors are normal&quot; — turning teaching instinct into a reproducible factory.</li>
+<li><strong>Proof:</strong> AUTHORING-PRINCIPLES.md. P6 &quot;green squares&quot; = every module ends in real commits to the learner&#x27;s public GitHub. Build mode &quot;recompile from principles&quot; → all 13 modules regenerate in one pass.</li>
+<li><strong>Screens:</strong> the principles list on screen · the shared teaching-contract block that injects into every module.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>P4 — 13-module engine + a live funnel with a real order already through it</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil productized the way he teaches: 13 branded prompt-pack PDFs sold as one $100 bundle, with a live Stripe + Meta-tracked funnel that&#x27;s already processed a real order.</li>
+<li><strong>Proof:</strong> Live at stepaheadco.com/ship. 23-page first draft REJECTED → 1 page per module. SKU SAE-BUNDLE-13. Catalog M1 first-site → M5 ATS resume → M7 FB Ad Manager → M13 orchestrate agents. Goal: 100+ project PDFs.</li>
+<li><strong>Screens:</strong> /ship + Stripe checkout · a branded module opening · cold-run gate zero gaps · Meta Events Manager deduped.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>P5 — Module 5: a non-coder builds an ATS-ready resume tool</h4>
+<ul>
+<li><strong>One-liner:</strong> Module 5 walks someone who&#x27;s never touched a terminal, one short line at a time, to build a real resume generator that outputs a web page AND a downloadable PDF — shipped to their own GitHub.</li>
+<li><strong>Proof:</strong> StepAhead-Module-5.pdf (SAE-M05). Two-pane habit (chat / terminal). The deliverable isn&#x27;t a file — it&#x27;s a more capable person. ~1.5–2 hrs.</li>
+<li><strong>Screens:</strong> beginner&#x27;s terminal building the resume · the rendered web page · the downloaded PDF · GitHub squares lighting up.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<p>---</p>
+
+<h3>ANGLE 2 — WEBINAR (100 AED live)</h3>
+
+<h4>W1 — The Student Wall (receipts, not testimonials)</h4>
+<ul>
+<li><strong>One-liner:</strong> stepaheadco.com/students is a public wall of real beginners shipping real things — a Next.js tutoring platform, a native Apple Watch swim app, a Godot game, an agentic resume tool — each with a live demo + their GitHub.</li>
+<li><strong>Proof:</strong> students/page.tsx — Ridhima (Next.js + Supabase, live on Vercel), Kimaya SwiftLap, Jay vector-search MCP + Regulytics, Advika Godot, Ved Money Path. Stories written from real public GitHub activity.</li>
+<li><strong>Screens:</strong> scrolling the live wall · clicking into a student demo · a student GitHub with green squares.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>W2 — Kimaya shipped a real Apple Watch app, one PR at a time</h4>
+<ul>
+<li><strong>One-liner:</strong> A student with zero shipping experience now has a native watchOS swim-tracker on a milestone path to the App Store — built one Claude session, one PR, one merge at a time.</li>
+<li><strong>Proof:</strong> github.com/KimayaVP/SwiftLapWatch (Swift/SwiftUI/HealthKit, WKWatchOnly). 12-milestone roadmap (~M4). M3 lap double-count fixed in PR #6; M4 onboarding in PR #7. Rhythm: one milestone→one branch→one session→one test→one PR→merge.</li>
+<li><strong>Screens:</strong> the watch app counting laps on a real wrist · PRs #6/#7 merged green · Xcode building · the 12-milestone roadmap.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>W3 — Advika&#x27;s hand-drawn game is live on the web (53 animation frames)</h4>
+<ul>
+<li><strong>One-liner:</strong> A young artist taught herself an agentic build loop — issues as spec, Claude Code executing, GitHub Pages publishing — and her painterly Hollow-Knight-inspired hero actually moves; 39 commits in, playable now.</li>
+<li><strong>Proof:</strong> nex2406.github.io/curiositys-doors (Godot 4.6 HTML5/WASM). Every merge auto-exports the web build. Hero = 53 frames. Self-narrating docs/STATE.md + append-only SESSIONS.md so each $20-plan session leaves a better map.</li>
+<li><strong>Screens:</strong> the game playing in browser · Actions deploy turning green · the 53-frame sprite sheet · SESSIONS.md scrolling.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>W4 — Sahil teaches off a 4K chalkboard he generates by talking to Claude</h4>
+<ul>
+<li><strong>One-liner:</strong> &quot;Vibe Coding with Sahil&quot; runs off a hand-painted-looking chalkboard that Claude regenerates from a config file at 4K — projected on a 65&quot; TV and filmed for reels. He teaches building by building his own teaching tool.</li>
+<li><strong>Proof:</strong> ~/classroom: board.config.json + generate.js → board.html + board.png. Never hand-edit the HTML. 3840×2160 for Samsung Art Mode. Topics 2–4 words for glance-readability.</li>
+<li><strong>Screens:</strong> the chalkboard full-screen · Sahil pointing at the 65&quot; TV · node generate.js recompiling live.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<p>---</p>
+
+<h3>ANGLE 3 — AUTOMATION (build-in-public for business owners)</h3>
+
+<h4>A1 — A factory that builds games, run from one word</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil types <code>go</code> and a 9-agent swarm builds games, reads player data, optimizes ads, scans competitors, and ships PRs — coordinating only through GitHub labels, no shared database.</li>
+<li><strong>Proof:</strong> stratos CLAUDE.md 10-step pipeline. 9 agents. 159 runs in runs.jsonl. 209 commits + 75 from a student. &quot;Humans test. AI builds. Games ship.&quot;</li>
+<li><strong>Screens:</strong> terminal running <code>go</code> · README agent badge row · runs.jsonl scrolling 159 rows · the swarm ASCII diagram.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A2 — The agency thought no one was watching. The terminal caught them going dark 3 weeks.</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil&#x27;s FB Agent caught his ad agency letting an account run dark 3+ weeks and silently killing his best campaign — from a read-only terminal that never touches the ads.</li>
+<li><strong>Proof:</strong> fb-agent/reports/2026-06-05.md — India INR 0 / 0 campaigns / dark 3+ wks; UAE spend −71% WoW; 2-day total blackout undisclosed; best WhatsApp Advantage+ paused. Read-only mandate; MCP removed for safety; report ends with &quot;Questions for the agency:&quot;.</li>
+<li><strong>Screens:</strong> terminal running the live curl+jq · the report with red-flag rows + agency-questions footer · the blackout zeros table.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A3 — The factory reads ROAS across every game — and Claude never sees the credentials</h4>
+<ul>
+<li><strong>One-liner:</strong> A read-only pipeline auto-pulls AdMob revenue, Google Ads spend, and GA4→BigQuery engagement into one ROAS report — without the API tokens ever entering the AI&#x27;s context window.</li>
+<li><strong>Proof:</strong> scripts/metrics/README &quot;The credential value never enters Claude&#x27;s context window&quot;; .claude/settings.json denies key files. METRICS-lifetime per-game ROAS. Diagnosis it surfaced: CPI ~$0.02 great, eCPM catastrophic, 100x rev-per-user gap.</li>
+<li><strong>Screens:</strong> pull-metrics.sh then catting the report · the ROAS table · the credential-safety README.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A4 — $5 budget. 13 credits. 2 perfect prospects. Zero spam.</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil runs lead-gen like a sniper — one run hit a $5 cap, spent 13 credits, surfaced exactly 2 validated Saudi school decision-makers, deduped against his entire brain first.</li>
+<li><strong>Proof:</strong> sales-os run report — 6-stage kill-switch funnel (cheap signals first, expensive enrichment only on survivors), halts the instant a stage breaches budget. 7 fetched→2 finalists, 5 named drops. Built on Vibe Prospecting MCP, invoked in plain English.</li>
+<li><strong>Screens:</strong> per-stage cost estimate printing before each paid call · 13 credits vs $5 cap + 2 named finalists · the dedup step reading contacts/*.md.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A5 — One founder, 81 relationships, zero CRM subscription — a folder of text files</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil replaced Salesforce with a folder: Sales OS tracks 81 contacts, 32 orgs, 16 relationship types, 4 live missions — each its own pipeline — run from the terminal in plain English.</li>
+<li><strong>Proof:</strong> sales-os CLAUDE.md hive-mind brain; 7 plain-English skills (morning digest, auto meeting prep 24h prior, draft-touch, prospect-run…). Confidence auto-decay. Dollar amounts confidential-by-default.</li>
+<li><strong>Screens:</strong> terminal running <code>morning</code> → ranked digest · a kanban rendering live from yaml · the contacts/ dir listing (a CRM that&#x27;s just a folder).</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A6 — He let an AI read 9 months of his inbox and it reconstructed his business</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil pointed Sales OS at his Gmail; it mined 9 months into ~50 candidate relationships across 6 clusters — and found his first-ever paying customer and a work email/role he&#x27;d half-forgotten.</li>
+<li><strong>Proof:</strong> PHASE2-MANIFEST.md 6-cluster scan; found Ekta Kohli (invoice #SYPPDXFB-0001, first Stepahead customer) and sahil@maf.ad (Director of Partnerships). Human-in-the-loop: nothing written until row-by-row approval; every contact carries source thread IDs + confidence.</li>
+<li><strong>Screens:</strong> scrolling the manifest clusters · the moment it flags the discovered work email · the approve/skip/defer workflow.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A7 — The same AI that prospects his leads also catches if his agency lies</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil&#x27;s whole revenue stack runs from three terminals — Sales OS sources, FB Agent audits the agency, Strategy OS pumps content — one founder, three command centers, zero employees needed to run them.</li>
+<li><strong>Proof:</strong> three purpose-built CLAUDE.md brains, each terminal-native, all read/draft-only by default — AI proposes, Sahil disposes. 81 contacts / 2 ad accounts audited / 29+ carousels.</li>
+<li><strong>Screens:</strong> three terminals side by side each printing its signature output · cd-ing between repos running each headline command.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A8 — He turned &quot;a hard life decision&quot; into a scroll-stopping carousel, 29 times, no designer</h4>
+<ul>
+<li><strong>One-liner:</strong> Strategy OS takes one sentence and ships a 7-frame fully-designed Instagram decision-tree carousel with real names and real data — 29 published straight from the terminal.</li>
+<li><strong>Proof:</strong> strategy-os CLAUDE.md &quot;The HTML is the product.&quot; 60-token design system. Research-first: AI is storyteller AND researcher (e.g. &quot;73% of bootstrapped companies survive year 3 vs 41% funded&quot;). One pipeline command.</li>
+<li><strong>Screens:</strong> pipeline.ts rendering a finished carousel · a finished strip with the ★ author path · one-line input next to 7-frame output.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A9 — One daily Claude Code session runs four live websites</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil manages SEO and AEO across four production sites from a single daily terminal session — no cron, no paid APIs, no team — opening with a dashboard that probes every site live in seconds.</li>
+<li><strong>Proof:</strong> seo-aeo-strat/bin/session-open.py probes HTTP/JSON-LD/llms.txt/git across 4 sites in parallel. sites.yml: stepaheadco, stratos.games, stratostech.academy, imsahilmodi. Issue cockpit splits &quot;your clicks today&quot; vs &quot;Claude can ship this session.&quot;</li>
+<li><strong>Screens:</strong> session-open.py 4-site colored dashboard · the human-vs-Claude cockpit · live sites loading.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A10 — He built a 937-line WordPress CLI inside a single session</h4>
+<ul>
+<li><strong>One-liner:</strong> Instead of clicking wp-admin, Sahil had Claude build wp.py — one CLI that pushes pages, schema, media, meta, and llms.txt to any WordPress site, capturing before/after on every write. The tool builds the tool.</li>
+<li><strong>Proof:</strong> bin/wp.py is 937 lines; paired ~150-line PHP bridge plugin built in-session. Every write snapshots to shipped/&lt;site&gt;/&lt;date&gt;/; destructive ops require --yes.</li>
+<li><strong>Screens:</strong> wp.py --help full command surface · a live page push with before/after snapshots appearing · the diff in shipped/.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A11 — Terminal demos are the closing tool that make kids go &quot;AAAAA&quot;</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil closes students by pasting ONE command that opens a personalized 3D world on their screen — the repo documents 18 real kids who got the &quot;show your parents&quot; moment.</li>
+<li><strong>Proof:</strong> terminal-demos/ — Jordan (9, Roblox voxel world in Three.js), Vrushank (10, rocket launch), Atreya (Windows NEON DRIFT), Dawar (22, sellable invoice tool). Demo arc smile→play→AAAAA. Base64 paste transport, zero installs, Mac + Windows.</li>
+<li><strong>Screens:</strong> a paste command then the browser popping a kid&#x27;s 3D world · Jordan&#x27;s voxel world / Vrushank&#x27;s rocket / Atreya&#x27;s shooter live.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A12 — A $0-infra funnel that catches the 20–40% of sales the pixel misses</h4>
+<ul>
+<li><strong>One-liner:</strong> StepAhead sells off its own page with a Stripe + Meta CAPI funnel where the server-side Purchase is deduped against the browser pixel by a shared event_id — recovering the 20–40% iOS/ad-blockers hide, on $0 new infra.</li>
+<li><strong>Proof:</strong> SHIP-FUNNEL-SETUP.md LIVE 2026-06-01, verified via $0 coupon test → Deduplicated. CAPI fires from the Stripe webhook regardless of browser state. Signed /access tokens; raw Blob URLs never leak. ~$96.80 net per $100.</li>
+<li><strong>Screens:</strong> Meta Test Events single Deduplicated Purchase · Stripe checkout · the delivery email + /access page.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A13 — One brand.json so the buyer recognizes the same promise four times</h4>
+<ul>
+<li><strong>One-liner:</strong> A single brand.json holds the promise, colors, and price once — and injects into the FB ad, the /ship H1, the PDF cover, and the live result, so the buyer sees the identical artifact four times and nothing drifts.</li>
+<li><strong>Proof:</strong> brand.json (#004AAD/#FF8C4B + promise string). render-pdf.py reads it; edit the promise → every cover updates. SKU SAE-BUNDLE-13 is the join key across source, PDF, Stripe, Meta content_ids.</li>
+<li><strong>Screens:</strong> editing brand.json then re-running render to show covers change · side-by-side ad / hero / PDF cover identical.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A14 — A WhatsApp bot whose personality is 8 DON&#x27;Ts mined from real failed chats</h4>
+<ul>
+<li><strong>One-liner:</strong> StepAhead&#x27;s WhatsApp bot turns ad inbound into booked demos, and its entire personality is markdown — including 8 DON&#x27;Ts each reverse-engineered from a specific real chat that lost a lead.</li>
+<li><strong>Proof:</strong> style.md DON&#x27;Ts cite the ghost (&quot;Balkrishna got 5 in 2 min and ghosted&quot;; &quot;Angel ghosted minutes after a price&quot;). Hot-loads from /knowledge/*.md. Lead DB = one GitHub Issue per phone number, no CRM. North star = demos booked / inbound.</li>
+<li><strong>Screens:</strong> the 8 DON&#x27;Ts on screen · a real transcript next to the rule it produced · the GitHub Issues lead board.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A15 — The factory caught a bug that kept coming back — and taught itself to never repeat it</h4>
+<ul>
+<li><strong>One-liner:</strong> A template-drift regression silently reverted shipped work 4 times in 6 weeks; on the 4th catch the factory wrote a permanent detector + memory shard so the whole class of bug can&#x27;t recur — self-improvement encoded, not remembered.</li>
+<li><strong>Proof:</strong> runs.jsonl #146/#150/#169/#180 cycle, encoded #182/PR#183. New 200-line template-drift-check.sh wired as deploy preflight; 59 pairs / 0 divergences; synthetic negative test caught a planted divergence. &quot;Tribal memory does not count.&quot;</li>
+<li><strong>Screens:</strong> template-drift-check.sh clean pass then a caught divergence · the runs.jsonl catch-and-encode rows · the self-improvement debt clause.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A16 — My AI studio publishes its own live P&amp;L dashboard</h4>
+<ul>
+<li><strong>One-liner:</strong> The factory builds a 6-page public web dashboard — company P&amp;L in INR, daily funnel per game, ads manager, per-game metrics — and publishes it to a live URL when Sahil just says <code>refresh</code>.</li>
+<li><strong>Proof:</strong> council/dashboards/ (index/funnel/ads/metrics/pm-*). publish-site.sh runs directly on <code>refresh</code> (agent-publishing authorized 2026-06-05). Salaries aggregated to one PII-safe line. 8+ consecutive dashboard commits.</li>
+<li><strong>Screens:</strong> the live dashboard (charts, P&amp;L, funnel) · terminal typing <code>refresh</code> and the site rebuilding.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A17 — The day my AI admitted it had been lying to a client</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil&#x27;s brain kept telling a nonprofit&#x27;s comms lead her invitations were &quot;live in 60 seconds&quot; while the page never moved — so he made it physically incapable of saying &quot;published&quot; unless the page can prove it.</li>
+<li><strong>Proof:</strong> shikshalokam confession session file (first-person). faithfulness_gate.py refuses to publish unless every prior timeline entry survives (exit 1 blocks merge). Root cause: a hand-copied mirror that drifted; fix = one source of truth.</li>
+<li><strong>Screens:</strong> build_site.py + faithfulness_gate.py PASS / 0 lost · the AI&#x27;s confession markdown · the InvokED invite page before/after.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>A18 — A recipe that spins up a client&#x27;s brain in one pasted prompt</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil turned his two-brain build into team-brain-setup: paste one boot prompt, answer a few mission questions, and Claude creates the client&#x27;s brain repos, populates from templates, and pushes — no re-deriving principles.</li>
+<li><strong>Proof:</strong> team-brain-setup README call sequence. INTENT.md &quot;users don&#x27;t pay for maintenance.&quot; Principle 7 &quot;template captures pattern, not specifics.&quot; BOOT_PROMPT.md drives gh repo create + populate + push. Extracted from 2 live engagements.</li>
+<li><strong>Screens:</strong> pasting BOOT_PROMPT.md into a fresh session · the templates/ folder · INTENT principles.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A19 — A $20 plan and a $200 plan, working as one brain</h4>
+<ul>
+<li><strong>One-liner:</strong> In magna-brain Sahil designed a two-plan permission asymmetry — the daily user on Claude $20 ideates in pure chat and can&#x27;t break anything, while every complaint she types silently becomes a GitHub Issue Sahil fixes from the $200 terminal.</li>
+<li><strong>Proof:</strong> magna-brain README permission table + feedback→Issue loop. Mehr writes only to raw/ and output/, can&#x27;t touch wiki/skills/.claude. First draft at a live GitHub Pages URL within ~60s. .claude/settings.json locks the cheap session read-only.</li>
+<li><strong>Screens:</strong> the permission table · the dissatisfaction-to-Issue flow · the live drafts page.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A20 — 50 terminal-survival carousels rendered from JSON, one browser launch</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil turns a JSON scenario into a 10-slide Instagram carousel by rendering ONE tall PNG and slicing it — 50 survival scenarios teaching real terminal commands, fully automated, design never drifts.</li>
+<li><strong>Proof:</strong> terminal-carousel-engine — 50 scenario JSONs, weeks 01–04 rendered. &quot;ONE browser launch. ONE screenshot. Then slice.&quot; Every feedback maps to exactly ONE layer (tokens/content/template).</li>
+<li><strong>Screens:</strong> compile+render+slice running · the rendered PNGs · JSON next to the polished slide.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A21 — Same engine, different brain: LinkedIn adtech-authority carousels on autopilot</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil reuses the same JSON-to-PNG engine to publish LinkedIn ecosystem-map carousels that frame him as an adtech authority — 142 slides rendered, dual-lens authority baked into the data.</li>
+<li><strong>Proof:</strong> linkedin-content — 18 JSONs, 142 PNGs. Dual-lens primitive: personalLens (Audiomob) + affiliateLens (MyChips). His brand isn&#x27;t hand-crafted post by post; it&#x27;s a pipeline.</li>
+<li><strong>Screens:</strong> rendered adtech ecosystem maps · build:all rendering multiple · a finished slide with the @modi.sahil.im bar.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>A22 — The brain wrote its first real story — a fifth-class dropout who ran a state&#x27;s schools</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil&#x27;s ShikshaLokam brain ingested a 78,000-character interview and produced two review-ready pieces — including a portrait of Masthanaiah Sir, a fifth-class dropout turned longest-serving Commissioner of School Education in Andhra Pradesh.</li>
+<li><strong>Proof:</strong> session file; the loop email→ingest→enrich→draft→HTML mirror→live URL. Outputs portraits.html + nagaland-coffee-book.html. 14 more stories queued; brain auto-learned a new program (NLNF 3.0).</li>
+<li><strong>Screens:</strong> the two generated story pages · the session file · a draft request producing review-ready copy.</li>
+<li><strong>Leverage:</strong> HIGH (best for big-ticket too)</li>
+</ul>
+
+<h4>A23 — The public page that physically cannot lie</h4>
+<ul>
+<li><strong>One-liner:</strong> Every brain&#x27;s public self-portrait is 100% generated from its real session files and re-verified drift-free at session start, end, and every push — so the page anyone scrolls can never quietly fall out of step with truth.</li>
+<li><strong>Proof:</strong> build_site.py deterministic (run twice, byte-identical) + verify_no_drift.sh. &quot;No one ever hand-edits a published page, so it can&#x27;t drift.&quot; Trust by construction — the hand-edit step was deleted.</li>
+<li><strong>Screens:</strong> build_site.py run twice + diff identical · verify_no_drift.sh passing · generated page next to source sessions.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<p>---</p>
+
+<h3>ANGLE 4 — BIG-TICKET (company-transformation consulting)</h3>
+
+<h4>B1 — Two real games, live on the App Store and Play Store, built by the factory</h4>
+<ul>
+<li><strong>One-liner:</strong> The factory drove two games (Bloxplode + Arrow Puzzle) all the way to live on iOS, Android, AND web — listings, signing, compliance, ads serving — and milestone F1 is officially &quot;outcome held.&quot;</li>
+<li><strong>Proof:</strong> ROADMAP F1 held 2026-05-23. 1,171 installs in 30 days, CPI ~$0.02. Store-readiness gates, signing pipeline, privacy-policy generator, compliance checklist all paid down as debt.</li>
+<li><strong>Screens:</strong> the two games open on a phone · store listing pages · arrow-puzzle live URL · the F1 &quot;outcome held&quot; line.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>B2 — I built a factory that builds factories</h4>
+<ul>
+<li><strong>One-liner:</strong> The council is a meta-factory: Sahil describes a consulting engagement and it scaffolds a purpose-built, self-improving &quot;mission factory&quot; for it — every scaffold logged so the next is leaner than the last.</li>
+<li><strong>Proof:</strong> council/runs.jsonl two real scaffolds (regulytics, stepahead-curriculum-engine), 18 &amp; 16 files. CLAUDE.md 6-step playbook + &quot;lean clause&quot; (not done until lessons are encoded). template_debt clustering → real edits.</li>
+<li><strong>Screens:</strong> the scaffold playbook · runs.jsonl two missions · COUNCIL.md a lesson being encoded.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>B3 — Two rival nonprofits, one hive mind, 1 million schools</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil built compounding &quot;content brains&quot; for ShikshaLokam and Mantra4Change — equal-access hive minds a non-coder just talks to, every chat leaving a record, getting sharper weekly — to power a movement aimed at all 1M public schools in India.</li>
+<li><strong>Proof:</strong> brain.yml &quot;one hive mind, equal contributors.&quot; Serves Shikshagraha (570,000+ leaders, 800,000+ micro-improvements, 27 states). LEDGER.md compounds; lint fails any commit with no ledger entry. Daily users (Sonal, Pratik) never touch git.</li>
+<li><strong>Screens:</strong> asking &quot;what do we know about DIKSHA&quot; and it answers with sources · the generated self-portrait page · LEDGER.md getting smarter week over week.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>B4 — My student runs the factory like a real producer, with his own live data access</h4>
+<ul>
+<li><strong>One-liner:</strong> Student Shahriar isn&#x27;t doing homework — he has his own AdMob, Google Ads, and Firebase access, runs the live metrics pipeline on his own machine, ships game PRs, and operates the factory as a producer.</li>
+<li><strong>Proof:</strong> HANDOFF brief grants real ad-account access. 75+ commits (mody-sahariar1). Self-provisions the Layer-3 pipeline in ~30 min. Owns economy instrumentation + ad-placement specs. Coached-executor &quot;Ripon-mode&quot; session shape.</li>
+<li><strong>Screens:</strong> Shahriar&#x27;s terminal running <code>go</code>/pull-metrics · git shortlog commit count · the handoff brief · his games live on a phone.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>B5 — The whole revenue stack runs from three terminals (same as A7, big-ticket framing)</h4>
+<ul>
+<li><strong>One-liner:</strong> Sourcing, accountability, and growth all run from three terminal-native brains while Sahil sleeps — a powered exoskeleton for a solo founder, every system privacy- and safety-engineered.</li>
+<li><strong>Proof:</strong> sales-os + fb-agent + strategy-os, each its own CLAUDE.md, all read/draft-only by default. This is what &quot;run your whole company like this&quot; looks like.</li>
+<li><strong>Screens:</strong> three terminals side by side · cd-ing between them running each headline command.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>B6 — A whole $100 sales funnel shipped and verified in one session</h4>
+<ul>
+<li><strong>One-liner:</strong> Idea to a live, tracked, payment-collecting, auto-delivering funnel — checkout, webhook, email delivery, signed downloads, deduped analytics — stood up and proven in one Claude Code session.</li>
+<li><strong>Proof:</strong> SHIPPED.md documents /ship, /api/checkout, /api/fb-capi, signed /access + /api/download, GTM dedup. Verified: real Stripe checkout completed, delivery email landed, CAPI accepted, same event_id both sides → dedup guaranteed.</li>
+<li><strong>Screens:</strong> /ship live · the Stripe flow · Meta Events Manager deduped · auto-delivery email + signed download.</li>
+<li><strong>Leverage:</strong> HIGH</li>
+</ul>
+
+<h4>B7 — Stratosphere: a distributed AI dev-swarm where work is paid in compute-credits</h4>
+<ul>
+<li><strong>One-liner:</strong> Sahil built a thin-slice distributed factory where humans connect machines, each runs an AI agent, and a full loop — issue→claimed→built→PR→CI green→merged→credit logged — runs through GitHub with a file-based pay ledger.</li>
+<li><strong>Proof:</strong> stratosphere README/CLAUDE.md swarm constitution. Loop proven for 1 mission up to 3 nodes. Hard compliance line: personal Claude Pro/Max must NOT do paid network work; paid nodes run open models / own key. ledger.json = pay stub.</li>
+<li><strong>Screens:</strong> the 5-command demo loop · gh pr checks --watch going green · npm run credits printing per-node balances.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul>
+
+<h4>B8 — Packaged a Dubai client&#x27;s manual invoicing into an automation build</h4>
+<ul>
+<li><strong>One-liner:</strong> For a real Dubai engagement, the council turned a messy manual billing process into a structured automation project — discovery interview, build plan, milestone schedule — all as polished branded PDFs.</li>
+<li><strong>Proof:</strong> council/deliverables ved-invoicing-discovery / build-plan / milestones PDFs. Authored &quot;Sahil Modi (council) for Ved.&quot; Discovery covers invoice-raise gaps, VAT, overdue detection, inter-company billing — designed to be filled by whoever runs billing day-to-day.</li>
+<li><strong>Screens:</strong> the branded discovery PDF · the milestone build-plan PDF · the Python renderer regenerating a deliverable.</li>
+<li><strong>Leverage:</strong> MEDIUM</li>
+</ul></div></details>
+</div>
+<div class="panel"><h3>🗣️ Voice profile</h3>
+  <details class="big"><summary>How the engine writes as you</summary><div class="body"><h2>voice-profile.md — Sahil Modi</h2>
+
+<blockquote>The persona: a solo founder who runs an agentic empire from a terminal. No team, no SaaS subscriptions, no agency he fully trusts. Just Claude Code, a folder of markdown files, and a command word. He&#x27;s not selling software — he&#x27;s selling <em>the way he works</em>, and the implicit dare: &quot;everyone needs to be on this.&quot;</blockquote>
+
+<h3>Who he is on camera</h3>
+
+<ul>
+<li><strong>Builder, not guru.</strong> He shows the terminal, the repo, the live URL. The proof IS the content. He never asks you to take his word — he scrolls the receipts.</li>
+<li><strong>Solo operator with leverage envy as the hook.</strong> The recurring flex is not &quot;I work hard&quot; — it&#x27;s &quot;I built the thing that does the work.&quot; <em>&quot;I&#x27;m not building a game, I built the thing that builds games.&quot;</em> <em>&quot;A factory that builds factories.&quot;</em> He sells the exoskeleton, not the muscle.</li>
+<li><strong>Founder-to-founder, slightly relentless.</strong> He talks to other operators like a peer who&#x27;s three moves ahead and a little impatient that they&#x27;re still doing it by hand. Warm but pointed: <em>&quot;You&#x27;re feeding the ad optimizer garbage and you don&#x27;t even know it.&quot;</em></li>
+<li><strong>Proof-over-hype, allergic to drift.</strong> His whole architecture is anti-bullshit: cold-run gates, faithfulness gates, &quot;it&#x27;s live is said only after the push succeeds,&quot; dedup by shared event_id. He carries that into his content — every claim has a file path behind it.</li>
+</ul>
+
+<h3>How he actually writes (study cues from his repos)</h3>
+
+<ul>
+<li><strong>Terse. Table-first. Numbers before narrative.</strong> (FB Agent: &quot;Terse. Table-first. Numbers before narrative.&quot;) Lead with the metric, then the story.</li>
+<li><strong>The artifact is the product.</strong> &quot;The HTML is the product. You write it like a designer, not a programmer.&quot; He frames tools as living things with a single source of truth.</li>
+<li><strong>Command-word energy.</strong> He types one word — <code>go</code>, <code>refresh</code>, <code>morning</code>, <code>prep me for 4pm</code> — and a system moves. Dramatize the single command vs. the giant outcome.</li>
+<li><strong>Rules mined from real failure, each with a name attached.</strong> &quot;Balkrishna ghosted after 5 messages.&quot; &quot;I stopped telling Sonal her work was published.&quot; His credibility comes from naming the exact mistake the rule was born from.</li>
+<li><strong>Guardrail-first integrity.</strong> &quot;Read-only by default.&quot; &quot;The credential never enters Claude&#x27;s context.&quot; &quot;The AI proposes, Sahil disposes.&quot; This is a <em>trust</em> signal — lean into it, it&#x27;s a differentiator.</li>
+<li><strong>Plain English to the machine.</strong> He talks to his systems like people: &quot;who haven&#x27;t I talked to in 30 days that I should.&quot; Show the conversational input, then the polished output.</li>
+</ul>
+
+<h3>Recurring phrases / verbal signatures</h3>
+
+<ul>
+<li>&quot;I&#x27;m not building X, I built the thing that builds X.&quot;</li>
+<li>&quot;From one word.&quot; / &quot;One command.&quot; / &quot;He just says <code>go</code>.&quot;</li>
+<li>&quot;No CRM. No Airtable. Just a folder of text files.&quot;</li>
+<li>&quot;The AI proposes. I dispose.&quot;</li>
+<li>&quot;It&#x27;s all Claude Code.&quot;</li>
+<li>&quot;Most people [hire an agency / buy a list / open Canva]. I just—&quot; (then the terminal)</li>
+<li>&quot;Verified end-to-end.&quot; / &quot;Outcome held.&quot; / &quot;Zero blocking gaps.&quot;</li>
+<li>&quot;The credential never touches its context.&quot;</li>
+<li>&quot;Edit one file. Everything updates. Nothing drifts.&quot;</li>
+</ul>
+
+<h3>Energy &amp; pacing</h3>
+
+<ul>
+<li>Open cold with the impossible-sounding claim or the live screen. No &quot;hey guys.&quot;</li>
+<li>Mid-clip: one moment of <em>receipt</em> — scroll the runs.jsonl, the metrics table, the green PR checks, the kid grinning at their 3D world.</li>
+<li>Close with a dare or an invitation, not a beg. He&#x27;s letting you in on something, not pitching.</li>
+<li>He&#x27;s allowed to be a little smug — but it&#x27;s <em>earned</em> smug, always backed by a file path.</li>
+</ul>
+
+<h3>Do</h3>
+
+<ul>
+<li>Show the terminal and the live result in the SAME clip. Input → output.</li>
+<li>Put the number on screen as text (1,171 installs, 81 contacts, 159 runs, 142 slides).</li>
+<li>Name the real human in the story (Shahriar, Kimaya, Sonal, the agency, Ekta the first customer).</li>
+<li>Frame the guardrail as a flex (&quot;it can see my ad money but structurally can&#x27;t spend it&quot;).</li>
+<li>Make the viewer feel behind — kindly. &quot;You&#x27;re still doing this by hand.&quot;</li>
+</ul>
+
+<h3>Don&#x27;t</h3>
+
+<ul>
+<li>Don&#x27;t explain the tech stack unless the stack IS the punchline. Outcome first.</li>
+<li>Don&#x27;t hedge or over-qualify. He ships drafts; he doesn&#x27;t ask permission in public.</li>
+<li>Don&#x27;t use generic hustle-bro language (&quot;grind,&quot; &quot;10x your life&quot;). His flex is <em>leverage</em>, not effort.</li>
+<li>Don&#x27;t claim what isn&#x27;t in a file. If there&#x27;s no receipt, it&#x27;s not a Sahil story.</li>
+<li>No emojis in his speaking voice (his reports use 🚩 functionally, but he talks plainly).</li>
+</ul>
+
+<h3>The four-angle CTA library</h3>
+
+<h4>1) $100 PDF — stepaheadco.com/ship (global scale, top priority)</h4>
+<ul>
+<li>&quot;One prompt. Two hours. Your name live on the internet. It&#x27;s $100 at stepaheadco.com/ship — and the first PDF gets you from zero terminal to a live site.&quot;</li>
+<li>&quot;I bottled the exact way I teach beginners into 13 PDFs. Link&#x27;s in bio. Paste one prompt, ship a real thing.&quot;</li>
+<li>&quot;If you&#x27;ve ever said &#x27;I can&#x27;t code&#x27; — this PDF was cold-tested by a robot beginner so you literally can&#x27;t get stuck. stepaheadco.com/ship.&quot;</li>
+<li>Soft: &quot;Comment SHIP and I&#x27;ll send you Module 1.&quot;</li>
+</ul>
+
+<h4>2) Bi-weekly live webinar — 100 AED (recurring + upsell)</h4>
+<ul>
+<li>&quot;I run this live every two weeks — I&#x27;ll build something from scratch on the call and you watch the whole terminal. 100 AED to join. Seat link in bio.&quot;</li>
+<li>&quot;Next live session: I open the factory and run it in front of you. Bring your idea, leave with a plan. Join the waitlist.&quot;</li>
+<li>&quot;My students ship real apps on the App Store. I show you exactly how on the live call. Link below.&quot;</li>
+</ul>
+
+<h4>3) Automation / build-in-public for business owners</h4>
+<ul>
+<li>&quot;If you run a business and you&#x27;re still doing this by hand, DM me &#x27;AUTOMATE.&#x27; I build these in public — yours could be next.&quot;</li>
+<li>&quot;I&#x27;ll build the agent that watches your agency / runs your funnel / sources your leads. Send me what&#x27;s eating your week.&quot;</li>
+<li>&quot;This took me one session. It&#x27;d save you a salary. Want me to build it for you? DM &#x27;BUILD.&#x27;&quot;</li>
+</ul>
+
+<h4>4) Big-ticket company-transformation consulting</h4>
+<ul>
+<li>&quot;This isn&#x27;t a tool — it&#x27;s a nervous system for a company. If you want your whole operation to run like this, let&#x27;s talk. DM &#x27;TRANSFORM.&#x27;&quot;</li>
+<li>&quot;I scaffold purpose-built AI factories for companies, and each one gets leaner than the last. If you&#x27;re scaling and your headcount is scaling with it, we should talk.&quot;</li>
+<li>&quot;I did this for an education movement aiming at a million schools. If your org is drowning in manual work, this is what I do. Book a call — link in bio.&quot;</li>
+</ul></div></details>
+</div>
+<footer>Generated by <code>build-site.py</code> from the repo's source files. Run it after every engine run to refresh. Priority order: PDF → Webinar → Automation → Big-ticket.</footer>
+</div></body></html>

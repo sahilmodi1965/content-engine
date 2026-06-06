@@ -38,7 +38,9 @@ When Sahil says **"run the engine"**, **"new wins"**, or drops files in `capture
 5. **Refresh `CONTENT-SPRINT.md`** so the newest, highest-leverage scripts sit on top.
 6. **Tag Higgsfield-fit** scripts in `higgsfield/ready-for-soul.md` (cinematic/flex concepts where Soul-ID b-roll beats talking-head).
 7. **Log the run** to `council/runs.jsonl`: `{ts, trigger, narratives_added, scripts_added, angles, notes}`.
-8. **Empty `captures/`** (move ingested notes into `captures/_ingested/` so nothing is re-banked).
+8. **Regenerate the dashboard:** `python3 build-site.py` → rewrites `index.html` from the source files. This is the one readable page Sahil opens to understand everything; it must be refreshed every run.
+9. **Empty `captures/`** (move ingested notes into `captures/_ingested/` so nothing is re-banked).
+10. **Push:** commit and `git push` so the private GitHub repo + `index.html` stay current.
 
 ## Non-negotiables (Sahil judges hard)
 
