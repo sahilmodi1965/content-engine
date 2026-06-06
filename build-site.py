@@ -80,6 +80,11 @@ hig = ""
 hp = os.path.join(BASE, "higgsfield/test-reel/TEST-REEL.md")
 if os.path.exists(hp): hig = open(hp, encoding="utf-8").read()
 
+productions = []
+pp = os.path.join(BASE, "higgsfield/productions.jsonl")
+if os.path.exists(pp):
+    productions = [json.loads(l) for l in open(pp, encoding="utf-8") if l.strip()]
+
 # headline proof from sprint
 proof = []
 sp = os.path.join(BASE, "CONTENT-SPRINT.md")
@@ -157,6 +162,11 @@ nav a span{{color:var(--mut);font-variant-numeric:tabular-nums}}
 blockquote{{border-left:3px solid var(--line);margin:8px 0;padding-left:12px;color:var(--mut)}}
 details.big>summary{{font-weight:600;cursor:pointer;padding:6px 0}}
 a{{color:var(--accent)}}
+.prod{{display:flex;gap:14px;align-items:flex-start;margin:12px 0;flex-wrap:wrap}}
+.prod video{{width:200px;max-width:48vw;border-radius:10px;background:#000;border:1px solid var(--line)}}
+.prodmeta{{flex:1;min-width:200px}}
+.prodmeta b{{display:block;margin-bottom:6px}}
+.pnote{{color:var(--mut);font-size:13px;margin-top:6px}}
 footer{{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:16px}}
 </style></head><body><div class="wrap">
 <header>
@@ -173,6 +183,7 @@ footer{{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var
 </div>
 <nav>{''.join(nav)}</nav>
 <div class="panel proof"><h3>🔥 Headline proof — your strongest receipts</h3><ul>{proof_html}</ul></div>
+{('<div class="panel"><h3>🎞️ Productions — rendered Higgsfield reels</h3>' + ''.join('<div class="prod"><video controls preload="metadata" poster="' + esc(p.get('still_url','')) + '" src="' + esc(p.get('clip_url','')) + '"></video><div class="prodmeta"><b>' + esc(p.get('title','')) + '</b><span class="lev" style="background:#2563eb1a;color:#2563eb">' + esc(p.get('angle','')) + '</span><div class="pnote">' + esc(p.get('status','')) + ' · ' + str(p.get('credits','')) + ' cr · ' + esc(p.get('date','')) + '</div><div class="pnote">' + esc(p.get('note','')) + '</div></div></div>' for p in productions) + '</div>') if productions else ''}
 <div class="panel"><h3>🎬 Higgsfield channel — staged test</h3>
   <p style="color:var(--mut);margin:.2em 0">Soul-ID AI reels with your real VO. Spend-gated: cheap stills → review → hardest motion shot → review + cost → render. One test reel staged, awaiting your review &amp; <code>SOUL_UUID</code>.</p>
   <details class="big"><summary>Open test-reel spec</summary><div class="body">{md_to_html(hig)}</div></details>
