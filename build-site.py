@@ -34,6 +34,16 @@ def md_to_html(md):
         if in_ul: out.append("</ul>"); in_ul = False
     while i < len(lines):
         line = lines[i]
+        # ---- fenced code block (```), e.g. paste-ready prompts ----
+        if line.lstrip().startswith("```"):
+            close_ul()
+            i += 1
+            buf = []
+            while i < len(lines) and not lines[i].lstrip().startswith("```"):
+                buf.append(lines[i]); i += 1
+            i += 1  # skip closing fence
+            out.append('<pre class="copyable"><code>' + esc("\n".join(buf)) + "</code></pre>")
+            continue
         # ---- markdown pipe table (header row + separator row) ----
         nxt = lines[i + 1] if i + 1 < len(lines) else ""
         if line.lstrip().startswith("|") and re.match(r"^\s*\|?[\s:|-]*-[\s:|-]*\|", nxt):
@@ -99,6 +109,10 @@ if os.path.exists(vp): voice = open(vp, encoding="utf-8").read()
 wall = ""
 wp2 = os.path.join(BASE, "content-wall.md")
 if os.path.exists(wp2): wall = open(wp2, encoding="utf-8").read()
+
+ugc_md = ""
+up = os.path.join(BASE, "ugc.md")
+if os.path.exists(up): ugc_md = open(up, encoding="utf-8").read()
 
 hig = ""
 hp = os.path.join(BASE, "higgsfield/test-reel/TEST-REEL.md")
@@ -187,6 +201,12 @@ table.shot th,table.shot td{{border:1px solid var(--line);padding:7px 9px;text-a
 table.shot th{{background:#0f1420;color:#aeb6c9;font-weight:600;white-space:nowrap}}
 table.shot td:first-child{{white-space:nowrap;color:var(--mut);font-variant-numeric:tabular-nums}}
 table.shot tbody tr:last-child{{background:#11261b}}
+pre.copyable{{position:relative;background:#0b0e14;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfd5e2;margin:10px 0}}
+pre.copyable code{{background:none;padding:0;color:inherit}}
+.copybtn{{position:absolute;top:8px;right:8px;background:#1d283a;color:#dbeafe;border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:12px;cursor:pointer}}
+.copybtn:hover{{background:#26344a}}
+.pagelink{{display:inline-block;margin:10px 0 0;background:#1d283a;border:1px solid #2b3b55;color:#dbeafe;border-radius:10px;padding:9px 14px;text-decoration:none;font-weight:600}}
+.pagelink:hover{{background:#26344a}}
 .filelink{{display:inline-block;margin:10px 0 16px;color:var(--mut);font-size:12px;text-decoration:none}}
 blockquote{{border-left:3px solid var(--line);margin:8px 0;padding-left:12px;color:var(--mut)}}
 details.big>summary{{font-weight:600;cursor:pointer;padding:6px 0}}
@@ -201,6 +221,7 @@ footer{{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var
 <header>
   <h1>Sahil's Content Engine</h1>
   <p class="sub">My standing PR team as code — every story, script and CTA in one page. Updated {esc(updated)}.</p>
+  <a class="pagelink" href="ugc.html">🎥 UGC ad scripts — paste-ready Higgsfield prompts →</a>
 </header>
 <div class="stats">
   <div class="stat"><b>{total}</b><span>scripts</span></div>
@@ -229,4 +250,42 @@ footer{{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var
 </div></body></html>"""
 
 open(os.path.join(BASE, "index.html"), "w", encoding="utf-8").write(HTML)
-print(f"Wrote index.html — {total} scripts, {len(runs)} runs, {len(proof)} proof points.")
+
+# ---- standalone UGC page ----
+UGC = f"""<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UGC ad scripts — Sahil's Content Engine</title>
+<style>
+:root{{--bg:#0b0e14;--card:#141925;--ink:#e6e9ef;--mut:#8b93a7;--line:#222a3a;--accent:#3b82f6}}
+*{{box-sizing:border-box}}
+body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}}
+.wrap{{max-width:820px;margin:0 auto;padding:28px 20px 80px}}
+a{{color:var(--accent)}}
+.back{{display:inline-block;margin-bottom:14px;color:var(--mut);text-decoration:none;font-size:14px}}
+h2{{font-size:26px;margin:6px 0 4px}}
+h3{{font-size:19px;color:var(--ink);margin:34px 0 6px;border-top:1px solid var(--line);padding-top:24px}}
+h4{{font-size:15px;color:#aeb6c9;margin:16px 0 4px}}
+p{{margin:8px 0}}
+strong{{color:#fff}}
+code{{background:#0b0e14;border:1px solid var(--line);padding:1px 5px;border-radius:4px;font-size:13px;color:#9ece6a}}
+blockquote{{border-left:3px solid var(--accent);margin:10px 0;padding:6px 0 6px 14px;color:#dbeafe;background:#11182700;font-size:15.5px}}
+ul{{padding-left:20px}} li{{margin:6px 0}}
+pre.copyable{{position:relative;background:#0b0e14;border:1px solid var(--line);border-radius:10px;padding:16px;padding-top:34px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfd5e2;margin:10px 0}}
+pre.copyable code{{background:none;border:none;padding:0;color:inherit}}
+.copybtn{{position:absolute;top:8px;right:8px;background:#1d283a;color:#dbeafe;border:1px solid var(--line);border-radius:7px;padding:4px 12px;font-size:12px;cursor:pointer;font-weight:600}}
+.copybtn:hover{{background:#26344a}}
+</style></head><body><div class="wrap">
+<a class="back" href="index.html">← back to the engine</a>
+{md_to_html(ugc_md)}
+</div>
+<script>
+document.querySelectorAll('pre.copyable').forEach(function(pre){{
+  var b=document.createElement('button');b.className='copybtn';b.textContent='Copy prompt';
+  b.onclick=function(){{navigator.clipboard.writeText(pre.querySelector('code').innerText);b.textContent='Copied ✓';setTimeout(function(){{b.textContent='Copy prompt'}},1500)}};
+  pre.appendChild(b);
+}});
+</script>
+</body></html>"""
+open(os.path.join(BASE, "ugc.html"), "w", encoding="utf-8").write(UGC)
+
+print(f"Wrote index.html ({total} scripts, {len(runs)} runs) + ugc.html.")

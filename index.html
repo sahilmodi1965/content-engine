@@ -37,6 +37,12 @@ table.shot th,table.shot td{border:1px solid var(--line);padding:7px 9px;text-al
 table.shot th{background:#0f1420;color:#aeb6c9;font-weight:600;white-space:nowrap}
 table.shot td:first-child{white-space:nowrap;color:var(--mut);font-variant-numeric:tabular-nums}
 table.shot tbody tr:last-child{background:#11261b}
+pre.copyable{position:relative;background:#0b0e14;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfd5e2;margin:10px 0}
+pre.copyable code{background:none;padding:0;color:inherit}
+.copybtn{position:absolute;top:8px;right:8px;background:#1d283a;color:#dbeafe;border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:12px;cursor:pointer}
+.copybtn:hover{background:#26344a}
+.pagelink{display:inline-block;margin:10px 0 0;background:#1d283a;border:1px solid #2b3b55;color:#dbeafe;border-radius:10px;padding:9px 14px;text-decoration:none;font-weight:600}
+.pagelink:hover{background:#26344a}
 .filelink{display:inline-block;margin:10px 0 16px;color:var(--mut);font-size:12px;text-decoration:none}
 blockquote{border-left:3px solid var(--line);margin:8px 0;padding-left:12px;color:var(--mut)}
 details.big>summary{font-weight:600;cursor:pointer;padding:6px 0}
@@ -51,6 +57,7 @@ footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(
 <header>
   <h1>Sahil's Content Engine</h1>
   <p class="sub">My standing PR team as code — every story, script and CTA in one page. Updated 2026-06-06.</p>
+  <a class="pagelink" href="ugc.html">🎥 UGC ad scripts — paste-ready Higgsfield prompts →</a>
 </header>
 <div class="stats">
   <div class="stat"><b>24</b><span>scripts</span></div>
@@ -88,11 +95,9 @@ footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(
 
 <p>The top row of the feed is the storefront. Alternate so the first screen reads <em>proof → teach → build</em>, never three sells in a row:</p>
 
-<p><code>`</code></p>
-<p>[ PROOF: 50 students ] [ TEACH: tutorial hell ] [ BUILD: 1M dirham ]</p>
-<p>[ PROOF: Kimaya watch ] [ DEMAND: no bootcamp ]  [ PROOF: games live ]</p>
-<p>[ TEACH: free AI stuck] [ CONNECT: one word    ] [ PROOF: resume 90m ]</p>
-<p><code>`</code></p>
+<pre class="copyable"><code>[ PROOF: 50 students ] [ TEACH: tutorial hell ] [ BUILD: 1M dirham ]
+[ PROOF: Kimaya watch ] [ DEMAND: no bootcamp ]  [ PROOF: games live ]
+[ TEACH: free AI stuck] [ CONNECT: one word    ] [ PROOF: resume 90m ]</code></pre>
 
 <h3>The 4-week wall (≈5 posts/week, ranked by leverage within each week)</h3>
 
@@ -139,10 +144,8 @@ footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(
 </ul>
 
 <h3>Step 1 — Cost estimate FIRST (free, no spend)</h3>
-<p><code>`</code></p>
-<p>higgsfield generate cost text2image_soul_v2 --aspect_ratio 9:16 --quality 2k     # ~0.12 cr each × 4 stills</p>
-<p>higgsfield generate cost kling3_0 --mode pro --duration 5 --aspect_ratio 9:16    # ~8.75 cr (motion test only)</p>
-<p><code>`</code></p>
+<pre class="copyable"><code>higgsfield generate cost text2image_soul_v2 --aspect_ratio 9:16 --quality 2k     # ~0.12 cr each × 4 stills
+higgsfield generate cost kling3_0 --mode pro --duration 5 --aspect_ratio 9:16    # ~8.75 cr (motion test only)</code></pre>
 <p>Expected board cost ≈ <strong>0.5 cr stills + 8.75 cr one motion clip ≈ ~9.3 cr</strong> for the full test. Confirm against balance before proceeding.</p>
 
 <h3>Step 2 — Cheap-still board (4 stills, Soul ID, ~0.12 cr each) — DO THIS FIRST</h3>
@@ -153,20 +156,16 @@ footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(
 <p>3. <strong>Factory-of-factories visual</strong> — stylized: identical glowing &quot;factory&quot; modules receding into depth, one assembling another (the metaphor as a single striking frame). <code>soul_cinematic</code> ok here (no face needed).</p>
 <p>4. <strong>Turn-to-camera</strong> — Sahil mid-turn toward lens, slight earned smirk — the Beat-4 &quot;it gets smarter every run&quot; payoff frame.</p>
 
-<p><code>`</code></p>
-<p>higgsfield generate create text2image_soul_v2 --prompt &quot;&lt;beat-1 scene + explicit feature description of Sahil&gt;&quot; --aspect_ratio 9:16 --quality 2k --custom_reference_id &lt;SOUL_UUID&gt; --wait</p>
-<h2>repeat for beats 2 and 4 (face-locked).</h2>
-<p>higgsfield generate create soul_cinematic --prompt &quot;&lt;beat-3 factory-of-factories, no face&gt;&quot; --aspect_ratio 9:16 --quality 2k --wait</p>
-<p><code>`</code></p>
+<pre class="copyable"><code>higgsfield generate create text2image_soul_v2 --prompt &quot;&lt;beat-1 scene + explicit feature description of Sahil&gt;&quot; --aspect_ratio 9:16 --quality 2k --custom_reference_id &lt;SOUL_UUID&gt; --wait
+# repeat for beats 2 and 4 (face-locked).
+higgsfield generate create soul_cinematic --prompt &quot;&lt;beat-3 factory-of-factories, no face&gt;&quot; --aspect_ratio 9:16 --quality 2k --wait</code></pre>
 
 <h4>⛔ REVIEW GATE 1 — Sahil reviews the 4 stills</h4>
 <p>Does the look hold? Is the face unmistakably Sahil and never creepy? Is the factory frame striking? <strong>No video until this is a yes.</strong></p>
 
 <h3>Step 3 — Animate the HARDEST motion shot first (one clip, ~8.75 cr)</h3>
 <p>The hardest motion here = <strong>the turn-to-camera (beat 4)</strong> — human facial motion is where image→video breaks. Animate THAT one first, not an easy push-in.</p>
-<p><code>`</code></p>
-<p>higgsfield generate create kling3_0 --mode pro --duration 5 --aspect_ratio 9:16 --sound off --start-image &lt;beat-4-still-path-or-uuid&gt; --wait</p>
-<p><code>`</code></p>
+<pre class="copyable"><code>higgsfield generate create kling3_0 --mode pro --duration 5 --aspect_ratio 9:16 --sound off --start-image &lt;beat-4-still-path-or-uuid&gt; --wait</code></pre>
 
 <h4>⛔ REVIEW GATE 2 — Sahil reviews the motion + the running cost</h4>
 <p>Does the turn read as real, or does the face warp? Judge motion as harshly as the stills.</p>
@@ -176,9 +175,7 @@ footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(
 </ul>
 
 <h3>Step 4 — Reconcile</h3>
-<p><code>`</code></p>
-<p>higgsfield account transactions --size 10</p>
-<p><code>`</code></p>
+<pre class="copyable"><code>higgsfield account transactions --size 10</code></pre>
 <p>Log actual spend in <code>invoice.md</code> here. Deleting files does not refund credits — decide before rendering, not after.</p>
 
 <p>---</p>
