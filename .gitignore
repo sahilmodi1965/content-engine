@@ -1,0 +1,10 @@
+# Higgsfield render outputs (large, regenerable, cost-tracked separately)
+higgsfield/**/stills/
+higgsfield/**/clips/
+*.png
+*.jpg
+*.mp4
+*.mov
+
+# OS
+.DS_Store
