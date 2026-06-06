@@ -4,9 +4,9 @@
 
 ## Table of contents
 
-- **ANGLE 1 — PDF (stepaheadco.com/ship, $100):** P1 1-page-to-live-site · P2 cold-run gate · P3 11 authoring principles · P4 13-module engine + live order · P5 Module 5 ATS resume tool
+- **ANGLE 1 — PDF (stepaheadco.com/ship, $100):** P1 1-page-to-live-site · P2 cold-run gate · P3 11 authoring principles · P4 13-module engine + live order · P5 Module 5 ATS resume tool · P6 bottled 1-on-1 coaching (reposition) · P7 coaching-not-answers (why-not-free)
 - **ANGLE 2 — WEBINAR (100 AED live):** W1 student wall (receipts) · W2 Kimaya Apple Watch app · W3 Advika live web game · W4 4K chalkboard teaching tool
-- **ANGLE 3 — AUTOMATION (build-in-public):** A1 9-agent game factory · A2 FB Agent catches the agency · A3 ROAS data layer (credential-safe) · A4 vibe-prospecting sniper · A5 Sales OS folder-CRM · A6 inbox archaeology · A7 three terminals = whole business · A8 carousel engine (Strategy OS) · A9 SEO/AEO 4 sites one session · A10 937-line WP CLI · A11 terminal demos close kids · A12 $0-infra CAPI funnel · A13 brand.json single source · A14 WhatsApp bot from 8 DON'Ts · A15 template-drift self-healing · A16 public P&L dashboard · A17 the AI that lied (faithfulness gate) · A18 team-brain one-prompt setup · A19 two-plan permission asymmetry · A20 50 terminal carousels · A21 LinkedIn adtech authority engine · A22 ShikshaLokam first real story · A23 page that can't lie
+- **ANGLE 3 — AUTOMATION (build-in-public):** A1 9-agent game factory · A2 FB Agent catches the agency · A3 ROAS data layer (credential-safe) · A4 vibe-prospecting sniper · A5 Sales OS folder-CRM · A6 inbox archaeology · A7 three terminals = whole business · A8 carousel engine (Strategy OS) · A9 SEO/AEO 4 sites one session · A10 937-line WP CLI · A11 terminal demos close kids · A12 $0-infra CAPI funnel · A13 brand.json single source · A14 WhatsApp bot from 8 DON'Ts · A15 template-drift self-healing · A16 public P&L dashboard · A17 the AI that lied (faithfulness gate) · A18 team-brain one-prompt setup · A19 two-plan permission asymmetry · A20 50 terminal carousels · A21 LinkedIn adtech authority engine · A22 ShikshaLokam first real story · A23 page that can't lie · A24 1M-dirham build-in-public
 - **ANGLE 4 — BIG-TICKET (consulting):** B1 two games live on the stores · B2 factory-that-builds-factories (council) · B3 two-nonprofit hive minds · B4 student-as-producer (Shahriar) · B5 whole revenue stack from 3 terminals · B6 funnel shipped in one session · B7 stratosphere paid swarm · B8 Ved invoice automation engagement
 
 ---
@@ -42,6 +42,18 @@
 - **Proof:** StepAhead-Module-5.pdf (SAE-M05). Two-pane habit (chat / terminal). The deliverable isn't a file — it's a more capable person. ~1.5–2 hrs.
 - **Screens:** beginner's terminal building the resume · the rendered web page · the downloaded PDF · GitHub squares lighting up.
 - **Leverage:** MEDIUM
+
+### P6 — Bottled 1-on-1 coaching: the done-with-you reposition (50+ students)
+- **One-liner:** The reason a stranger pays $100 isn't a clever system — it's that Sahil coached 50+ beginners 1-on-1 to ship their first real project, then bottled exactly what he told each of them into one prompt, so a free AI chat coaches you the same way. Done-with-you, without the 1-on-1 price.
+- **Proof:** stepaheadco.com/students public wall of real shippers; AUTHORING-PRINCIPLES.md (every line mined from a real teaching correction); the prompt makes a free chat coach one short line at a time. This is the positioning that replaced the "robot too dumb to use a computer" lead — proof + origin story, not system-flex.
+- **Screens:** the live student wall · pasting the prompt and watching it coach · a real *.github.io loading · the family-text moment.
+- **Leverage:** HIGH
+
+### P7 — The coaching layer: why "free ChatGPT" isn't the competition
+- **One-liner:** Free AI has the answers; beginners still quit in hour one because they don't know what to ask, in what order, or that the red error is normal — the pack is the coaching/sequencing layer on top of the free model, killing the "why pay when it's free" objection honestly.
+- **Proof:** cold-run-report.md (real traps a clueless runner hit) + AUTHORING-PRINCIPLES.md (P1–P11). Same free model underneath; it leads instead of waits the moment the prompt is pasted.
+- **Screens:** beginner frozen at a blank cursor → the same window leading them after the paste · one real patched trap (macOS ssh-add).
+- **Leverage:** HIGH
 
 ---
 
@@ -212,6 +224,12 @@
 - **Proof:** build_site.py deterministic (run twice, byte-identical) + verify_no_drift.sh. "No one ever hand-edits a published page, so it can't drift." Trust by construction — the hand-edit step was deleted.
 - **Screens:** build_site.py run twice + diff identical · verify_no_drift.sh passing · generated page next to source sessions.
 - **Leverage:** MEDIUM
+
+### A24 — Building Stepahead into a million-dirham brand, in public
+- **One-liner:** The build-in-public vision narrative — one founder, no team, no investors, building an education brand toward a stated 1M AED goal by leveraging the engine across product (the live $100 funnel), sales (leads + the live webinar), and content (this engine writing the post). The goal is the destination, not a number reached.
+- **Proof:** stepaheadco.com/ship live Stripe + Meta CAPI funnel, real orders processed; stepaheadco.com/students wall of real shippers; bi-weekly live webinar; the content engine itself. 1M AED = stated target, **never** claimed as achieved.
+- **Screens:** /ship → Stripe checkout → a real order · the student wall · a three-shot of funnel/leads/content engine · the goal number framed as "building toward."
+- **Leverage:** HIGH (build-in-public flagship)
 
 ---
 

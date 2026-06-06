@@ -26,20 +26,40 @@ def md_inline(s):
     return s
 
 def md_to_html(md):
+    lines = md.splitlines()
     out, in_ul = [], False
-    for line in md.splitlines():
+    i = 0
+    def close_ul():
+        nonlocal in_ul
+        if in_ul: out.append("</ul>"); in_ul = False
+    while i < len(lines):
+        line = lines[i]
+        # ---- markdown pipe table (header row + separator row) ----
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        if line.lstrip().startswith("|") and re.match(r"^\s*\|?[\s:|-]*-[\s:|-]*\|", nxt):
+            close_ul()
+            cells = lambda l: [c.strip() for c in l.strip().strip("|").split("|")]
+            head = cells(line)
+            i += 2
+            body = []
+            while i < len(lines) and lines[i].lstrip().startswith("|"):
+                body.append(cells(lines[i])); i += 1
+            thead = "".join(f"<th>{md_inline(h)}</th>" for h in head)
+            tbody = "".join("<tr>" + "".join(f"<td>{md_inline(c)}</td>" for c in r) + "</tr>" for r in body)
+            out.append(f'<table class="shot"><thead><tr>{thead}</tr></thead><tbody>{tbody}</tbody></table>')
+            continue
         if re.match(r"^\s*[-*] ", line):
             if not in_ul: out.append("<ul>"); in_ul = True
             out.append("<li>" + md_inline(line.split(" ", 1)[1] if " " in line.strip() else "") + "</li>")
-            continue
-        if in_ul: out.append("</ul>"); in_ul = False
+            i += 1; continue
+        close_ul()
         m = re.match(r"^(#{1,6})\s+(.*)$", line)
         if m:
-            lvl = len(m.group(1)); out.append(f"<h{lvl+1}>{md_inline(m.group(2))}</h{lvl+1}>"); continue
-        if line.strip() == "": out.append(""); continue
-        if line.strip().startswith(">"): out.append("<blockquote>" + md_inline(line.strip()[1:].strip()) + "</blockquote>"); continue
-        out.append("<p>" + md_inline(line) + "</p>")
-    if in_ul: out.append("</ul>")
+            lvl = len(m.group(1)); out.append(f"<h{lvl+1}>{md_inline(m.group(2))}</h{lvl+1}>"); i += 1; continue
+        if line.strip() == "": out.append(""); i += 1; continue
+        if line.strip().startswith(">"): out.append("<blockquote>" + md_inline(line.strip()[1:].strip()) + "</blockquote>"); i += 1; continue
+        out.append("<p>" + md_inline(line) + "</p>"); i += 1
+    close_ul()
     return "\n".join(out)
 
 def parse_script(path):
@@ -75,6 +95,10 @@ if os.path.exists(bp): bank = open(bp, encoding="utf-8").read()
 voice = ""
 vp = os.path.join(BASE, "voice-profile.md")
 if os.path.exists(vp): voice = open(vp, encoding="utf-8").read()
+
+wall = ""
+wp2 = os.path.join(BASE, "content-wall.md")
+if os.path.exists(wp2): wall = open(wp2, encoding="utf-8").read()
 
 hig = ""
 hp = os.path.join(BASE, "higgsfield/test-reel/TEST-REEL.md")
@@ -158,6 +182,11 @@ nav a span{{color:var(--mut);font-variant-numeric:tabular-nums}}
 .body{{border-top:1px solid var(--line);padding-top:10px;font-size:14.5px}}
 .body h2,.body h3{{font-size:15px;color:#aeb6c9;margin:14px 0 4px}}
 .body code{{background:#0b0e14;padding:1px 5px;border-radius:4px;font-size:13px;color:#9ece6a}}
+table.shot{{border-collapse:collapse;width:100%;margin:10px 0 16px;font-size:12.5px;display:block;overflow-x:auto}}
+table.shot th,table.shot td{{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}}
+table.shot th{{background:#0f1420;color:#aeb6c9;font-weight:600;white-space:nowrap}}
+table.shot td:first-child{{white-space:nowrap;color:var(--mut);font-variant-numeric:tabular-nums}}
+table.shot tbody tr:last-child{{background:#11261b}}
 .filelink{{display:inline-block;margin:10px 0 16px;color:var(--mut);font-size:12px;text-decoration:none}}
 blockquote{{border-left:3px solid var(--line);margin:8px 0;padding-left:12px;color:var(--mut)}}
 details.big>summary{{font-weight:600;cursor:pointer;padding:6px 0}}
@@ -183,6 +212,7 @@ footer{{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var
 </div>
 <nav>{''.join(nav)}</nav>
 <div class="panel proof"><h3>🔥 Headline proof — your strongest receipts</h3><ul>{proof_html}</ul></div>
+{('<div class="panel"><h3>📅 Instagram content wall <small style="color:var(--mut);font-weight:400">— the posting plan</small></h3><details class="big" open><summary>Open the content wall</summary><div class="body">' + md_to_html(wall) + '</div></details></div>') if wall else ''}
 {('<div class="panel"><h3>🎞️ Productions — rendered Higgsfield reels</h3>' + ''.join('<div class="prod"><video controls preload="metadata" poster="' + esc(p.get('still_url','')) + '" src="' + esc(p.get('clip_url','')) + '"></video><div class="prodmeta"><b>' + esc(p.get('title','')) + '</b><span class="lev" style="background:#2563eb1a;color:#2563eb">' + esc(p.get('angle','')) + '</span><div class="pnote">' + esc(p.get('status','')) + ' · ' + str(p.get('credits','')) + ' cr · ' + esc(p.get('date','')) + '</div><div class="pnote">' + esc(p.get('note','')) + '</div></div></div>' for p in productions) + '</div>') if productions else ''}
 <div class="panel"><h3>🎬 Higgsfield channel — staged test</h3>
   <p style="color:var(--mut);margin:.2em 0">Soul-ID AI reels with your real VO. Spend-gated: cheap stills → review → hardest motion shot → review + cost → render. One test reel staged, awaiting your review &amp; <code>SOUL_UUID</code>.</p>

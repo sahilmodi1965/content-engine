@@ -53,13 +53,28 @@
 - Don't claim what isn't in a file. If there's no receipt, it's not a Sahil story.
 - No emojis in his speaking voice (his reports use 🚩 functionally, but he talks plainly).
 
+## What makes a stranger actually buy (the sell — grounded in research)
+
+These hold across every angle. The product changes; the psychology doesn't.
+
+- **The barrier is trust, not price.** A $100 buy switches the brain from impulse to analysis. You don't win it with a cheaper number — you win it with proof. Lead with the receipt (the student wall, the live URL, the named human), always.
+- **Sell the outcome/identity, not the artifact.** Not "a PDF of prompts" — "go from tutorial-hell to shipped first project." Not "13 modules" — "you become a person who ships." The mechanism (prompt, terminal, agents) is second; the transformation is first.
+- **"Done-with-you" is the lane.** Between DIY information (free) and done-for-you (a dev): the product *coaches you through doing it yourself*. Frame it as "me coaching you, without the 1-on-1 price."
+- **Kill the specific objection in the open.** Name it before they do — "why not free ChatGPT," "I'm not technical," "why $100." Answering the objection on camera converts better than dodging it.
+- **Anchor the price against the real alternative.** A bootcamp (thousands), a dev (more), months of trial-and-error. Make $100 the obvious shortcut, never the expensive option.
+- **CTA last, value first.** Open with the result or the teach; the ask comes at the end. Never open with the offer.
+- **Warm before you ask for $100.** Cold reel → checkout is the hardest sale. Route to a free first-win that captures email, then offer. (See `content-wall.md`.)
+- **Receipt rule still rules.** The research suggests a money-back guarantee and "hours saved" claims — do NOT put any number or offer in copy that isn't backed by a file or a real Sahil offer. Recommend it; don't fabricate it.
+
 ## The four-angle CTA library
 
 ### 1) $100 PDF — stepaheadco.com/ship (global scale, top priority)
-- "One prompt. Two hours. Your name live on the internet. It's $100 at stepaheadco.com/ship — and the first PDF gets you from zero terminal to a live site."
-- "I bottled the exact way I teach beginners into 13 PDFs. Link's in bio. Paste one prompt, ship a real thing."
-- "If you've ever said 'I can't code' — this PDF was cold-tested by a robot beginner so you literally can't get stuck. stepaheadco.com/ship."
-- Soft: "Comment SHIP and I'll send you Module 1."
+The buyer is a stuck beginner in **tutorial hell** — watched the tutorials, shipped nothing, frozen at the blank page. They're not buying a PDF; they're buying the identity shift *tutorial-consumer → person who ships*, fast, with a coach in the room. Lead with **proof and the bottled-coaching origin**, never the clever system.
+- "I coached 50+ people 1-on-1 to ship their first real project. I bottled exactly what I told each of them into one prompt — so a free AI chat coaches you the same way. $100 at stepaheadco.com/ship."
+- "Free AI gives you answers. Beginners don't quit for lack of answers — they quit not knowing what to ask, in what order. The pack is the coaching layer on top. stepaheadco.com/ship."
+- "A bootcamp costs thousands and takes months. A beginner using this shipped in an afternoon — live, public, on their own GitHub. $100."
+- "One prompt. Two hours. Your name live on the internet at a real URL you can text your family. stepaheadco.com/ship."
+- Soft / lead-magnet (if Module 0 is built): "Comment SHIP and I'll send you the free first-win, then the pack if you want all of it."
 
 ### 2) Bi-weekly live webinar — 100 AED (recurring + upsell)
 - "I run this live every two weeks — I'll build something from scratch on the call and you watch the whole terminal. 100 AED to join. Seat link in bio."
